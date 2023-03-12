@@ -35,6 +35,14 @@ const PokemonSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  types: {
+    type: Array,
+    default: undefined,
+    required: true
+  },
+  images: {
+    type: Array,
+  }
 });
 
 const TypeSchema = new mongoose.Schema({
@@ -48,4 +56,4 @@ const TypeSchema = new mongoose.Schema({
 const Pokemon = mongoose.model("Pokemon", PokemonSchema);
 const Type = mongoose.model("Type", TypeSchema);
 
-(module.exports = Pokemon), Type;
+module.exports = Pokemon, Type;
