@@ -3,8 +3,9 @@ const controller = require('../controllers/controller');
 
 const router = express.Router();
 
-router.get('/pokemones', controller.getAll)
-router.post('/create', controller.create)
+router.get('/getPokemones', controller.getAll)
+router.post('/postPokemon', controller.create)
+
 
 
 module.exports = router;

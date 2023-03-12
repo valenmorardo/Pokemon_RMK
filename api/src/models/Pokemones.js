@@ -14,11 +14,11 @@ const PokemonSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  /*     abilities: {    
-        type: Array,
-        default: undefined,
-        required: true
-    }, */
+  abilities: {
+    type: Array,
+    default: undefined,
+    required: true,
+  },
   hp: {
     type: Number,
     required: true,
@@ -37,7 +37,7 @@ const PokemonSchema = new mongoose.Schema({
   },
 });
 
-const TypesSchema = new mongoose.Schema({
+const TypeSchema = new mongoose.Schema({
   name: {
     type: String,
     unique: true,
@@ -46,6 +46,6 @@ const TypesSchema = new mongoose.Schema({
 });
 
 const Pokemon = mongoose.model("Pokemon", PokemonSchema);
-const Type = mongoose.model("Type", TypesSchema);
+const Type = mongoose.model("Type", TypeSchema);
 
 (module.exports = Pokemon), Type;
