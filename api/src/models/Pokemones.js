@@ -48,7 +48,7 @@ const PokemonSchema = new mongoose.Schema({
 const TypeSchema = new mongoose.Schema({
   name: {
     type: String,
-    unique: true,
+    
     required: true,
   },
 });
@@ -56,4 +56,4 @@ const TypeSchema = new mongoose.Schema({
 const Pokemon = mongoose.model("Pokemon", PokemonSchema);
 const Type = mongoose.model("Type", TypeSchema);
 
-module.exports = Pokemon, Type;
+module.exports = (Pokemon, Type);
