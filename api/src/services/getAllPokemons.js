@@ -3,19 +3,11 @@ const Pokemon = require("../models/Pokemones.js");
 
 const axios = require("axios");
 
-const endpoints = {
-  pokemonesDeAPI: "https://pokeapi.co/api/v2/pokemon?offset=0&limit=20",
-  pokemonByID: "https://pokeapi.co/api/v2/pokemon/:id",
-  pokemonByNAME: "https://pokeapi.co/api/v2/pokemon/:name",
-  typesPokemon: "https://pokeapi.co/api/v2/type",
-  typesByName: "https://pokeapi.co/api/v2/type/name",
-};
-
 
 module.exports = async function getAllPokemones() {
   await deleteAllSchema(Pokemon);
 
-  const url = endpoints.pokemonesDeAPI;
+  const url = 'https://pokeapi.co/api/v2/pokemon?offset=0&limit=20';
 
   let pokemonesAPI = await axios(url);
   pokemonesAPI = pokemonesAPI.data.results;

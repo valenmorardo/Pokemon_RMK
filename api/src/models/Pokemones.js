@@ -38,17 +38,17 @@ const PokemonSchema = new mongoose.Schema({
   types: {
     type: Array,
     default: undefined,
-    required: true
+    required: true,
   },
   images: {
     type: Array,
-  }
+  },
 });
 
 const TypeSchema = new mongoose.Schema({
   name: {
     type: String,
-    
+
     required: true,
   },
 });

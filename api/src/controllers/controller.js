@@ -3,15 +3,6 @@ const axios = require("axios");
 const Pokemon = require("../models/Pokemones.js");
 const Type = require("../models/Pokemones.js");
 
-
-const endpoints = {
-  pokemonesDeAPI: "https://pokeapi.co/api/v2/pokemon?offset=0&limit=3",
-  pokemonByID: "https://pokeapi.co/api/v2/pokemon/:id",
-  pokemonByNAME: "https://pokeapi.co/api/v2/pokemon/:name",
-  typesPokemon: "https://pokeapi.co/api/v2/type",
-  typesByName: "https://pokeapi.co/api/v2/type/name",
-};
-
 async function getAll(req, res) {
   Pokemon.find({})
     .then((pokemones) => {
