@@ -1,5 +1,5 @@
 const { deleteAllSchema } = require("../utils/mongoUtils.js");
-const Type = require("../models/Pokemones.js");
+const Type = require("../models/Types.js");
 
 const axios = require("axios");
 
