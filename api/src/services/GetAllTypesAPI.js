@@ -3,7 +3,7 @@ const Type = require("../models/Types.js");
 
 const axios = require("axios");
 
-module.exports = async function getAllTypes() {
+module.exports = async function getAllTypesAPI() {
   await deleteAllSchema(Type);
 
   let types = await axios("https://pokeapi.co/api/v2/type");

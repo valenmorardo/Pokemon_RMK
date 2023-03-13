@@ -4,7 +4,7 @@ const Pokemon = require("../models/Pokemones.js");
 const axios = require("axios");
 
 
-module.exports = async function getAllPokemones() {
+module.exports = async function getAllPokemonesAPI() {
   await deleteAllSchema(Pokemon);
 
   const url = 'https://pokeapi.co/api/v2/pokemon?offset=0&limit=20';
