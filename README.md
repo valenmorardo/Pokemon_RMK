@@ -13,3 +13,21 @@ proyecto de pokemones remake
     *defense
     *speed
 ~types
+
+# dependencias
+
+~BACK:
+*axios
+*body-parser
+*express
+*mongoose
+*underscore
+
+~FRONT:
+*axios
+*react
+*react-redux
+*react-router-dom
+*redux
+*redux-devtools-extension
+*redux-thunk
