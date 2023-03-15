@@ -4,13 +4,31 @@ const Pokemon = require("../models/Pokemones.js");
 const Type = require("../models/Types.js");
 
 //--------------GET POKEMONES----------------
-async function getPokemones(req, res) {
-  Pokemon.find({})
+async function getPokemones(req, res, next) {
+
+  const name = req.query.name;
+
+  let todosLosPokemones = await Pokemon.find({});
+
+
+  if(name) {
+    let pokemonName = todosLosPokemones.filter(el => el.name.toLowerCase().includes(name.toLowerCase()))
+    if(pokemonName.length) {
+      return res.status(200).send(pokemonName)
+    } else{
+      console.log
+      res.status(404).send({status: 404, message: 'no existe ese pokemon'});
+    }
+  } else{
+    return res.status(200).send({ todosLosPokemones })
+  }
+
+/*   Pokemon.find({})
     .then((pokemones) => {
       if (pokemones.length) return res.status(200).send({ pokemones });
       return res.status(204).send({ message: "NO CONTENT" });
     })
-    .catch((err) => res.status(500).send({ err }));
+    .catch((err) => res.status(500).send({ err })); */
 }
 
 //--------------GET TYPES----------------
