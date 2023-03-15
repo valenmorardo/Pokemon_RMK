@@ -9,10 +9,11 @@ function App() {
       <Routes>
 
         <Route exact path="/" Component={LandingPage} />
-        <Route path="/home" Component={Home} />
         <Route exact path="/home/pokemones" Component={HomePokemones} />
         <Route exact path="/home/creation" /* Component={} */ />
         <Route exact path="/home/donation" /* Component={} */ />
+        <Route exact path='/home/pokemon/:id' /* component={} */ />
+        <Route path="/home" Component={Home} />
         
       </Routes>
     </BrowserRouter>

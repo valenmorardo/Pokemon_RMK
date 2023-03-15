@@ -20,7 +20,7 @@ async function getPokemones(req, res, next) {
       res.status(404).send({status: 404, message: 'no existe ese pokemon'});
     }
   } else{
-    return res.status(200).send({ todosLosPokemones })
+    return res.status(200).send( todosLosPokemones )
   }
 
 /*   Pokemon.find({})
