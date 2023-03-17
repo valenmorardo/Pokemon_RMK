@@ -5,7 +5,7 @@
     gap: 15px;
 
 }
-button {
+.button {
     background-color: #242424;
     border: none;
     padding: 5px 10px;
@@ -16,16 +16,16 @@ button {
     justify-content: center;
     cursor: pointer;
 }
-button:disabled  {
+.button:disabled  {
     background-color: #8b8888;
     cursor: no-drop;
 }
 
-svg {
+.svg {
     width: 10px;
 }
 
-input {
+.input {
     height: 30px;
     width: 30px;
     text-align: center;

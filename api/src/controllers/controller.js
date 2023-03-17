@@ -5,19 +5,17 @@ const Type = require("../models/Types.js");
 
 //--------------GET POKEMONES----------------
 async function getPokemones(req, res, next) {
-
   const name = req.query.name;
 
   let todosLosPokemones = await Pokemon.find({});
 
-
-  if(name) {
+    if(name) {
     let pokemonName = todosLosPokemones.filter(el => el.name.toLowerCase().includes(name.toLowerCase()))
     if(pokemonName.length) {
       return res.status(200).send(pokemonName)
     } else{
       console.log
-      res.status(404).send({status: 404, message: 'no existe ese pokemon'});
+      return res.status(404).send({status: 404, message: 'no existe el pokemon buscado'});
     }
   } else{
     return res.status(200).send( todosLosPokemones )
@@ -25,7 +23,7 @@ async function getPokemones(req, res, next) {
 
 /*   Pokemon.find({})
     .then((pokemones) => {
-      if (pokemones.length) return res.status(200).send({ pokemones });
+      if (pokemones.length) return res.status(200).send(pokemones);
       return res.status(204).send({ message: "NO CONTENT" });
     })
     .catch((err) => res.status(500).send({ err })); */
@@ -53,12 +51,10 @@ const getPokemonByID = async (req, res) => {
       if (pokemon) {
         res.status(200).send(pokemon);
       } else {
-        res
-          .status(500)
-          .send({
-            status: "error",
-            message: "no existe pokemon con esa ID :(",
-          });
+        res.status(500).send({
+          status: "error",
+          message: "no existe pokemon con esa ID :(",
+        });
       }
     } else {
       res.status(500).send({ message: "no existe pokemon con esa ID :(" });
@@ -79,12 +75,10 @@ function postPokemon(req, res) {
       console.log("$$$$$$$$$$$$$$$$$$ POKEMON SAVE :)");
     })
     .catch((err) => {
-      res
-        .status(404)
-        .send({
-          status: "ERROR",
-          message: "comprobar los parametros a llenar",
-        });
+      res.status(404).send({
+        status: "ERROR",
+        message: "comprobar los parametros a llenar",
+      });
       console.log(err);
     });
 }
@@ -101,12 +95,10 @@ const postType = async (req, res) => {
       console.log("$$$$$$$$$$$$$$$$$$ TYPE SAVE :)");
     })
     .catch((err) => {
-      res
-        .status(404)
-        .send({
-          status: "ERROR",
-          message: "comprobar los parametros a llenar",
-        });
+      res.status(404).send({
+        status: "ERROR",
+        message: "comprobar los parametros a llenar",
+      });
       console.log(err);
     });
 };

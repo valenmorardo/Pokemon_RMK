@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getPokemones } from "../../../redux/actions/index";
 import Cards from "../Cards/Cards";
 import Paginado from "../Paginado/Paginado";
+import SearchBar from "../SearchBar/SearchBar";
 
 const HomePokemones = () => {
   const dispatch = useDispatch();
@@ -25,8 +26,18 @@ const HomePokemones = () => {
 
   return (
     <div>
-      <Cards pokemones={currentsPokemones} />
-      <Paginado pagina={pagina} setPagina={setPagina} maximo={maximo} />
+      <SearchBar />
+
+      {currentsPokemones.length ? (
+        <>
+          <Cards pokemones={currentsPokemones} />
+          <Paginado pagina={pagina} setPagina={setPagina} maximo={maximo} />
+        </>
+      ) : (
+        <div>
+          <h1>No se encontrar pokemones :c </h1>
+        </div>
+      )}
     </div>
   );
 };
