@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { getPokemonByID } from "../../../redux/actions";
 import { useParams } from "react-router-dom";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const PokemonDetail = (props) => {
   const dispatch = useDispatch();
@@ -29,6 +30,10 @@ const PokemonDetail = (props) => {
     <div>
       {!loading ? (
         <div>
+          <Link to='/home/pokemones'>
+            <button>Volver</button>
+          </Link>
+          
           <h1>Nombre: {pokemon.name}</h1>
           {pokemon.images.map((e) => (
             <img src={e} alt="img not found" width="200px" height="250px" />
