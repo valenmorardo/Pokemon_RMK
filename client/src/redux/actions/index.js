@@ -14,20 +14,31 @@ const getPokemones = (payload) => {
         payload: allPokemones.data,
       });
     } catch (error) {
-        return dispatch({
-            type: 'ERROR_MENSAJE',
-            payload: error.response
-        })
+      return dispatch({
+        type: "ERROR_MENSAJE",
+        payload: error.response,
+      });
     }
   };
 };
 
+const getPokemonByID = (payload) => {
+  return async (dispatch) => {
+    try {
+      const pokemonDetail = await axios(
+        `http://localhost:3001/getPokemonByID/${payload}`
+      );
+      return dispatch({
+        type: "GET_POKEMON_BY_ID",
+        payload: pokemonDetail.data,
+      });
+    } catch (error) {
+      return dispatch({
+        type: "ERROR_MENSAJE",
+        payload: error.response,
+      });
+    }
+  };
+};
 
-
-
-
-
-
-
-
-export { getPokemones };
+export { getPokemones, getPokemonByID };

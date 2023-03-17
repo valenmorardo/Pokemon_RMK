@@ -3,6 +3,8 @@ const initialState = {
 
   allPokemones: [],
   pokemonesHome: [],
+  
+  pokemonDetail:{}
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -14,6 +16,12 @@ const rootReducer = (state = initialState, action) => {
         pokemonesHome: action.payload, // pokemones que muestro en el homePokemones
         mensajeErr: {}
       };
+      
+    case "GET_POKEMON_BY_ID":
+      return {
+        ...state,
+        pokemonDetail: action.payload
+      }
 
     case "ERROR_MENSAJE":
       return {
