@@ -11,6 +11,9 @@ export default function filter(filtros, pokemones) {
     });
   }
 
-  console.log(pokemonesFiltrados);
+  if (!filtros.types) {
+    return pokemones;
+  }
+
   return pokemonesFiltrados;
 }

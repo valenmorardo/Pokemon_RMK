@@ -11,6 +11,17 @@ const HomePokemones = () => {
   const dispatch = useDispatch();
   const allPokemones = useSelector((state) => state.pokemonesHome); // traigo todos los pokemones del reducer
 
+
+  //eso es para que el use effect este mirando siempre al orden del reducer por si cambia
+  //depende los cambios q se hagan en ese estado, el estado local (orden) va ir cambiando entre true y false
+  // para q el array de los pokemones (allPokemones) se renderize nuevamente con los pokemones ordenados
+  const ordenReducer = useSelector((state) => state.orden)
+  const [orden, setOrden] = useState(false)
+  useEffect(() => {
+    setFilters(!filters)
+  }, [ordenReducer])
+
+
   //PAGINADO
   const [pagina, setPagina] = useState(1);
   const [porPagina, setPorPagina] = useState(4);
@@ -38,7 +49,7 @@ const HomePokemones = () => {
         </>
       ) : (
         <div>
-          <h1>No se encontrar pokemones :c </h1>
+          <h1>No se encontraron pokemones :c </h1>
         </div>
       )}
     </div>

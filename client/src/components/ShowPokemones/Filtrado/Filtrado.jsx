@@ -64,29 +64,31 @@ const Filtrado = () => {
     }
   }, [filtrosReducer, ordenReducer]);
 
-
   return (
     <>
       <h1>FILTROS</h1>
 
       <div>
-
         <CardFiltrado
-        options={types}
-        titulo='filtrar por tipos'
-        handler={handlerFilter('types')}
-        propiedad={"types"}
+          options={types}
+          titulo="filtrar por tipos"
+          handler={handlerFilter("types")}
+          propiedad={"types"}
         />
 
         <CardFiltrado
-        options={orderAttack}
-        titulo="Ordenar por ataque"
-        handler={handlerOrden("orderAttack")}
-        propiedad = {'orden'}
+          options={orderAttack}
+          titulo="Ordenar por ataque"
+          handler={handlerOrden("orderAttack")}
+          propiedad={"orden"}
         />
 
+        {Object.values(filtros).length || Object.values(orden).length ? (
+          <button onClick={resetFilters}>Reiniciar filtros</button>
+        ) : (
+          <></>
+        )}
       </div>
-
     </>
   );
 };
