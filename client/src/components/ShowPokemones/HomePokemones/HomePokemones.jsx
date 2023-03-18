@@ -5,6 +5,7 @@ import { getPokemones } from "../../../redux/actions/index";
 import Cards from "../Cards/Cards";
 import Paginado from "../Paginado/Paginado";
 import SearchBar from "../SearchBar/SearchBar";
+import Filtrado from "../Filtrado/Filtrado";
 
 const HomePokemones = () => {
   const dispatch = useDispatch();
@@ -27,6 +28,8 @@ const HomePokemones = () => {
   return (
     <div>
       <SearchBar />
+
+      <Filtrado/>
 
       {currentsPokemones.length ? (
         <>

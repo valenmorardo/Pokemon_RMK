@@ -1,4 +1,6 @@
 import axios from "axios";
+import filter from "../../Utils/filter";
+import orden from "../../Utils/orden";
 
 const getPokemones = (payload) => {
   return async (dispatch) => {
@@ -41,4 +43,36 @@ const getPokemonByID = (payload) => {
   };
 };
 
-export { getPokemones, getPokemonByID };
+const getTypes = (payload) => {
+  return async (dispatch) => {
+    try {
+      let json = await axios.get('http://localhost:3001/getTypes')
+      let tipos = json.data
+      return dispatch({
+        type: 'GET_TYPES',
+        payload: tipos
+      })
+    } catch (error) {
+      
+    }
+  }
+};
+
+
+
+const filterPokemones = (payload) => {
+  const functionFilter = (pokemones) => {
+    const filteredPokemones = filter(payload.filtros, pokemones);
+    return orden(payload.orden, filteredPokemones)
+  };
+  return {
+    type: 'FILTER',
+    payload: {
+      filter: functionFilter,
+      filtros: payload.filtros,
+      orden: payload.orden
+    }
+  }
+}
+
+export { getPokemones, getPokemonByID, getTypes, filterPokemones };

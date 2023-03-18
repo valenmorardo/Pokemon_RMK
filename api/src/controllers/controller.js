@@ -33,7 +33,7 @@ async function getPokemones(req, res, next) {
 async function getTypes(req, res) {
   Type.find({})
     .then((tipos) => {
-      if (tipos.length) return res.status(200).send({ tipos });
+      if (tipos.length) return res.status(200).send( tipos );
       return res.status(204).send({ message: "NO CONTENT" });
     })
     .catch((err) => res.status(500).send({ err }));

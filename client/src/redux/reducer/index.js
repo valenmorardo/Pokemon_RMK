@@ -4,7 +4,12 @@ const initialState = {
   allPokemones: [],
   pokemonesHome: [],
   
-  pokemonDetail:{}
+  pokemonDetail:{},
+
+  types: [],
+
+  filtros: {},
+  orden:{}
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -14,7 +19,9 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         allPokemones: action.payload, //pokemones que traigo intactos de la DB y los trabajo aca
         pokemonesHome: action.payload, // pokemones que muestro en el homePokemones
-        mensajeErr: {}
+        mensajeErr: {},
+        orden: {},
+        filtros: {}
       };
       
     case "GET_POKEMON_BY_ID":
@@ -22,6 +29,20 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         pokemonDetail: action.payload
       }
+    
+    case 'GET_TYPES':
+      return {
+        ...state,
+        types: action.payload
+      }
+
+    case 'FILTER':
+      return {
+          ...state,
+          pokemonesHome: action.payload.filter(state.allPokemones),
+          filtros: action.payload.filtros,
+          orden: action.payload.orden,
+      };
 
     case "ERROR_MENSAJE":
       return {
