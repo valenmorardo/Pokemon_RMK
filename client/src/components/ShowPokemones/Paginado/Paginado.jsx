@@ -5,7 +5,10 @@ import styles from "./Paginado.module.css";
 
 const Paginado = ({ pagina, setPagina, maximo }) => {
   
+  //me traigo estos estados para que cuando se setee uno, el input del paginado lo pongo en 1
   const search = useSelector((state) => state.search)
+  const filtrosReducer = useSelector((state) => state.filtros)
+  const ordenReducer = useSelector((state) => state.orden)
 
   const [input, setInput] = useState(1);
 
@@ -41,9 +44,11 @@ const Paginado = ({ pagina, setPagina, maximo }) => {
     setInput(e.target.value);
   };
 
+
   useEffect(() => {
     setInput(1);
-  }, [search]);
+  }, [search, filtrosReducer, ordenReducer]);
+  
 
   return (
     <div className={styles.container}>
