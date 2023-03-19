@@ -8,15 +8,14 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-
-        <Route exact path="/" Component={LandingPage} />
-        <Route exact path="/home/pokemones" Component={HomePokemones} />
-        <Route path="/home/pokemon/:id" Component={PokemonDetail} />
-        <Route exact path="/home/creation" /* Component={} */ />
-        <Route exact path="/home/donation" /* Component={} */ />
         
         <Route path="/home" Component={Home} />
-        
+        <Route path="/home/pokemon/:id" Component={PokemonDetail} />
+        <Route exact path="/" Component={LandingPage} />
+        <Route exact path="/home/pokemones" Component={HomePokemones} />
+        <Route exact path="/home/creation" /* Component={} */ />
+        <Route exact path="/home/donation" /* Component={} */ />
+      
       </Routes>
     </BrowserRouter>
   );
