@@ -18,7 +18,7 @@ const HomePokemones = () => {
   const ordenReducer = useSelector((state) => state.orden)
   const [orden, setOrden] = useState(false)
   useEffect(() => {
-    setFilters(!filters)
+    setOrden(!orden)
   }, [ordenReducer])
 
 

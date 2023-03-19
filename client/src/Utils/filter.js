@@ -1,5 +1,5 @@
 export default function filter(filtros, pokemones) {
-  console.log(filtros.types);
+
 
   let pokemonesFiltrados = [];
 

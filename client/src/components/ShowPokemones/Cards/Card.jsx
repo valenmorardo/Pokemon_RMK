@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Card = ({ _id, name, hp, attack, types, images }) => {
+const Card = ({ _id, name, hp, attack, types, images, defense, speed }) => {
   return (
     <div>
       <Link to={`/home/pokemon/${_id}`}>
@@ -10,6 +10,8 @@ const Card = ({ _id, name, hp, attack, types, images }) => {
       </Link>
         <h5>VIDA: {hp}</h5>
         <h5>ATAQUE: {attack}</h5>
+        <h5>DEFENSA: {defense}</h5>
+        <h5>VELOCIDAD: {speed}</h5>
         <h4>
           TIPOS:{" "}
           {types.map((el) => (
