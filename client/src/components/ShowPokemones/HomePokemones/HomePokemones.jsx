@@ -38,7 +38,7 @@ const HomePokemones = () => {
 
   return (
     <div>
-      <SearchBar />
+      <SearchBar setPagina={setPagina}/>
 
       <Filtrado/>
 

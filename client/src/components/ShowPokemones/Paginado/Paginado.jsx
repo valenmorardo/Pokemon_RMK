@@ -1,7 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import styles from "./Paginado.module.css";
 
+
 const Paginado = ({ pagina, setPagina, maximo }) => {
+  
+  const search = useSelector((state) => state.search)
+
   const [input, setInput] = useState(1);
 
   const nextPage = () => {
@@ -27,19 +32,26 @@ const Paginado = ({ pagina, setPagina, maximo }) => {
         setPagina(1);
         setInput(1);
       } else {
-        setPagina(parseInt(e.target.value))
+        setPagina(parseInt(e.target.value));
       }
     }
   };
 
-
   const onChange = (e) => {
-    setInput(e.target.value)
-  }
+    setInput(e.target.value);
+  };
+
+  useEffect(() => {
+    setInput(1);
+  }, [search]);
 
   return (
     <div className={styles.container}>
-      <button className={styles.button} onClick={previousPage} disabled={pagina === 1 || pagina < 1}>
+      <button
+        className={styles.button}
+        onClick={previousPage}
+        disabled={pagina === 1 || pagina < 1}
+      >
         <svg
           height="20"
           viewBox="0 0 20 27"
@@ -54,11 +66,22 @@ const Paginado = ({ pagina, setPagina, maximo }) => {
         </svg>
       </button>
 
-      <input className={styles.input} onChange={(e) => onChange(e)} onKeyDown={(e) => onKeyDown(e)} name="page" autoComplete="off" value={input} />
+      <input
+        className={styles.input}
+        onChange={(e) => onChange(e)}
+        onKeyDown={(e) => onKeyDown(e)}
+        name="page"
+        autoComplete="off"
+        value={input}
+      />
 
       <p> DE {Math.ceil(maximo)}</p>
 
-      <button className={styles.button} onClick={nextPage} disabled={pagina === Math.ceil(maximo) || pagina > Math.ceil(maximo)}>
+      <button
+        className={styles.button}
+        onClick={nextPage}
+        disabled={pagina === Math.ceil(maximo) || pagina > Math.ceil(maximo)}
+      >
         {" "}
         <svg
           height="27"

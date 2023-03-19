@@ -3,6 +3,8 @@ const initialState = {
 
   allPokemones: [],
   pokemonesHome: [],
+
+  search: [],
   
   pokemonDetail:{},
 
@@ -23,6 +25,14 @@ const rootReducer = (state = initialState, action) => {
         orden: {},
         filtros: {}
       };
+
+    case "SEARCH":
+      return {
+        ...state,
+        search: action.payload,
+        orden: {},
+        filtros: {}
+      }
       
     case "GET_POKEMON_BY_ID":
       return {

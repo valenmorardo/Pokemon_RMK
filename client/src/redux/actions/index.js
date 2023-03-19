@@ -24,6 +24,16 @@ const getPokemones = (payload) => {
   };
 };
 
+const searchPokemon = (pokemonName) => {
+  return async (dispatch) => {
+    return dispatch({
+      type: "SEARCH",
+      payload: pokemonName,
+    });
+  }
+
+};
+
 const getPokemonByID = (payload) => {
   return async (dispatch) => {
     try {
@@ -46,33 +56,35 @@ const getPokemonByID = (payload) => {
 const getTypes = (payload) => {
   return async (dispatch) => {
     try {
-      let json = await axios.get('http://localhost:3001/getTypes')
-      let tipos = json.data
+      let json = await axios.get("http://localhost:3001/getTypes");
+      let tipos = json.data;
       return dispatch({
-        type: 'GET_TYPES',
-        payload: tipos
-      })
-    } catch (error) {
-      
-    }
-  }
+        type: "GET_TYPES",
+        payload: tipos,
+      });
+    } catch (error) {}
+  };
 };
-
-
 
 const filterPokemones = (payload) => {
   const functionFilter = (pokemones) => {
     const filteredPokemones = filter(payload.filtros, pokemones);
-    return orden(payload.orden, filteredPokemones)
+    return orden(payload.orden, filteredPokemones);
   };
   return {
-    type: 'FILTER',
+    type: "FILTER",
     payload: {
       filter: functionFilter,
       filtros: payload.filtros,
-      orden: payload.orden
-    }
-  }
-}
+      orden: payload.orden,
+    },
+  };
+};
 
-export { getPokemones, getPokemonByID, getTypes, filterPokemones };
+export {
+  getPokemones,
+  getPokemonByID,
+  getTypes,
+  filterPokemones,
+  searchPokemon,
+};
