@@ -3,6 +3,7 @@ import LandingPage from "./components/LandingPage/LandingPage";
 import Home from "./components/Home/Home";
 import HomePokemones from "./components/ShowPokemones/HomePokemones/HomePokemones";
 import PokemonDetail from "./components/ShowPokemones/PokemonDetail/PokemonDetail";
+import CreateForm from "./components/PokemonCreate/FormCreate/CreateForm";
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
         <Route path="/home/pokemon/:id" Component={PokemonDetail} />
         <Route exact path="/" Component={LandingPage} />
         <Route exact path="/home/pokemones" Component={HomePokemones} />
-        <Route exact path="/home/creation" /* Component={} */ />
+        <Route exact path="/home/creation" Component={CreateForm} />
         <Route exact path="/home/donation" /* Component={} */ />
       
       </Routes>

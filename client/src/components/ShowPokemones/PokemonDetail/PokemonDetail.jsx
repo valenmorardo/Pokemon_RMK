@@ -34,20 +34,20 @@ const PokemonDetail = (props) => {
             <button>Volver</button>
           </Link>
           
-          <h1>Nombre: {pokemon.name}</h1>
-          {pokemon.images.map((e) => (
+          <h1>Nombre: {pokemon.Name}</h1>
+          {pokemon.Images.map((e) => (
             <img src={e} alt="img not found" width="200px" height="250px" />
           ))}
           <h2>Habilidades:</h2>
-          {pokemon.abilities.map((e) => (
+          {pokemon.Abilities.map((e) => (
             <h3>{e}</h3>
           ))}
-          <h4>Ataque: {pokemon.attack}</h4>
-          <h4>Defensa: {pokemon.defense}</h4>
-          <h4>Velocidad: {pokemon.speed}</h4>
-          <h4>Vida: {pokemon.hp}</h4>
-          <h4>Altura: {pokemon.height}</h4>
-          <h4>Peso: {pokemon.weight}</h4>
+          <h4>Ataque: {pokemon.Attack}</h4>
+          <h4>Defensa: {pokemon.Defense}</h4>
+          <h4>Velocidad: {pokemon.Speed}</h4>
+          <h4>Vida: {pokemon.Life}</h4>
+          <h4>Altura: {pokemon.Height}</h4>
+          <h4>Peso: {pokemon.Weight}</h4>
         </div>
       ) : (
         <h1>loading...</h1>

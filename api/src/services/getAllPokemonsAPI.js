@@ -17,20 +17,17 @@ module.exports = async function getAllPokemonesAPI() {
       pokemonesAPI.map(async (el) => {
         let pokemonDetail = await axios(el.url);
         let pokemon = new Pokemon({
-          name: pokemonDetail.data.name,
-          height: pokemonDetail.data.height,
-          weight: pokemonDetail.data.weight,
-          abilities: pokemonDetail.data.abilities.map((el) => {
-            return el.ability.name;
-          }),
-          hp: pokemonDetail.data.stats[0].base_stat,
-          attack: pokemonDetail.data.stats[1].base_stat,
-          defense: pokemonDetail.data.stats[2].base_stat,
-          speed: pokemonDetail.data.stats[3].base_stat,
-          types: pokemonDetail.data.types.map((el) => {
+          Name: pokemonDetail.data.name,
+          Height: pokemonDetail.data.height,
+          Weight: pokemonDetail.data.weight,
+          Life: pokemonDetail.data.stats[0].base_stat,
+          Attack: pokemonDetail.data.stats[1].base_stat,
+          Defense: pokemonDetail.data.stats[2].base_stat,
+          Speed: pokemonDetail.data.stats[3].base_stat,
+          Types: pokemonDetail.data.types.map((el) => {
             return el.type.name;
           }),
-          images: [
+          Images: [
             pokemonDetail.data.sprites.other.home.front_default,
             pokemonDetail.data.sprites.other.home.front_shiny,
           ],

@@ -10,7 +10,7 @@ async function getPokemones(req, res, next) {
   let todosLosPokemones = await Pokemon.find({});
 
     if(name) {
-    let pokemonName = todosLosPokemones.filter(el => el.name.toLowerCase().includes(name.toLowerCase()))
+    let pokemonName = todosLosPokemones.filter(el => el.Name.toLowerCase().includes(name.toLowerCase()))
     if(pokemonName.length) {
       return res.status(200).send(pokemonName)
     } else{

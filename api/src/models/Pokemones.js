@@ -1,46 +1,41 @@
 const mongoose = require("mongoose");
 
 const PokemonSchema = new mongoose.Schema({
-  name: {
+  Name: {
     type: String,
     unique: true,
     required: true,
   },
-  height: {
+  Height: {
     type: Number,
     required: true,
   },
-  weight: {
+  Weight: {
     type: Number,
     required: true,
   },
-  abilities: {
+  Life: {
+    type: Number,
+    required: true,
+  },
+  Attack: {
+    type: Number,
+    required: true,
+  },
+  Defense: {
+    type: Number,
+    required: true,
+  },
+  Speed: {
+    type: Number,
+    required: true,
+  },
+  Types: {
     type: Array,
     default: undefined,
     required: true,
   },
-  hp: {
-    type: Number,
-    required: true,
-  },
-  attack: {
-    type: Number,
-    required: true,
-  },
-  defense: {
-    type: Number,
-    required: true,
-  },
-  speed: {
-    type: Number,
-    required: true,
-  },
-  types: {
-    type: Array,
-    default: undefined,
-    required: true,
-  },
-  images: {
+  Images: {
     type: Array,
   },
 });

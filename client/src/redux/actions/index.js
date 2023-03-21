@@ -30,8 +30,7 @@ const searchPokemon = (pokemonName) => {
       type: "SEARCH",
       payload: pokemonName,
     });
-  }
-
+  };
 };
 
 const getPokemonByID = (payload) => {
@@ -62,7 +61,12 @@ const getTypes = (payload) => {
         type: "GET_TYPES",
         payload: tipos,
       });
-    } catch (error) {}
+    } catch (error) {
+      return dispatch({
+        type: "ERROR_MENSAJE",
+        payload: error.response,
+      });
+    }
   };
 };
 
@@ -81,10 +85,31 @@ const filterPokemones = (payload) => {
   };
 };
 
+const postPokemon = (payload) => {
+  return async function (dispatch) {
+    try {
+      const response = await axios.post(
+        "http://localhost:3001/postPokemon",
+        payload
+      );
+      return dispatch({
+        type: "POST_POKEMON",
+        payload: response.data
+      });
+    } catch (error) {
+      return dispatch({
+        type: "ERROR_MENSAJE",
+        payload: error.response,
+      });
+    }
+  };
+};
+
 export {
   getPokemones,
   getPokemonByID,
   getTypes,
   filterPokemones,
   searchPokemon,
+  postPokemon
 };

@@ -11,7 +11,9 @@ const initialState = {
   types: [],
 
   filtros: {},
-  orden:{}
+  orden:{},
+
+  newPokemon: {}
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -53,6 +55,12 @@ const rootReducer = (state = initialState, action) => {
           filtros: action.payload.filtros,
           orden: action.payload.orden,
       };
+
+    case "POST_POKEMON":
+      return {
+        ...state,
+        newPokemon: action.payload
+      }
 
     case "ERROR_MENSAJE":
       return {
