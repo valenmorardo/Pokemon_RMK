@@ -5,9 +5,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import CardTypes from "../CardsForm/CardTypes";
 import { postPokemon } from "../../../redux/actions";
+import validacion from "./validaciones";
+import { Link, useNavigate } from "react-router-dom";
 
 const CreateForm = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const propiedades = [
     "Name",
@@ -25,6 +28,7 @@ const CreateForm = () => {
 
   const [selectedTypes, setSelectedTypes] = useState([]);
   const [newPokemon, setNewPokemon] = useState({});
+  const [errores, setErrores] = useState({});
 
   const handleSelectTypes = (e) => {
     setSelectedTypes([...selectedTypes, e.target.value]);
@@ -36,27 +40,56 @@ const CreateForm = () => {
       ...newPokemon,
       [e.target.name]: e.target.value,
     });
+
+    setErrores(
+      validacion({
+        ...newPokemon,
+        [e.target.name]: e.target.value,
+      })
+    );
   }
-
-
 
   function handleSubmit(e) {
-    dispatch(postPokemon(newPokemon));
+    e.preventDefault();
+
+    let validarName = allPokemones.find((e) => e.Name === newPokemon.Name);
+
+    if (validarName) {
+      alert("Ya existe ese pokemon con ese nombre");
+    } else if (
+      Object.values(newPokemon).length === 9 &&
+      Object.values(errores).length === 0 &&
+      newPokemon.Name &&
+      newPokemon.Life &&
+      newPokemon.Attack &&
+      newPokemon.Defense &&
+      newPokemon.Speed &&
+      newPokemon.Weight &&
+      newPokemon.Height &&
+      newPokemon.Images 
+    ) {
+      if (selectedTypes.length > 0) {
+        dispatch(postPokemon(newPokemon));
+        setNewPokemon({});
+        alert("Pokemon Creado");
+        navigate("/home");
+      } else {
+        alert("Seleccione al menos 1 tipo");
+      }
+    } else {
+      alert("alguno de los campos es incorrecto o esta incompleto");
+    }
   }
 
-
-
-
   useEffect(() => {
-    setNewPokemon({...newPokemon, Types:selectedTypes })
-  }, [selectedTypes])
+    setNewPokemon({ ...newPokemon, Types: selectedTypes });
+  }, [selectedTypes]);
 
   useEffect(() => {
     dispatch(getTypes());
     dispatch(getPokemones());
   }, [dispatch]);
 
-  
   return (
     <div>
       <h1>Crea tu pokemon</h1>
@@ -67,6 +100,7 @@ const CreateForm = () => {
           handleChangeNewPokemon={handleChangeNewPokemon}
           handleSelectTypes={handleSelectTypes}
           selectedTypes={selectedTypes}
+          errores={errores}
         />
 
         {selectedTypes.length > 0 ? (
@@ -78,7 +112,13 @@ const CreateForm = () => {
           <></>
         )}
 
-        <button onClick={(e) => handleSubmit(e)}>Crear</button>
+        {Object.values(newPokemon).length === 9 && selectedTypes.length > 0 ? (
+          <button onClick={(e) => handleSubmit(e)}>Crear</button>
+        ) : (
+          <button disabled onClick={(e) => handleSubmit(e)}>
+            Crear
+          </button>
+        )}
       </form>
     </div>
   );
