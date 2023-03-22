@@ -9,9 +9,7 @@ const CardsForm = ({
   selectedTypes,
   errores,
 }) => {
-
   return (
-
     <div>
       {propiedades.map((prop) => (
         <CardForm
@@ -24,7 +22,6 @@ const CardsForm = ({
         />
       ))}
     </div>
-    
   );
 };
 

@@ -25,7 +25,9 @@ const CardForm = ({
           <label>{propiedad}: </label>
           <input
             required
-            type={propiedad === "Name" || propiedad === "Images" ? 'text' : 'number'}
+            type={
+              propiedad === "Name" || propiedad === "Images" ? "text" : "number"
+            }
             placeholder={`${propiedad} ...`}
             name={propiedad}
             onChange={(e) => handleChangeNewPokemon(e)}

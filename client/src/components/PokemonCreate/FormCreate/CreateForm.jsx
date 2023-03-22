@@ -66,7 +66,7 @@ const CreateForm = () => {
       newPokemon.Speed &&
       newPokemon.Weight &&
       newPokemon.Height &&
-      newPokemon.Images 
+      newPokemon.Images
     ) {
       if (selectedTypes.length > 0) {
         dispatch(postPokemon(newPokemon));
