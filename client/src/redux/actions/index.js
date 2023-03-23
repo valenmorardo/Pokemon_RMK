@@ -108,12 +108,16 @@ const postPokemon = (payload) => {
 const postPaymentDonation = (payload) => {
   return async function (dispatch) {
     try {
-      let xd = {
+      let donation = {
         title: "donacion",
-        amount: payload
-      }
-      console.log(xd)
+        amount: payload,
+      };
 
+      await axios
+        .post("http://localhost:3001/postPayment", donation)
+        .then(
+          (res) => (window.location.href = res.data.response.body.init_point)
+        );
     } catch (error) {
       return dispatch({
         type: "ERROR_MENSAJE",
@@ -130,5 +134,5 @@ export {
   filterPokemones,
   searchPokemon,
   postPokemon,
-  postPaymentDonation
+  postPaymentDonation,
 };
