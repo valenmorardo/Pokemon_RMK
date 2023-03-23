@@ -8,6 +8,7 @@ router.post('/postPokemon', controller.postPokemon)
 router.get('/getTypes', controller.getTypes)
 router.get('/getPokemonByID/:id', controller.getPokemonByID)
 router.post('/postType', controller.postType)
+router.post('/postPayment', controller.postPayment)
 
 
 module.exports = router;

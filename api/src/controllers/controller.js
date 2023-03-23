@@ -3,25 +3,31 @@ const axios = require("axios");
 const Pokemon = require("../models/Pokemones.js");
 const Type = require("../models/Types.js");
 
+require("dotenv").config();
+
 //--------------GET POKEMONES----------------
 async function getPokemones(req, res, next) {
   const name = req.query.name;
 
   let todosLosPokemones = await Pokemon.find({});
 
-    if(name) {
-    let pokemonName = todosLosPokemones.filter(el => el.Name.toLowerCase().includes(name.toLowerCase()))
-    if(pokemonName.length) {
-      return res.status(200).send(pokemonName)
-    } else{
-      console.log
-      return res.status(404).send({status: 404, message: 'no existe el pokemon buscado'});
+  if (name) {
+    let pokemonName = todosLosPokemones.filter((el) =>
+      el.Name.toLowerCase().includes(name.toLowerCase())
+    );
+    if (pokemonName.length) {
+      return res.status(200).send(pokemonName);
+    } else {
+      console.log;
+      return res
+        .status(404)
+        .send({ status: 404, message: "no existe el pokemon buscado" });
     }
-  } else{
-    return res.status(200).send( todosLosPokemones )
+  } else {
+    return res.status(200).send(todosLosPokemones);
   }
 
-/*   Pokemon.find({})
+  /*   Pokemon.find({})
     .then((pokemones) => {
       if (pokemones.length) return res.status(200).send(pokemones);
       return res.status(204).send({ message: "NO CONTENT" });
@@ -33,7 +39,7 @@ async function getPokemones(req, res, next) {
 async function getTypes(req, res) {
   Type.find({})
     .then((tipos) => {
-      if (tipos.length) return res.status(200).send( tipos );
+      if (tipos.length) return res.status(200).send(tipos);
       return res.status(204).send({ message: "NO CONTENT" });
     })
     .catch((err) => res.status(500).send({ err }));
@@ -103,10 +109,51 @@ const postType = async (req, res) => {
     });
 };
 
+const mercadopago = require("mercadopago");
+mercadopago.configure({ access_token: process.env.MERCADOPAGO_KEY });
+
+const postPayment = async (req, res) => {
+  const donation = req.body;
+  console.log(donation);
+
+  let preference = {
+    items: [
+      {
+        id: 1,
+        title: donation.title,
+        currency_id: "ARS",
+        description: donation.title,
+        category_id: donation.title,
+        quantity: 1,
+        unit_price: donation.amount,
+      },
+    ],
+    back_urls: {
+      success: "http://localhost:3000/home",
+      failure: "",
+      pending: "",
+    },
+    auto_return: "approved",
+    binary_mode: true,
+  };
+
+  mercadopago.preferences
+    .create(preference)
+    .then((response) => res.status(200).send({ response }))
+    .catch((err) => {
+      res.status(404).send({
+        status: "ERROR",
+        message: "algo anda mal",
+      });
+      console.log(err);
+    });
+};
+
 module.exports = {
   getPokemones,
   postPokemon,
   getTypes,
   getPokemonByID,
   postType,
+  postPayment,
 };

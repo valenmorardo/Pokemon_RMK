@@ -20,12 +20,12 @@ const Donation = () => {
     } else if (donationInput < 1) {
       alert("El minimo para donar es 1$");
     } else {
-      dispatch(postPaymentDonation(donationInput));
+      dispatch(postPaymentDonation(parseInt(donationInput)));
     }
   };
 
   const SubmitButtonDonation = (e) => {
-    dispatch(postPaymentDonation(e.target.value));
+    dispatch(postPaymentDonation(parseInt(e.target.value)));
   };
 
   return (

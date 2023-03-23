@@ -108,8 +108,11 @@ const postPokemon = (payload) => {
 const postPaymentDonation = (payload) => {
   return async function (dispatch) {
     try {
-
-      console.log(payload)
+      let xd = {
+        title: "donacion",
+        amount: payload
+      }
+      console.log(xd)
 
     } catch (error) {
       return dispatch({
