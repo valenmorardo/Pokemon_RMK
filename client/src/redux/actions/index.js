@@ -94,8 +94,23 @@ const postPokemon = (payload) => {
       );
       return dispatch({
         type: "POST_POKEMON",
-        payload: response.data
+        payload: response.data,
       });
+    } catch (error) {
+      return dispatch({
+        type: "ERROR_MENSAJE",
+        payload: error.response,
+      });
+    }
+  };
+};
+
+const postPaymentDonation = (payload) => {
+  return async function (dispatch) {
+    try {
+
+      console.log(payload)
+
     } catch (error) {
       return dispatch({
         type: "ERROR_MENSAJE",
@@ -111,5 +126,6 @@ export {
   getTypes,
   filterPokemones,
   searchPokemon,
-  postPokemon
+  postPokemon,
+  postPaymentDonation
 };
