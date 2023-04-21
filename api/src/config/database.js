@@ -7,7 +7,7 @@ module.exports = {
     connection: null,
     
     connect: () => {
-        mongoose.Promise = global.Promise; //DUDA
+        mongoose.Promise = global.Promise;
         if (this.connection) return this.connection;
         return mongoose.connect(CONFIG.DB, {useUnifiedTopology: true, useNewUrlParser: true}).then(connection => {
             this.connection = connection;

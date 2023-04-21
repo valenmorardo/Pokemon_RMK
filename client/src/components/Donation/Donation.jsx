@@ -18,7 +18,7 @@ const Donation = () => {
     if (!donationInput) {
       alert("Por favor, llene el campo.");
     } else if (donationInput < 1) {
-      alert("El minimo para donar es 1$");
+      alert("El minimo para donar es 1$ARS");
     } else {
       dispatch(postPaymentDonation(parseInt(donationInput)));
     }
@@ -33,8 +33,7 @@ const Donation = () => {
       <div>
         <h1>DONACIONES</h1>
         <h5>
-          **Este apartado integra mercado pago en forma de test de checkout,
-          porfavor, no ingresar datos reales.**
+          **Este apartado integra mercado pago en forma de test de checkout. NO acepta datos reales**
         </h5>
         <h3>Opciones de donacion:</h3>
       </div>

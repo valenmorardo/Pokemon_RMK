@@ -38,10 +38,7 @@ const PokemonDetail = (props) => {
           {pokemon.Images.map((e) => (
             <img src={e} alt="img not found" width="200px" height="250px" />
           ))}
-          <h2>Habilidades:</h2>
-          {pokemon.Abilities.map((e) => (
-            <h3>{e}</h3>
-          ))}
+
           <h4>Ataque: {pokemon.Attack}</h4>
           <h4>Defensa: {pokemon.Defense}</h4>
           <h4>Velocidad: {pokemon.Speed}</h4>

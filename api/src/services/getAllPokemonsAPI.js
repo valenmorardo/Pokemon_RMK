@@ -29,7 +29,7 @@ module.exports = async function getAllPokemonesAPI() {
           }),
           Images: [
             pokemonDetail.data.sprites.other.home.front_default,
-            pokemonDetail.data.sprites.other.home.front_shiny,
+            
           ],
         });
         pokemon.save().catch((err) => {

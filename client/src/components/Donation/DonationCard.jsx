@@ -23,7 +23,7 @@ const DonationCard = ({
       ) : (
         <div>
           <span>Cantidad en concreto: </span>
-          <input type="number" onChange={(e) => handlerInput(e)} />
+          <input type="text" min="0" onChange={(e) => handlerInput(e)} />
           <button onClick={(e) => SubmitInputDonation(e)}>
             {" "}
             Donar{" "}

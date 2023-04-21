@@ -26,7 +26,7 @@ async function getPokemones(req, res, next) {
   } else {
     return res.status(200).send(todosLosPokemones);
   }
-
+  
   /*   Pokemon.find({})
     .then((pokemones) => {
       if (pokemones.length) return res.status(200).send(pokemones);
