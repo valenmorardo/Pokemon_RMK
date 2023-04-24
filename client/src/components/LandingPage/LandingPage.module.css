@@ -1,0 +1,129 @@
+.background {
+  width: 100%;
+  height: 100vh;
+
+  position: absolute;
+  background-image: url("../../assets/landing/fondoLanding.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 20px;
+  padding: 0px 15px 0px 15px;
+}
+
+
+/* pantall ESCRITORIO */
+@media screen and (min-width: 981px){
+
+
+  .title {
+    font-family: 'Pokemon';
+    font-size: 160px;
+    color: yellow;
+    text-stroke: 2px black;
+    -webkit-text-stroke: 2px black;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    justify-items: center;
+    text-align: center;
+    align-items: center;
+  }
+
+  .divTocar {
+    font-size: 25px;
+    display: grid;
+    grid-template-columns: 1fr;
+    
+    justify-content: center;
+    justify-items: center;
+    text-align: center;
+    align-items: center;
+  }
+  .pokebola {
+    width: 250px;
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .footer h2 {
+    margin-bottom: 20px;
+  }
+
+  .footer a {
+    text-decoration: underline;
+  }
+
+  .footer a:hover {
+    color: blue;
+  }
+
+}
+
+
+
+/* pantalla CELULAR */
+@media screen and (max-width: 980px){
+
+ .title {
+  position: relative;
+  font-family: 'Pokemon';
+  font-size: 70px;
+  color: yellow;
+  text-stroke: 2px black;
+  -webkit-text-stroke: 2px black;
+
+  width: 100%;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+  align-items: center;
+ }
+
+ .divTocar {
+  font-size: 15px;
+  display: grid;
+  grid-template-columns: 1fr;
+  
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+  align-items: center;
+}
+.pokebola {
+  width: 100%;
+}
+
+
+.footer {
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+.footer h2 {
+  font-size: 20px;
+  margin: 0px 0px 35px 0px;
+}
+
+.footer a {
+  text-decoration: underline;
+}
+
+
+}
+
