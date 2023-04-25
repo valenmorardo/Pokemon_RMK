@@ -1,0 +1,139 @@
+.background {
+  width: 100%;
+
+  position: absolute;
+  background-image: url("../../assets/global/fondoDefault.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+.container {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+
+  gap: 20px;
+  padding: 50px 150px 50px 150px;
+}
+.container button {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  border-radius: 90px;
+  border: none;
+}
+.textButton {
+
+  opacity: 1;
+  font-size: 1.5rem;
+  color: #fff;
+  padding: 20px;
+  background-color: #2727277d;
+  border-radius: 90px;
+  transition: all 0.7s ease-in-out;
+}
+
+
+
+.verPokemones {
+  background-image: url("../../assets/home/view.png") ;
+  background-repeat: no-repeat;
+  background-size: 75%;
+  background-position: center;
+  background-color: #F8C8DC;
+  filter: grayscale(100%);
+
+  opacity: 0.5;
+  padding: 10px 20px;
+  transition: all 0.7s ease-in-out;
+}
+.verPokemones:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+  background-size: 40%;
+  transition: all 0.7s ease-in-out;
+}
+
+.verPokemones:hover .textButton {
+  background-color: #272727f7;
+}
+
+
+.create {
+  background-image: url("../../assets/home/create.png");
+  background-repeat: no-repeat;
+  background-size: 95%;
+  background-position: center;
+  background-color: #9ea9ed;
+  filter: grayscale(100%);
+
+  opacity: 0.6;
+  padding: 10px 20px;
+  transition: all 0.7s ease-in-out;
+}
+.create:hover {
+  opacity: 1;
+  filter: grayscale(0%);
+  background-size: 65%;
+  transition: all 0.7s ease-in-out;
+}
+.create:hover .textButton {
+  background-color: #272727f7;
+}
+
+
+
+
+.donate {
+    background-image: url("../../assets/home/donate.png");
+    background-repeat: no-repeat;
+    background-size: 95%;
+    background-position: center;
+    background-color: 	#e8d7a1;
+    filter: grayscale(100%);
+  
+    opacity: 0.6;
+    padding: 10px 20px;
+    transition: all 0.7s ease-in-out;
+}
+
+.donate:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+    background-size: 55%;
+    transition: all 0.7s ease-in-out;
+}
+.donate:hover .textButton {
+    background-color: #272727f7;
+}
+
+
+
+
+.about {
+    background-image: url("../../assets/home/about.png");
+    background-repeat: no-repeat;
+    background-size: 95%;
+    background-position: center;
+    background-color: #9cbc9e;
+    filter: grayscale(100%);
+  
+    opacity: 0.6;
+    padding: 10px 20px;
+    transition: all 0.7s ease-in-out;
+}
+.about:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+    background-size: 55%;
+    transition: all 0.7s ease-in-out;
+}
+.about:hover .textButton {
+    background-color: #272727f7;
+}
+
+
+
+
+

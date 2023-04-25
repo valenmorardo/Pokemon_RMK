@@ -24,9 +24,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: url("./assets/global/fondoDefault.png");
-  background-repeat: no-repeat;
-  background-size: cover;
+background-color: #272727;
+  
 }
 
 a {
