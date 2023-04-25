@@ -1,5 +1,6 @@
 .background {
   width: 100%;
+  height: 100vh;
 
   position: absolute;
   background-image: url("../../assets/global/fondoDefault.png");
@@ -7,15 +8,7 @@
   background-size: cover;
   background-attachment: fixed;
 }
-.container {
-  width: 100%;
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr;
 
-  gap: 20px;
-  padding: 50px 150px 50px 150px;
-}
 .container button {
   width: 100%;
   height: 100%;
@@ -23,117 +16,173 @@
   border-radius: 90px;
   border: none;
 }
-.textButton {
-
-  opacity: 1;
-  font-size: 1.5rem;
-  color: #fff;
-  padding: 20px;
-  background-color: #2727277d;
-  border-radius: 90px;
-  transition: all 0.7s ease-in-out;
-}
 
 
 
-.verPokemones {
-  background-image: url("../../assets/home/view.png") ;
-  background-repeat: no-repeat;
-  background-size: 75%;
-  background-position: center;
-  background-color: #F8C8DC;
-  filter: grayscale(100%);
+@media screen and (min-width: 981px) {
+  .container {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr;
 
-  opacity: 0.5;
-  padding: 10px 20px;
-  transition: all 0.7s ease-in-out;
-}
-.verPokemones:hover {
-  opacity: 1;
-  filter: grayscale(0%);
-  background-size: 40%;
-  transition: all 0.7s ease-in-out;
-}
+    gap: 20px;
+    padding: 50px 150px 50px 150px;
+  }
+  .textButton {
+    opacity: 1;
+    font-size: 1rem;
+    color: #fff;
+    padding: 20px;
+    background-color: #2727277d;
+    border-radius: 90px;
+    transition: all 0.7s ease-in-out;
+  }
 
-.verPokemones:hover .textButton {
-  background-color: #272727f7;
-}
+  .verPokemones {
+    background-image: url("../../assets/home/view.png");
+    background-repeat: no-repeat;
+    background-size: 95%;
+    background-position: center;
+    background-color: #f8c8dc;
+    filter: grayscale(100%);
 
+    opacity: 0.5;
+    padding: 10px 20px;
+    transition: all 0.7s ease-in-out;
+  }
+  .verPokemones:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+    background-size: 70%;
+    transition: all 0.7s ease-in-out;
+  }
 
-.create {
-  background-image: url("../../assets/home/create.png");
-  background-repeat: no-repeat;
-  background-size: 95%;
-  background-position: center;
-  background-color: #9ea9ed;
-  filter: grayscale(100%);
+  .verPokemones:hover .textButton {
+    background-color: #272727f7;
+  }
 
-  opacity: 0.6;
-  padding: 10px 20px;
-  transition: all 0.7s ease-in-out;
-}
-.create:hover {
-  opacity: 1;
-  filter: grayscale(0%);
-  background-size: 65%;
-  transition: all 0.7s ease-in-out;
-}
-.create:hover .textButton {
-  background-color: #272727f7;
-}
+  .create {
+    background-image: url("../../assets/home/create.png");
+    background-repeat: no-repeat;
+    background-size: 95%;
+    background-position: center;
+    background-color: #9ea9ed;
+    filter: grayscale(100%);
 
+    opacity: 0.6;
+    padding: 10px 20px;
+    transition: all 0.7s ease-in-out;
+  }
+  .create:hover {
+    opacity: 1;
+    filter: grayscale(0%);
+    background-size: 65%;
+    transition: all 0.7s ease-in-out;
+  }
+  .create:hover .textButton {
+    background-color: #272727f7;
+  }
 
-
-
-.donate {
+  .donate {
     background-image: url("../../assets/home/donate.png");
     background-repeat: no-repeat;
     background-size: 95%;
     background-position: center;
-    background-color: 	#e8d7a1;
+    background-color: #e8d7a1;
     filter: grayscale(100%);
-  
+
     opacity: 0.6;
     padding: 10px 20px;
     transition: all 0.7s ease-in-out;
-}
+  }
 
-.donate:hover {
+  .donate:hover {
     opacity: 1;
     filter: grayscale(0%);
     background-size: 55%;
     transition: all 0.7s ease-in-out;
-}
-.donate:hover .textButton {
+  }
+  .donate:hover .textButton {
     background-color: #272727f7;
-}
+  }
 
-
-
-
-.about {
+  .about {
     background-image: url("../../assets/home/about.png");
     background-repeat: no-repeat;
     background-size: 95%;
     background-position: center;
     background-color: #9cbc9e;
     filter: grayscale(100%);
-  
+
     opacity: 0.6;
     padding: 10px 20px;
     transition: all 0.7s ease-in-out;
-}
-.about:hover {
+  }
+  .about:hover {
     opacity: 1;
     filter: grayscale(0%);
     background-size: 55%;
     transition: all 0.7s ease-in-out;
-}
-.about:hover .textButton {
+  }
+  .about:hover .textButton {
     background-color: #272727f7;
+  }
 }
 
+@media screen and (max-width: 980px) {
+  .container {
+    width: 100%;
+    height: 100vh;
 
+    padding: 30px;
 
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
 
+  .textButton {
+    
+    font-size: 0.7rem;
+    color: #fff;
+    padding: 20px;
+    background-color: #272727e6;
+    border-radius: 90px;
+    transition: all 0.7s ease-in-out;
+  }
 
+  .verPokemones {
+    background-image: url("../../assets/home/view.png");
+    background-repeat: no-repeat;
+    background-size: 96%;
+    background-position: center;
+    background-color: #f8c8dc;
+  }
+
+  .create {
+    background-image: url("../../assets/home/create.png");
+    background-repeat: no-repeat;
+    background-size: 95%;
+    background-position: center;
+    background-color: #9ea9ed;
+  }
+
+  .donate {
+    background-image: url("../../assets/home/donate.png");
+    background-repeat: no-repeat;
+    background-size: 95%;
+    background-position: center;
+    background-color: #e8d7a1;
+
+  }
+
+  .about {
+    background-image: url("../../assets/home/about.png");
+    background-repeat: no-repeat;
+    background-size: 95%;
+    background-position: center;
+    background-color: #9cbc9e;
+  }
+
+}
