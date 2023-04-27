@@ -1,0 +1,70 @@
+.container {
+    width: 100%;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+
+    gap: 15px;
+
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+    
+}
+
+.form {
+    width: 50%;
+    position: relative;
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 40px;
+    
+}
+
+.textBox, .button {
+    position: relative;
+    padding: 7px;
+    border: solid 2px black;
+    background-color: #f8c8dc;
+    font-size: 15px;
+    font-weight: bold;
+    border-style: dashed;
+    border-radius: 10px;
+}
+
+.error {
+    font-size: 13px;
+    padding: 10px;
+    
+    color: white;
+    background-color: rgba(255, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+.divShowAll {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+}
+
+.divShowAll span {
+    position: relative;
+    color: #f8c8dc;
+    font-weight: bold;
+}
+
+.divShowAll button {
+    position: relative;
+    padding: 5px;
+    width: 50%;
+    background-color: #f8c8dc;
+    font-weight: bold;
+    border-style: dashed;
+    border-color: black;
+}
+

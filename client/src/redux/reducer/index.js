@@ -4,7 +4,7 @@ const initialState = {
   allPokemones: [],
   pokemonesHome: [],
 
-  search: [],
+  search: "",
   
   pokemonDetail:{},
 
@@ -25,7 +25,9 @@ const rootReducer = (state = initialState, action) => {
         pokemonesHome: action.payload, // pokemones que muestro en el homePokemones
         mensajeErr: {},
         orden: {},
-        filtros: {}
+        filtros: {},
+        pokemonDetail: {}
+        
       };
 
     case "SEARCH":
@@ -45,7 +47,8 @@ const rootReducer = (state = initialState, action) => {
     case 'GET_TYPES':
       return {
         ...state,
-        types: action.payload
+        types: action.payload,
+        search: ""
       }
 
     case 'FILTER':

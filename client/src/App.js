@@ -6,18 +6,19 @@ import PokemonDetail from "./components/ShowPokemones/PokemonDetail/PokemonDetai
 import CreateForm from "./components/PokemonCreate/FormCreate/CreateForm";
 import Donation from "./components/Donation/Donation";
 
+import Loading from "./components/Loading/LoadingByPage";
+
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        
+                
         <Route path="/home" Component={Home} />
         <Route path="/home/pokemon/:id" Component={PokemonDetail} />
         <Route exact path="/" Component={LandingPage} />
         <Route exact path="/home/pokemones" Component={HomePokemones} />
         <Route exact path="/home/creation" Component={CreateForm} />
         <Route exact path="/home/donation" Component={Donation} />
-      
       </Routes>
     </BrowserRouter>
   );

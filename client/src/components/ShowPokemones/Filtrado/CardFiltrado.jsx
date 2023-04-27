@@ -2,10 +2,12 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 
-const CardFiltrado = ({ options, titulo, handler, propiedad }) => {
+const CardFiltrado = ({ options, titulo, handler, propiedad}) => {
   const filtros = useSelector((state) => state.filtros);
   const orden = useSelector((state) => state.orden);
   const busqueda = useSelector((state) => state.search);
+
+  
 
     function cleanSelect(propiedad) {
       document

@@ -4,11 +4,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPokemones } from "../../../redux/actions/index";
 import { searchPokemon } from "../../../redux/actions/index";
 
-const SearchBar = ({setPagina}) => {
+import s from "./SearchBar.module.css";
+
+const SearchBar = ({ setPagina }) => {
   const dispatch = useDispatch();
 
   const [namePokemon, setNamePokemon] = useState("");
   const [errores, setErrores] = useState({});
+
+  const search = useSelector((state) => state.search);
 
   const handleInput = (e) => {
     e.preventDefault();
@@ -20,10 +24,10 @@ const SearchBar = ({setPagina}) => {
     const input = document.getElementById("inputSearch").value;
 
     if (!input) {
-      setErrores({ error: "Escriba el nombre del pokemon antes de buscar" });
+      setErrores({ error: "Enter the name of the Pokémon before searching" });
     } else if (input) {
       setErrores({});
-      setPagina(1)
+      setPagina(1);
       dispatch(getPokemones(namePokemon));
       dispatch(searchPokemon(namePokemon));
       setNamePokemon("");
@@ -31,23 +35,45 @@ const SearchBar = ({setPagina}) => {
     }
   };
 
+  const handleShowAll = () => {
+    setErrores({});
+    setPagina(1);
+    dispatch(getPokemones());
+    dispatch(searchPokemon());
+  };
+
   return (
-    <div>
-      <form>
+    <div className={s.container}>
+      <form className={s.form}>
         <input
           type="text"
-          placeholder="Nombre del pokemon..."
+          required
+          placeholder="Name..."
           onChange={(e) => handleInput(e)}
           id="inputSearch"
+          className={s.textBox}
         ></input>
-        <span>{errores.error}</span>
 
         <input
           type="submit"
-          value="buscar"
+          value="SEARCH"
           onClick={(e) => handleSubmit(e)}
+          className={s.button}
         ></input>
       </form>
+
+      {errores.error? (
+        <div className={s.error}>
+          <span>{errores.error}</span>
+        </div>
+      ) : null}
+
+      {search ? (
+        <div className={s.divShowAll}>
+          <h4>Recent search: "<span> {search.toUpperCase()}</span>"</h4>
+          <button onClick={handleShowAll}>Show ALL</button>
+        </div>
+      ) : null}
     </div>
   );
 };

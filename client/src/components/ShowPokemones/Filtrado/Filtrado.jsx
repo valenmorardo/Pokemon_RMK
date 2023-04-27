@@ -5,10 +5,14 @@ import { getTypes } from "../../../redux/actions";
 import { getPokemones } from "../../../redux/actions";
 import CardFiltrado from "./CardFiltrado";
 import { filterPokemones } from "../../../redux/actions";
-import Card from "../Cards/Card";
+
+import FiltersActive from "./FiltersActive";
 
 const Filtrado = () => {
   const dispatch = useDispatch();
+
+  //me traigo para tener siempre todos los pokemones que se muestran en el home
+  const pokemonesHome = useSelector((state) => state.pokemonesHome);
 
   //aca hago me traigo los estados del reducer de los filtros y orden
   const filtrosReducer = useSelector((state) => state.filtros);
@@ -18,12 +22,11 @@ const Filtrado = () => {
   const [filtros, setFiltros] = useState(filtrosReducer);
   const [orden, setOrden] = useState(ordenReducer);
 
-
   //aca tengo todas las opciones para filtrar y ordenar
 
   const [orderBy_Active, setOrderBy_Active] = useState(false);
   const [orderBy, setOrderBy] = useState("");
-  const orderByOptions = ["Defensa", "Ataque", "Velocidad", "Vida"];
+  const orderByOptions = ["Defensa", "Ataque", "Velocidad", "Vida", "ALPHA"];
 
   const options = ["Menor a mayor", "Mayor a menor"];
 
@@ -43,12 +46,12 @@ const Filtrado = () => {
   //apartado manejadores de filtros y orden, y seteo de los mismos
   function handlerFilter(propiedad) {
     return (valor) => {
-      setFiltros({ ...filtros, [propiedad]: valor });
+      setFiltros({ [propiedad]: valor });
     };
   }
   function handlerOrden(propiedad) {
     return (valor) => {
-      setOrden({ ...orden, [propiedad]: valor });
+      setOrden({ [propiedad]: valor });
     };
   }
   function setFilters() {
@@ -83,7 +86,7 @@ const Filtrado = () => {
   }, [filtrosReducer, ordenReducer]);
 
   return (
-    <>
+    <div>
       <h1>FILTROS</h1>
 
       <div>
@@ -113,12 +116,13 @@ const Filtrado = () => {
         )}
 
         {Object.values(filtros).length || Object.values(orden).length ? (
-          <button onClick={resetFilters}>Reiniciar filtros</button>
-        ) : (
-          <></>
-        )}
+          <div>
+            <FiltersActive filtros={filtros} orden={orden} />
+            <button onClick={resetFilters}>Reiniciar parametros</button>
+          </div>
+        ) : null}
       </div>
-    </>
+    </div>
   );
 };
 
