@@ -1,0 +1,14 @@
+.container {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 5px;
+    margin-bottom: 5px;
+    font-size: 12px;
+}
+
+.container span {
+    color: #eca5c2;
+    text-decoration: underline 3px;
+    
+}

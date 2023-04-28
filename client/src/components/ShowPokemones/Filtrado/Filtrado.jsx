@@ -8,6 +8,8 @@ import { filterPokemones } from "../../../redux/actions";
 
 import FiltersActive from "./FiltersActive";
 
+import s from "./Filtrado.module.css";
+
 const Filtrado = () => {
   const dispatch = useDispatch();
 
@@ -26,9 +28,9 @@ const Filtrado = () => {
 
   const [orderBy_Active, setOrderBy_Active] = useState(false);
   const [orderBy, setOrderBy] = useState("");
-  const orderByOptions = ["Defensa", "Ataque", "Velocidad", "Vida", "ALPHA"];
+  const orderByOptions = ["Defense", "Attack", "Speed", "Life"];
 
-  const options = ["Menor a mayor", "Mayor a menor"];
+  const options = ["Ascending", "Descending"];
 
   useEffect(() => {
     dispatch(getTypes());
@@ -86,42 +88,45 @@ const Filtrado = () => {
   }, [filtrosReducer, ordenReducer]);
 
   return (
-    <div>
-      <h1>FILTROS</h1>
+    <div className={s.mainContainer}>
 
-      <div>
-        <CardFiltrado
-          options={types}
-          titulo="filtrar por tipos"
-          handler={handlerFilter("types")}
-          propiedad={"types"}
-        />
+      <div className={s.cardsContainer}>
+        <div>
+          <CardFiltrado
+            options={types}
+            titulo="Filter by TYPES"
+            handler={handlerFilter("types")}
+            propiedad={"types"}
+          />
+        </div>
 
-        <CardFiltrado
-          options={orderByOptions}
-          titulo="Ordenar by"
-          handler={handlerSelect}
-          propiedad={"orderBy"}
-        />
+        <div>
+          <CardFiltrado
+            options={orderByOptions}
+            titulo="Sort by"
+            handler={handlerSelect}
+            propiedad={"orderBy"}
+          />
+        </div>
 
         {orderBy && orderBy_Active ? (
-          <CardFiltrado
-            options={options}
-            titulo={`Ordenar por ${orderBy}`}
-            handler={handlerOrden(orderBy)}
-            propiedad={orderBy}
-          />
-        ) : (
-          <></>
-        )}
-
-        {Object.values(filtros).length || Object.values(orden).length ? (
           <div>
-            <FiltersActive filtros={filtros} orden={orden} />
-            <button onClick={resetFilters}>Reiniciar parametros</button>
+            <CardFiltrado
+              options={options}
+              titulo={`Sort by ${orderBy}`}
+              handler={handlerOrden(orderBy)}
+              propiedad={orderBy}
+            />
           </div>
         ) : null}
       </div>
+
+      {Object.values(filtros).length || Object.values(orden).length ? (
+        <div className={s.divFiltersActive}>
+          <FiltersActive filtros={filtros} orden={orden} />
+          <button onClick={resetFilters}>RESET PARAMETERS</button>
+        </div>
+      ) : null}
     </div>
   );
 };

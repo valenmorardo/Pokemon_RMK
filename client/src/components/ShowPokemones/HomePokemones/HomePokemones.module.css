@@ -60,3 +60,14 @@
   justify-items: center;
 }
 /* ////////////////*/
+
+
+/* Filtrado */
+.divFiltrado {
+  position: relative;
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+}
+/* ///////////////// */
+
