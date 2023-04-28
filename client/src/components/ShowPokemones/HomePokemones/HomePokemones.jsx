@@ -8,6 +8,7 @@ import Paginado from "../Paginado/Paginado";
 import SearchBar from "../SearchBar/SearchBar";
 import Filtrado from "../Filtrado/Filtrado";
 
+import LoadingForPages from '../../Loading/LoadingForPages/LoadingForPages'
 
 import s from "./HomePokemones.module.css";
 
@@ -38,45 +39,53 @@ const HomePokemones = () => {
     dispatch(getPokemones());
   }, [dispatch]);
 
+  console.log(allPokemones);
+
   return (
     <div className={s.background}>
-      <div className={s.mainContainer}>
+      {allPokemones.length?
+        <div className={s.mainContainer}>
+          <div className={s.divBtn}>
+            <Link to="/home">
+              <button>GO BACK</button>
+            </Link>
+          </div>
 
-      <div className={s.divBtn}>
-        <Link to="/home">
-          <button>GO BACK</button>
-        </Link>
-        
-      </div>
+          <div className={s.divTitle}>
+            <h1 className={s.title}>PokeDex</h1>
+          </div>
 
-      <div className={s.divTitle}>
-        <h1 className={s.title}>PokeDex</h1>
-      </div>
+          <div className={s.divSearch}>
+            <SearchBar setPagina={setPagina} />
+          </div>
 
-        <div className={s.divSearch}>
-          <SearchBar setPagina={setPagina} />
-        </div>
+          <div className={s.divFiltrado}>
+            <Filtrado />
+          </div>
 
-        <div className={s.divFiltrado}>
-          <Filtrado />
-        </div>
+          {currentsPokemones.length ? (
+            <>
+              <div className={s.divCards}>
+                <Cards pokemones={currentsPokemones} />
+              </div>
 
-        {currentsPokemones.length ? (
-          <>
-            <div className={s.divCards}>
-              <Cards pokemones={currentsPokemones} />
-            </div>
-
-            <div className={s.divPaginado}>
-              <Paginado pagina={pagina} setPagina={setPagina} maximo={maximo} />
-            </div>
-          </>
-        ) : (
+              <div className={s.divPaginado}>
+                <Paginado
+                  pagina={pagina}
+                  setPagina={setPagina}
+                  maximo={maximo}
+                />
+              </div>
+            </>
+          ) : (
             <div>
               <h1>No se encontraron pokemones :c </h1>
             </div>
-        )}
-      </div>
+          )}
+        </div>
+        :
+        <LoadingForPages/>
+      }
     </div>
   );
 };

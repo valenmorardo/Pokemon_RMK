@@ -77,7 +77,7 @@ const Paginado = ({ pagina, setPagina, maximo }) => {
         
       />
 
-      <p> DE {Math.ceil(maximo)}</p>
+      <p> OF {Math.ceil(maximo)}</p>
 
       <button
         className={s.button}
