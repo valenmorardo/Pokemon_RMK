@@ -19,18 +19,9 @@ const PokemonDetail = (props) => {
     dispatch(getPokemonByID(params.id));
   }, [dispatch]);
 
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 900);
-  }, [pokemon]);
-
-  console.log(pokemon);
-
   return (
     <div>
-      {!loading ? (
+      {Object.keys(pokemon).length ? (
         <div>
           <Link to='/home/pokemones'>
             <button>Volver</button>
