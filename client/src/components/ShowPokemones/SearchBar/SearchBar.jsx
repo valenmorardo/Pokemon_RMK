@@ -19,12 +19,24 @@ const SearchBar = ({ setPagina }) => {
     setNamePokemon(e.target.value);
   };
 
+
+
+
+
+
+
+  const [isVisible, setIsVisible] = useState(true);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const input = document.getElementById("inputSearch").value;
 
     if (!input) {
       setErrores({ error: "Enter the name of the Pokémon before searching" });
+      setTimeout(() => {
+        setIsVisible(false);
+      }, 3000);
+      setIsVisible(true);
     } else if (input) {
       setErrores({});
       setPagina(1);
@@ -41,6 +53,11 @@ const SearchBar = ({ setPagina }) => {
     dispatch(getPokemones());
     dispatch(searchPokemon());
   };
+
+
+
+
+
 
   return (
     <div className={s.container}>
@@ -62,7 +79,7 @@ const SearchBar = ({ setPagina }) => {
         ></input>
       </form>
 
-      {errores.error? (
+      {errores.error && isVisible? (
         <div className={s.error}>
           <span>{errores.error}</span>
         </div>

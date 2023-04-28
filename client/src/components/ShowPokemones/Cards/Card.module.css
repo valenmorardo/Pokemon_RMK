@@ -16,11 +16,15 @@
 }
 
 .image {
-    width: 40%;
+    width: 50%;
 }
 
 .statTitle {
     margin: 5px;
+    font-size: 15px;
+}
+.types {
+    font-size: 15px;
 }
 
 .statTitle span, .types span {
