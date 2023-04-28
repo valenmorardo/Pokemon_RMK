@@ -5,14 +5,15 @@ import HomePokemones from "./components/ShowPokemones/HomePokemones/HomePokemone
 import PokemonDetail from "./components/ShowPokemones/PokemonDetail/PokemonDetail";
 import CreateForm from "./components/PokemonCreate/FormCreate/CreateForm";
 import Donation from "./components/Donation/Donation";
+import LoadingForPages from "./components/Loading/LoadingForPages/LoadingForPages";
 
-import Loading from "./components/Loading/LoadingByPage";
+
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-                
+      <Route path="/xd" Component={LoadingForPages} />  
         <Route path="/home" Component={Home} />
         <Route path="/home/pokemon/:id" Component={PokemonDetail} />
         <Route exact path="/" Component={LandingPage} />

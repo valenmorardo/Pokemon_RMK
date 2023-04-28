@@ -27,7 +27,10 @@
   
 }
 .divBtn button {
-  padding: 5px;
+  padding: 7px;
+  font-weight: bold;
+  background-color: #eca5c2;
+  cursor: pointer;
 }
 /* ///////////////// */
 

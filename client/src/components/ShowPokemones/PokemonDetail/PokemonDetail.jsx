@@ -7,6 +7,8 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+import LoadingForPages from '../../Loading/LoadingForPages/LoadingForPages'
+
 const PokemonDetail = (props) => {
   const dispatch = useDispatch();
   const params = useParams();
@@ -47,7 +49,7 @@ const PokemonDetail = (props) => {
           <h4>Peso: {pokemon.Weight}</h4>
         </div>
       ) : (
-        <h1>loading...</h1>
+        <LoadingForPages/>
       )}
     </div>
   );

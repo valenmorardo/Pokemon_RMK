@@ -44,7 +44,7 @@ const HomePokemones = () => {
 
       <div className={s.divBtn}>
         <Link to="/home">
-          <button>VOLVER</button>
+          <button>GO BACK</button>
         </Link>
         
       </div>
