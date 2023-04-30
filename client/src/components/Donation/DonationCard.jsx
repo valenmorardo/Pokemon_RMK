@@ -1,35 +1,16 @@
 import React from "react";
+import s from "./DonationCard.module.css";
 
-const DonationCard = ({
-  donation,
-  handlerInput,
-  SubmitInputDonation,
- SubmitButtonDonation,
-}) => {
+const DonationCard = ({ donation, SubmitButtonDonation }) => {
   return (
-    <div>
-      {donation !== "input" ? (
-        <div>
-          <span>{donation} ARS$ </span>
-          <button
-            value={donation}
-            onClick={(e) => SubmitButtonDonation(e)}
-          >
-            {" "}
-            Donar{" "}
-          </button>
-          <hr />
-        </div>
-      ) : (
-        <div>
-          <span>Cantidad en concreto: </span>
-          <input type="text" min="0" onChange={(e) => handlerInput(e)} />
-          <button onClick={(e) => SubmitInputDonation(e)}>
-            {" "}
-            Donar{" "}
-          </button>
-        </div>
-      )}
+    <div className={s.card}>
+      <span>
+        {donation} ARS<span className={s.signoPeso}>$</span>{" "}
+      </span>
+      <button value={donation} onClick={(e) => SubmitButtonDonation(e)}>
+        {" "}
+        DONATE{" "}
+      </button>
     </div>
   );
 };
