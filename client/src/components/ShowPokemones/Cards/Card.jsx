@@ -9,7 +9,7 @@ const Card = ({ _id, Name, Life, Attack, Types, Images, Defense, Speed }) => {
       <Link to={`/home/pokemon/${_id}`}>
         <h3 className={s.name}>{Name.toUpperCase()}</h3>
         <img src={Images[0]} alt="img not found" className={s.image} />
-        <h4 className={s.statTitle}>
+        {/* <h4 className={s.statTitle}>
           DEFENSE: <span>{Defense}</span>
         </h4>
         <h4 className={s.statTitle}>
@@ -28,7 +28,7 @@ const Card = ({ _id, Name, Life, Attack, Types, Images, Defense, Speed }) => {
           {Types.map((el) => (
             <span>{el.toUpperCase() + " "}</span>
           ))}
-        </h4>
+        </h4> */}
       </Link>
     </div>
   );

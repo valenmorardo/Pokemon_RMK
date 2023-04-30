@@ -20,28 +20,6 @@ const Paginado = ({ pagina, setPagina, maximo }) => {
     setPagina((parseInt(pagina) - 1));
   };
 
-  const onKeyDown = (e) => {
-    if (e.keyCode === 13) {
-      // la tecla 13 es el enter
-      setPagina(parseInt(e.target.value));
-
-      if (
-        parseInt(e.target.value) < 1 ||
-        parseInt(e.target.value) > Math.ceil(maximo) ||
-        isNaN(parseInt(e.target.value))
-      ) {
-        setPagina(1);
-        setInput(1);
-      } else {
-        setPagina(parseInt(e.target.value));
-      }
-    }
-  };
-
-  const onChange = (e) => {
-    setInput(e.target.value);
-  };
-
   useEffect(() => {
     setInput(1);
   }, [search, filtrosReducer, ordenReducer]);
@@ -67,17 +45,11 @@ const Paginado = ({ pagina, setPagina, maximo }) => {
         </svg>
       </button>
 
-      <input
-        className={s.input}
-        onChange={(e) => onChange(e)}
-        onKeyDown={(e) => onKeyDown(e)}
-        name="page"
-        autoComplete="off"
-        value={input}
-        
-      />
+      <span>
+        {input}
+      </span>
 
-      <p> OF {Math.ceil(maximo)}</p>
+      <p> of {Math.ceil(maximo)}</p>
 
       <button
         className={s.button}
