@@ -95,7 +95,18 @@
 /* /////////////// */
 
 
-/* paginado */
+.noPokemones {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 35px;
+  text-align: center;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+}
 
-
-/* /////////////// */
+.noPokemones img {
+  border-radius: 100px;
+  box-shadow: 0px 10px 20px #f8c8dc;
+}

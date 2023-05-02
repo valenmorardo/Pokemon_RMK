@@ -7,7 +7,9 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import LoadingForPages from '../../Loading/LoadingForPages/LoadingForPages'
+import LoadingForPages from "../../Loading/LoadingForPages/LoadingForPages";
+
+import s from "./PokemonDetail.module.css";
 
 const PokemonDetail = (props) => {
   const dispatch = useDispatch();
@@ -22,25 +24,31 @@ const PokemonDetail = (props) => {
   return (
     <div>
       {Object.keys(pokemon).length ? (
-        <div>
-          <Link to='/home/pokemones'>
-            <button>Volver</button>
-          </Link>
-          
-          <h1>Nombre: {pokemon.Name}</h1>
-          {pokemon.Images.map((e) => (
-            <img src={e} alt="img not found" width="200px" height="250px" />
-          ))}
+        <div className={s.background}>
+          <div className={s.divBtn}>
+            <Link to="/home/pokemones">
+              <button>GO BACK</button>
+            </Link>
+          </div>
 
-          <h4>Ataque: {pokemon.Attack}</h4>
-          <h4>Defensa: {pokemon.Defense}</h4>
-          <h4>Velocidad: {pokemon.Speed}</h4>
-          <h4>Vida: {pokemon.Life}</h4>
-          <h4>Altura: {pokemon.Height}</h4>
-          <h4>Peso: {pokemon.Weight}</h4>
+          <div className={s.container}>
+            <h1 className={s.title}>{pokemon.Name.toUpperCase()}</h1>
+            {pokemon.Images.map((e) => (
+              <img src={e} alt="img not found"  className={s.image}/>
+            ))}
+
+            <div className={s.stats}> 
+              <h4>ATTACK: <span>{pokemon.Attack}</span></h4>
+              <h4>DEFENSE: <span>{pokemon.Defense}</span></h4>
+              <h4>SPEED: <span>{pokemon.Speed}</span></h4>
+              <h4>LIFE: <span>{pokemon.Life}</span></h4>
+              <h4>HEIGHT: <span>{pokemon.Height}</span></h4>
+              <h4>WEIGHT: <span>{pokemon.Weight}</span></h4>
+            </div>
+          </div>
         </div>
       ) : (
-        <LoadingForPages/>
+        <LoadingForPages />
       )}
     </div>
   );

@@ -8,13 +8,16 @@ import Paginado from "../Paginado/Paginado";
 import SearchBar from "../SearchBar/SearchBar";
 import Filtrado from "../Filtrado/Filtrado";
 
-import LoadingForPages from '../../Loading/LoadingForPages/LoadingForPages'
+import LoadingForPages from "../../Loading/LoadingForPages/LoadingForPages";
+
+import pikachuSad from '../../../assets/home/pikachuSad.gif'
 
 import s from "./HomePokemones.module.css";
 
 const HomePokemones = () => {
   const dispatch = useDispatch();
   const allPokemones = useSelector((state) => state.pokemonesHome); // traigo todos los pokemones del reducer
+  const error = useSelector((state) => state.mensajeErr);
 
   //eso es para que el use effect este mirando siempre al orden del reducer por si cambia
   //depende los cambios q se hagan en ese estado, el estado local (orden) va ir cambiando entre true y false
@@ -43,7 +46,28 @@ const HomePokemones = () => {
 
   return (
     <div className={s.background}>
-      {allPokemones.length?
+      {Object.keys(error).length ? (
+        <div className={s.mainContainer}>
+          <div className={s.divBtn}>
+            <Link to="/home">
+              <button>GO BACK</button>
+            </Link>
+          </div>
+
+          <div className={s.divTitle}>
+            <h1 className={s.title}>PokeDex</h1>
+          </div>
+
+          <div className={s.divSearch}>
+            <SearchBar setPagina={setPagina} />
+          </div>
+          <div className={s.noPokemones}>
+            <h1>No se encontraron pokemones :c </h1>
+            <img src={pikachuSad} />
+          </div>
+          
+        </div>
+      ) : allPokemones.length ? (
         <div className={s.mainContainer}>
           <div className={s.divBtn}>
             <Link to="/home">
@@ -63,29 +87,17 @@ const HomePokemones = () => {
             <Filtrado />
           </div>
 
-          {currentsPokemones.length ? (
-            <>
-              <div className={s.divCards}>
-                <Cards pokemones={currentsPokemones} />
-              </div>
+          <div className={s.divCards}>
+            <Cards pokemones={currentsPokemones} />
+          </div>
 
-              <div className={s.divPaginado}>
-                <Paginado
-                  pagina={pagina}
-                  setPagina={setPagina}
-                  maximo={maximo}
-                />
-              </div>
-            </>
-          ) : (
-            <div>
-              <h1>No se encontraron pokemones :c </h1>
-            </div>
-          )}
+          <div className={s.divPaginado}>
+            <Paginado pagina={pagina} setPagina={setPagina} maximo={maximo} />
+          </div>
         </div>
-        :
-        <LoadingForPages/>
-      }
+      ) : (
+        <LoadingForPages />
+      )}
     </div>
   );
 };
