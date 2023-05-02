@@ -1,7 +1,9 @@
 import React from "react";
 
-import s from './LoadingForPages.module.css'
-import cargandoGif from "../../../assets/home/cargandoGif.gif";
+
+import cargandoGif from "../../assets/home/cargandoGif.gif";
+
+import s from "./LoadingForPages.module.css"
 
 const LoadingForPages = () => {
   return (

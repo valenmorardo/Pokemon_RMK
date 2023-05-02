@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import LoadingForPages from "../../Loading/LoadingForPages/LoadingForPages";
+import LoadingForPages from "../../Loading/LoadingForPages";
 
 import s from "./PokemonDetail.module.css";
 

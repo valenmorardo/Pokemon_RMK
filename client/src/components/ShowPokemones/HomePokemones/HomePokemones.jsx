@@ -8,7 +8,7 @@ import Paginado from "../Paginado/Paginado";
 import SearchBar from "../SearchBar/SearchBar";
 import Filtrado from "../Filtrado/Filtrado";
 
-import LoadingForPages from "../../Loading/LoadingForPages/LoadingForPages";
+import LoadingForPages from "../../Loading/LoadingForPages";
 
 import pikachuSad from '../../../assets/home/pikachuSad.gif'
 

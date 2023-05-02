@@ -5,6 +5,7 @@ import HomePokemones from "./components/ShowPokemones/HomePokemones/HomePokemone
 import PokemonDetail from "./components/ShowPokemones/PokemonDetail/PokemonDetail";
 import CreateForm from "./components/PokemonCreate/FormCreate/CreateForm";
 import Donation from "./components/Donation/Donation";
+import About from "./components/About/About";
 
 
 
@@ -19,6 +20,7 @@ function App() {
         <Route exact path="/home/pokemones" Component={HomePokemones} />
         <Route exact path="/home/creation" Component={CreateForm} />
         <Route exact path="/home/donation" Component={Donation} />
+        <Route exact path="/home/about" Component={About} />
       </Routes>
     </BrowserRouter>
   );
