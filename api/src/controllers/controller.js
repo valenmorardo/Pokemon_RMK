@@ -26,7 +26,7 @@ async function getPokemones(req, res, next) {
   } else {
     return res.status(200).send(todosLosPokemones);
   }
-  
+
   /*   Pokemon.find({})
     .then((pokemones) => {
       if (pokemones.length) return res.status(200).send(pokemones);
@@ -72,20 +72,33 @@ const getPokemonByID = async (req, res) => {
 function postPokemon(req, res) {
   let pokemon = new Pokemon(req.body);
 
+
+  pokemon.Name.toLowerCase();
+
   pokemon
     .save()
     .then(() => {
-      res.status(200).send({ status: "success", pokemon });
+      res.status(200).send({
+        status: "success",
+        message: "El pokemon ha sido guardado correctamente.",
+        newPokemon: {
+          Name: pokemon.Name,
+          id: pokemon._id,
+        },
+      });
 
-      console.log(pokemon);
-      console.log("$$$$$$$$$$$$$$$$$$ POKEMON SAVE :)");
+      console.log(`$$$$$$$$$$ POKEMON SAVE :)`);
     })
     .catch((err) => {
-      res.status(404).send({
+      
+      res.status(400).send({
         status: "ERROR",
-        message: "comprobar los parametros a llenar",
+        message: "Error en el registro de Pokemon. Por favor, verifica los datos ingresados.",
+        errores: err.errors,
       });
-      console.log(err);
+
+      console.log("NO se guardo el pokemon, error");
+      console.log(err.errors);
     });
 }
 

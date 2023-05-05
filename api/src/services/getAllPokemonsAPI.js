@@ -7,7 +7,7 @@ const axios = require("axios");
 module.exports = async function getAllPokemonesAPI() {
   await deleteAllSchema(Pokemon);
 
-  const url = 'https://pokeapi.co/api/v2/pokemon?offset=0&limit=200';
+  const url = 'https://pokeapi.co/api/v2/pokemon?offset=0&limit=5';
 
   let pokemonesAPI = await axios(url);
   pokemonesAPI = pokemonesAPI.data.results;
@@ -17,7 +17,7 @@ module.exports = async function getAllPokemonesAPI() {
       pokemonesAPI.map(async (el) => {
         let pokemonDetail = await axios(el.url);
         let pokemon = new Pokemon({
-          Name: pokemonDetail.data.name,
+          Name: pokemonDetail.data.name.toLowerCase(),
           Height: pokemonDetail.data.height,
           Weight: pokemonDetail.data.weight,
           Life: pokemonDetail.data.stats[0].base_stat,
@@ -27,10 +27,7 @@ module.exports = async function getAllPokemonesAPI() {
           Types: pokemonDetail.data.types.map((el) => {
             return el.type.name;
           }),
-          Images: [
-            pokemonDetail.data.sprites.other.home.front_default,
-            
-          ],
+          Images: pokemonDetail.data.sprites.other.home.front_default
         });
         pokemon.save().catch((err) => {
           console.log(err);
