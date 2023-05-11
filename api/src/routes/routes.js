@@ -4,11 +4,13 @@ const controller = require('../controllers/controller');
 const router = express.Router();
 
 router.get('/getPokemones', controller.getPokemones)
-router.post('/postPokemon', controller.postPokemon)
+
 router.get('/getTypes', controller.getTypes)
 router.get('/getPokemonByID/:id', controller.getPokemonByID)
-router.post('/postType', controller.postType)
+router.post('/postPokemon', controller.postPokemon)
 router.post('/postPayment', controller.postPayment)
+
+router.get('/getPokemonByName', controller.getPokemonByName)
 
 
 module.exports = router;
