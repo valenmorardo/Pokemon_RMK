@@ -43,33 +43,29 @@ const CreateForm = () => {
   useEffect(() => {
     setNewPokemon({ ...newPokemon, Types: selectedTypes });
   }, [selectedTypes]);
+  
   useEffect(() => {
     dispatch(getTypes());
   }, [dispatch]);
 
-
-
-
-  const postPokemon = useSelector((state) => state.postPokemon)
-  
+  const postPokemon = useSelector((state) => state.postPokemon);
   const [errores, setErrores] = useState({});
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(postPokemonAction(newPokemon))
+    dispatch(postPokemonAction(newPokemon));
   };
 
   useEffect(() => {
-
     if (postPokemon.created) {
       alert("pokemon creado");
+      setNewPokemon({});
+      setSelectedTypes({})
       navigate("/home");
     } else {
       setErrores(postPokemon.errores || {});
     }
-    
   }, [postPokemon]);
- 
 
   
 
@@ -81,43 +77,48 @@ const CreateForm = () => {
         </div>
 
         <div>
-          <div>
-            <form onSubmit={handleSubmit}>
-              {propiedades.map((e) => (
-                <CardForm
-                  propiedad={e}
-                  allTypes={allTypes}
-                  handleChangeNewPokemon={handleChangeNewPokemon}
-                  handleSelectTypes={handleSelectTypes}
-                  selectedTypes={selectedTypes}
-                />
-              ))}
-              {selectedTypes.length > 0 ? (
-                <CardSelectedTypes
-                  selectedTypes={selectedTypes}
-                  setSelectedTypes={setSelectedTypes}
-                />
-              ) : null}
+          <form onSubmit={handleSubmit}>
+            {propiedades.map((e) => (
+              <CardForm
+                propiedad={e}
+                allTypes={allTypes}
+                handleChangeNewPokemon={handleChangeNewPokemon}
+                handleSelectTypes={handleSelectTypes}
+                selectedTypes={selectedTypes}
+                errores={errores}
+              />
+            ))}
+            {selectedTypes.length > 0 ? (
+              <CardSelectedTypes
+                selectedTypes={selectedTypes}
+                setSelectedTypes={setSelectedTypes}
+              />
+            ) : null}
 
-              <button
-                type="submit"
-                disabled={
-                  !(
-                    Object.values(newPokemon).length === 9 &&
-                    selectedTypes.length > 0
-                  )
-                    ? true
-                    : false
-                }
-                onClick={(e) => handleSubmit(e)}
-              >
-                CREAR
-              </button>
-            </form>
-          </div>
-
-          <div></div>
+            <button
+              type="submit"
+              disabled={
+                !(
+                  Object.values(newPokemon).length === 9 &&
+                  selectedTypes.length > 0
+                )
+                  ? true
+                  : false
+              }
+              onClick={(e) => handleSubmit(e)}
+            >
+              CREAR
+            </button>
+          </form>
         </div>
+
+        {Object.values(errores).length ? (
+          <div>
+            {Object.entries(errores).map(([key, value]) => {
+              return <h3 key={key}>{value.message}</h3>;
+            })}
+          </div>
+        ) : null}
       </div>
     </div>
   );

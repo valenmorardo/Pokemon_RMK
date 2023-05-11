@@ -26,7 +26,8 @@ const rootReducer = (state = initialState, action) => {
         mensajeErr: {},
         orden: {},
         filtros: {},
-        pokemonDetail: {}
+        pokemonDetail: {},
+        postPokemon:{}
         
       };
 
@@ -37,19 +38,22 @@ const rootReducer = (state = initialState, action) => {
         orden: {},
         filtros: {},
         mensajeErr: {},
+        postPokemon:{}
       }
       
     case "GET_POKEMON_BY_ID":
       return {
         ...state,
-        pokemonDetail: action.payload
+        pokemonDetail: action.payload,
+        postPokemon:{},
       }
     
     case 'GET_TYPES':
       return {
         ...state,
         types: action.payload,
-        search: ""
+        search: "",
+        postPokemon:{}
       }
 
     case 'FILTER':
@@ -66,14 +70,14 @@ const rootReducer = (state = initialState, action) => {
         postPokemon: action.payload,
       }
 
+    case "CLEAN_POST": 
+    return {
+      ...state,
+      postPokemon: {}
+    }
 
-    //@SMELL recordar cambiar en los otros casos.
-    case "ERROR_MENSAJE":
-      return {
-        ...state,
-        pokemonesHome: [],
-        mensajeErr: action.payload,
-      };
+
+
 
     default:
       return state;

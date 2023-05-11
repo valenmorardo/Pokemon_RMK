@@ -6,7 +6,12 @@ const CardForm = ({
   handleChangeNewPokemon,
   handleSelectTypes,
   selectedTypes,
+  errores
 }) => {
+  
+  
+  
+ 
   return (
     <div>
       {propiedad !== "Types" ? (
@@ -21,6 +26,7 @@ const CardForm = ({
             name={propiedad}
             onChange={(e) => handleChangeNewPokemon(e)}
           />
+          
         </div>
       ) : selectedTypes.length !== 2 ? (
         <div>

@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+
+import { useDispatch } from "react-redux";
+
+import { getPokemones, getTypes, cleanStatePost } from "../../redux/actions";
 
 import s from "./Home.module.css"
 
 const Home = () => {
+
+  const dispatch = useDispatch();
+
+
+
+  useEffect(() => {
+    dispatch(cleanStatePost());
+    dispatch(getPokemones());
+    dispatch(getTypes());
+  },[])
+
   return (
     <div className={s.background}>
 

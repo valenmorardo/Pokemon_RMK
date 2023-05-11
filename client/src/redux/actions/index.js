@@ -129,6 +129,13 @@ const postPaymentDonation = (payload) => {
   };
 };
 
+const cleanStatePost = (payload) => {
+  return {
+    type: "CLEAN_POST",
+    payload: payload
+  }
+}
+
 export {
   getPokemones,
   getPokemonByID,
@@ -137,4 +144,5 @@ export {
   searchPokemon,
   postPokemonAction,
   postPaymentDonation,
+  cleanStatePost
 };
