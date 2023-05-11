@@ -13,7 +13,7 @@ const initialState = {
   filtros: {},
   orden:{},
 
-  newPokemon: {}
+  postPokemon: {}
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -35,7 +35,8 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         search: action.payload,
         orden: {},
-        filtros: {}
+        filtros: {},
+        mensajeErr: {},
       }
       
     case "GET_POKEMON_BY_ID":
@@ -62,9 +63,11 @@ const rootReducer = (state = initialState, action) => {
     case "POST_POKEMON":
       return {
         ...state,
-        newPokemon: action.payload
+        postPokemon: action.payload,
       }
 
+
+    //@SMELL recordar cambiar en los otros casos.
     case "ERROR_MENSAJE":
       return {
         ...state,

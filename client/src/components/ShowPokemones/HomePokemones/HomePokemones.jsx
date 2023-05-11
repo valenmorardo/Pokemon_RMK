@@ -42,7 +42,7 @@ const HomePokemones = () => {
     dispatch(getPokemones());
   }, [dispatch]);
 
-  console.log(allPokemones);
+  
 
   return (
     <div className={s.background}>

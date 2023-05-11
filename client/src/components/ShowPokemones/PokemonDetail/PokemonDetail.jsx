@@ -33,9 +33,9 @@ const PokemonDetail = (props) => {
 
           <div className={s.container}>
             <h1 className={s.title}>{pokemon.Name.toUpperCase()}</h1>
-            {pokemon.Images.map((e) => (
-              <img src={e} alt="img not found"  className={s.image}/>
-            ))}
+            
+              <img src={pokemon.Images} alt="img not found"  className={s.image}/>
+            
 
             <div className={s.stats}> 
               <h4>ATTACK: <span>{pokemon.Attack}</span></h4>

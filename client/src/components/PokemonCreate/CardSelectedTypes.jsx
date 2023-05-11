@@ -1,6 +1,6 @@
 import React from "react";
 
-const CardTypes = ({ selectedTypes, setSelectedTypes }) => {
+const CardSelectedTypes = ({ selectedTypes, setSelectedTypes }) => {
   const removeType = (e) => {
     e.preventDefault();
     setSelectedTypes(selectedTypes.filter((type) => type !== e.target.name));
@@ -13,11 +13,11 @@ const CardTypes = ({ selectedTypes, setSelectedTypes }) => {
           <button name={type} onClick={(e) => removeType(e)}>
             X
           </button>
-          <span>{type}</span>
+          <span> {type}</span>
         </div>
       ))}
     </div>
   );
 };
 
-export default CardTypes;
+export default CardSelectedTypes;

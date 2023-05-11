@@ -3,7 +3,7 @@ import LandingPage from "./components/LandingPage/LandingPage";
 import Home from "./components/Home/Home";
 import HomePokemones from "./components/ShowPokemones/HomePokemones/HomePokemones";
 import PokemonDetail from "./components/ShowPokemones/PokemonDetail/PokemonDetail";
-import CreateForm from "./components/PokemonCreate/FormCreate/CreateForm";
+import CreateForm from "./components/PokemonCreate/CreateForm";
 import Donation from "./components/Donation/Donation";
 import About from "./components/About/About";
 

@@ -259,6 +259,20 @@ const PokemonSchema = new mongoose.Schema({
           return "Debe escojer como minimo 1 tipo y como maximo 2";
         },
       },
+      {
+        validator: (tipos) => {
+          if (tipos.length === 2 ) {
+            if(tipos[0] === tipos[1]) {
+              return false
+            } else {
+              return true
+            }
+          } 
+        },
+        message: (props) => {
+          return "No puede seleccionar 2 veces el mismo tipo";
+        },
+      },
     ],
   },
 

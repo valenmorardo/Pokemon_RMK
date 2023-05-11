@@ -79,28 +79,21 @@ function postPokemon(req, res) {
     .save()
     .then(() => {
       res.status(200).send({
-        status: "success",
+        created: true,
         message: "El pokemon ha sido guardado correctamente.",
-        newPokemon: {
-          Name: pokemon.Name,
-          id: pokemon._id,
-        },
       });
 
       console.log(`$$$$$$$$$$ POKEMON SAVE :)`);
     })
     .catch((err) => {
-      
       res.status(400).send({
-        status: "ERROR",
+        created: false,
         message: "Error en el registro de Pokemon. Por favor, verifica los datos ingresados.",
         errores: err.errors,
       });
-
-      console.log("NO se guardo el pokemon, error");
-      console.log(err.errors);
     });
 }
+
 
 //--------------POST newTYPE----------------
 const postType = async (req, res) => {

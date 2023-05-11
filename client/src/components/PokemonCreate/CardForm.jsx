@@ -1,7 +1,4 @@
-import React, { useEffect } from "react";
-import { getTypes, getPokemones } from "../../../redux/actions";
-import { useSelector, useDispatch } from "react-redux";
-import { useState } from "react";
+import React from "react";
 
 const CardForm = ({
   propiedad,
@@ -9,34 +6,25 @@ const CardForm = ({
   handleChangeNewPokemon,
   handleSelectTypes,
   selectedTypes,
-  errores,
 }) => {
-  const handleSelect = (e) => {
-    e.preventDefault();
-    handleSelectTypes(e);
-  };
-
-  console.log(propiedad);
-
   return (
     <div>
       {propiedad !== "Types" ? (
         <div>
           <label>{propiedad}: </label>
           <input
-            required
             type={
               propiedad === "Name" || propiedad === "Images" ? "text" : "number"
             }
+            required
             placeholder={`${propiedad} ...`}
             name={propiedad}
             onChange={(e) => handleChangeNewPokemon(e)}
-          ></input>
-          <span>{errores[propiedad]}</span>
+          />
         </div>
       ) : selectedTypes.length !== 2 ? (
         <div>
-          <select id="select" onChange={(e) => handleSelect(e)}>
+          <select name={propiedad} onChange={(e) => handleSelectTypes(e)}>
             <option disabled selected value="defaultValue">
               {" "}
               Seleccionar los {propiedad}
@@ -48,20 +36,9 @@ const CardForm = ({
             ))}
           </select>
         </div>
-      ) : (
-        <></>
-      )}
+      ) : null}
     </div>
   );
 };
 
 export default CardForm;
-{
-  /* <input
-required
-  type={propiedad !== "Name" || "Images" ? "text" : "number"}
-  placeholder={`${propiedad} ...`}
-  name={propiedad}
-  onChange={(e) => handleChangeNewPokemon(e)}
-></input> */
-}

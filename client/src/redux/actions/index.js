@@ -52,7 +52,7 @@ const getPokemonByID = (payload) => {
   };
 };
 
-const getTypes = (payload) => {
+const getTypes = () => {
   return async (dispatch) => {
     try {
       let json = await axios.get("http://localhost:3001/getTypes");
@@ -85,21 +85,23 @@ const filterPokemones = (payload) => {
   };
 };
 
-const postPokemon = (payload) => {
+const postPokemonAction = (payload) => {
   return async function (dispatch) {
     try {
       const response = await axios.post(
         "http://localhost:3001/postPokemon",
         payload
       );
+
       return dispatch({
         type: "POST_POKEMON",
         payload: response.data,
       });
+
     } catch (error) {
       return dispatch({
-        type: "ERROR_MENSAJE",
-        payload: error.response,
+        type: "POST_POKEMON",
+        payload: error.response.data,
       });
     }
   };
@@ -133,6 +135,6 @@ export {
   getTypes,
   filterPokemones,
   searchPokemon,
-  postPokemon,
+  postPokemonAction,
   postPaymentDonation,
 };
