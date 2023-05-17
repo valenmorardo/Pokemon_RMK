@@ -3,7 +3,7 @@ import filter from "../../Utils/filter";
 import orden from "../../Utils/orden";
 
 const getPokemonesAction = (payload) => {
-  return async (dispatch) => {
+  /* return async (dispatch) => {
     try {
       const allPokemones = await axios("http://localhost:3001/getPokemones");
 
@@ -17,11 +17,11 @@ const getPokemonesAction = (payload) => {
         payload: error.response,
       });
     }
-  };
+  }; */
 };
 
 const searchPokemonAction = (pokemonName) => {
-  return async (dispatch) => {
+ /*  return async (dispatch) => {
     try {
       const searchResult = await axios("http://localhost:3001/getPokemonByName", {
         params: { name: pokemonName }
@@ -38,11 +38,11 @@ const searchPokemonAction = (pokemonName) => {
         payload: error.response
       })
     }
-  };
+  }; */
 };
 
 const getPokemonByIDAction = (payload) => {
-  return async (dispatch) => {
+  /* return async (dispatch) => {
     const id = payload;
     try {
       const pokemonByID = await axios(
@@ -60,11 +60,11 @@ const getPokemonByIDAction = (payload) => {
         payload: error.response.data,
       });
     }
-  };
+  }; */
 };
 
 const getTypesAction = () => {
-  return async (dispatch) => {
+  /* return async (dispatch) => {
     try {
       const types = await axios.get("http://localhost:3001/getTypes");
       
@@ -78,12 +78,12 @@ const getTypesAction = () => {
         payload: error.response,
       });
     }
-  };
+  }; */
 };
 
 
 const filterPokemonesAction = (payload) => {
-  const functionFilter = (pokemones) => {
+  /* const functionFilter = (pokemones) => {
     const filteredPokemones = filter(payload.filtros, pokemones);
     return orden(payload.orden, filteredPokemones);
   };
@@ -94,7 +94,7 @@ const filterPokemonesAction = (payload) => {
       filtros: payload.filtros,
       orden: payload.orden,
     },
-  };
+  }; */
 };
 
 

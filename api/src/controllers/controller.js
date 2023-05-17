@@ -13,21 +13,20 @@ async function getPokemones(req, res, next) {
       if(pokemones) {
         res.status(200).send({
           response: true,
-          message: "ALL POKEMONES",
           pokemones: pokemones,
         });
       } else {
         res.status(404).send({
           response: false,
-          message: "No se encontaron pokemones"
+          message: "No content"
         })
       }
       
     })
     .catch((error) =>
-      res.status(404).send({
+      res.status(500).send({
         response: false,
-        message: "Ocurrio un error!",
+        message: "ERROR",
         error,
       })
     );
@@ -37,16 +36,24 @@ async function getPokemones(req, res, next) {
 async function getTypes(req, res) {
   await Type.find({})
     .then((types) => {
-      res.status(200).send({
-        response: true,
-        message: "ALL TYPES",
-        types,
-      });
+
+      if(types) {
+        res.status(200).send({
+          response: true,
+          types,
+        });
+      } else {
+        res.status(404).send({
+          response: false,
+          message: "No content",
+        })
+      }
+
     })
     .catch((error) =>
-      res.status(404).send({
+      res.status(500).send({
         response: false,
-        message: "No content",
+        message: "ERROR",
         error,
       })
     );
@@ -72,7 +79,7 @@ const getPokemonByID = async (req, res) => {
       }
     })
     .catch((error) =>
-      res.status(404).send({
+      res.status(500).send({
         response: false,
         message: "Error, ID no valida",
         error,
@@ -90,7 +97,6 @@ const getPokemonByName = async (req, res) => {
       if (pokemon.length > 0) {
         res.status(200).send({
           response: true,
-          message: "Pokemon/es Founded",
           pokemon,
         });
       } else {
