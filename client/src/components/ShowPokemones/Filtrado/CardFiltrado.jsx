@@ -24,6 +24,9 @@ const CardFiltrado = ({ options, titulo, handler, propiedad }) => {
     }
   }, [filtros, orden]);
 
+  
+
+  
   return (
     <select
       id={propiedad}
@@ -35,7 +38,7 @@ const CardFiltrado = ({ options, titulo, handler, propiedad }) => {
       <option disabled selected value="defaultValue">
         {titulo}
       </option>
-      {options.map((e) => (
+      {options?.map((e) => (
         <option value={e.name ? e.name : e}>
           {e.name ? e.name.toUpperCase() : e.toUpperCase()}
         </option>

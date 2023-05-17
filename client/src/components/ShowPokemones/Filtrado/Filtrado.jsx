@@ -1,10 +1,10 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getTypes } from "../../../redux/actions";
-import { getPokemones } from "../../../redux/actions";
+
 import CardFiltrado from "./CardFiltrado";
-import { filterPokemones } from "../../../redux/actions";
+
+import { filterPokemonesAction, getPokemonesAction, getTypesAction  } from "../../../redux/actions";
 
 import FiltersActive from "./FiltersActive";
 
@@ -33,14 +33,14 @@ const Filtrado = () => {
   const options = ["Ascending", "Descending"];
 
   useEffect(() => {
-    dispatch(getTypes());
+    dispatch(getTypesAction());
   }, [dispatch]);
 
-  const types = useSelector((state) => state.types);
+  const types = useSelector((state) => state.types.types);
 
   function handlerSelect(e) {
     setOrderBy_Active(true);
-    setOrderBy(e);
+    setOrderBy(e);  
   }
 
   ///////////////////////////////////////////////////////////////////////////////////////
@@ -58,7 +58,7 @@ const Filtrado = () => {
   }
   function setFilters() {
     dispatch(
-      filterPokemones({
+      filterPokemonesAction({
         filtros,
         orden,
       })
@@ -72,7 +72,7 @@ const Filtrado = () => {
 
   //apartado reset filters
   function resetFilters() {
-    dispatch(getPokemones());
+    dispatch(getPokemonesAction());
     setOrderBy_Active(false);
     setFiltros({});
     setOrden({});
@@ -86,6 +86,7 @@ const Filtrado = () => {
       setOrden({});
     }
   }, [filtrosReducer, ordenReducer]);
+
 
   return (
     <div className={s.mainContainer}>

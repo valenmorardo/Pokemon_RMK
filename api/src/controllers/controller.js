@@ -9,16 +9,25 @@ require("dotenv").config();
 async function getPokemones(req, res, next) {
   await Pokemon.find({})
     .then((pokemones) => {
-      res.status(200).send({
-        response: true,
-        message: "ALL POKEMONES",
-        pokemones,
-      });
+
+      if(pokemones) {
+        res.status(200).send({
+          response: true,
+          message: "ALL POKEMONES",
+          pokemones: pokemones,
+        });
+      } else {
+        res.status(404).send({
+          response: false,
+          message: "No se encontaron pokemones"
+        })
+      }
+      
     })
     .catch((error) =>
       res.status(404).send({
         response: false,
-        message: "No content",
+        message: "Ocurrio un error!",
         error,
       })
     );
@@ -49,18 +58,23 @@ const getPokemonByID = async (req, res) => {
 
   await Pokemon.findById(idPokemon)
     .then((pokemon) => {
-
+      if (pokemon) {
         res.status(200).send({
           response: true,
           message: "Pokemon founded",
           pokemon,
         });
-
+      } else {
+        res.status(404).send({
+          response: false,
+          message: "Pokemon no encontrado",
+        });
+      }
     })
     .catch((error) =>
       res.status(404).send({
         response: false,
-        message: "Error",
+        message: "Error, ID no valida",
         error,
       })
     );

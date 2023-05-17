@@ -1,8 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPokemones } from "../../../redux/actions/index";
-import { searchPokemon } from "../../../redux/actions/index";
+
+import {
+  searchPokemonAction,
+  getPokemonesAction,
+} from "../../../redux/actions/index";
 
 import s from "./SearchBar.module.css";
 
@@ -19,12 +22,6 @@ const SearchBar = ({ setPagina }) => {
     setNamePokemon(e.target.value);
   };
 
-
-
-
-
-
-
   const [isVisible, setIsVisible] = useState(true);
 
   const handleSubmit = (e) => {
@@ -38,10 +35,9 @@ const SearchBar = ({ setPagina }) => {
       }, 3000);
       setIsVisible(true);
     } else if (input) {
-      setErrores({});
+      dispatch(searchPokemonAction(namePokemon));
       setPagina(1);
-      dispatch(getPokemones(namePokemon));
-      dispatch(searchPokemon(namePokemon));
+      setErrores({});
       setNamePokemon("");
       document.getElementById("inputSearch").value = "";
     }
@@ -50,14 +46,9 @@ const SearchBar = ({ setPagina }) => {
   const handleShowAll = () => {
     setErrores({});
     setPagina(1);
-    dispatch(getPokemones());
-    dispatch(searchPokemon());
+    dispatch(getPokemonesAction());
+    
   };
-
-
-
-
-
 
   return (
     <div className={s.container}>
@@ -79,15 +70,17 @@ const SearchBar = ({ setPagina }) => {
         ></input>
       </form>
 
-      {errores.error && isVisible? (
+      {errores.error && isVisible ? (
         <div className={s.error}>
           <span>{errores.error}</span>
         </div>
       ) : null}
 
-      {search ? (
+      {search.response ? (
         <div className={s.divShowAll}>
-          <h4>Search results for: "<span>{search.toUpperCase()}</span>"</h4>
+          <h4>
+            Search results for: "<span>{search.pokemon.Name.toUpperCase()}</span>"
+          </h4>
           <button onClick={handleShowAll}>Show ALL</button>
         </div>
       ) : null}

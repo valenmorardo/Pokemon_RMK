@@ -1,19 +1,19 @@
 export default function filter(filtros, pokemones) {
 
-  console.log(pokemones)
+  
 
   let pokemonesFiltrados = [];
 
-  for (let x = 0; x < pokemones.length; x++) {
-    pokemones[x].Types.map((e) => {
+  for (let x = 0; x < pokemones.pokemones.length; x++) {
+    pokemones.pokemones[x].Types.map((e) => {
       if (e === filtros.types) {
-        pokemonesFiltrados.push(pokemones[x]);
+        pokemonesFiltrados.push(pokemones.pokemones[x]);
       }
     });
   }
 
   if (!filtros.types) {
-    return pokemones;
+    return pokemones.pokemones;
   }
 
   return pokemonesFiltrados;
