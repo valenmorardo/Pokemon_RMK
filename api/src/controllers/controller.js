@@ -7,71 +7,97 @@ require("dotenv").config();
 
 //--------------GET POKEMONES----------------
 async function getPokemones(req, res, next) {
-  const name = req.query.name;
-
-  let todosLosPokemones = await Pokemon.find({});
-
-  if (name) {
-    let pokemonName = todosLosPokemones.filter((el) =>
-      el.Name.toLowerCase().includes(name.toLowerCase())
-    );
-    if (pokemonName.length) {
-      return res.status(200).send(pokemonName);
-    } else {
-      console.log;
-      return res
-        .status(404)
-        .send({ status: 404, message: "no existe el pokemon buscado" });
-    }
-  } else {
-    return res.status(200).send(todosLosPokemones);
-  }
-
-  /*   Pokemon.find({})
+  await Pokemon.find({})
     .then((pokemones) => {
-      if (pokemones.length) return res.status(200).send(pokemones);
-      return res.status(204).send({ message: "NO CONTENT" });
+      res.status(200).send({
+        response: true,
+        message: "ALL POKEMONES",
+        pokemones,
+      });
     })
-    .catch((err) => res.status(500).send({ err })); */
+    .catch((error) =>
+      res.status(404).send({
+        response: false,
+        message: "No content",
+        error,
+      })
+    );
 }
 
 //--------------GET TYPES----------------
 async function getTypes(req, res) {
-  Type.find({})
-    .then((tipos) => {
-      if (tipos.length) return res.status(200).send(tipos);
-      return res.status(204).send({ message: "NO CONTENT" });
+  await Type.find({})
+    .then((types) => {
+      res.status(200).send({
+        response: true,
+        message: "ALL TYPES",
+        types,
+      });
     })
-    .catch((err) => res.status(500).send({ err }));
+    .catch((error) =>
+      res.status(404).send({
+        response: false,
+        message: "No content",
+        error,
+      })
+    );
 }
 
 //--------------GET POKEMON by ID----------------
 const getPokemonByID = async (req, res) => {
   const idPokemon = req.params.id;
 
-  if (idPokemon) {
-    let pokemon;
+  await Pokemon.findById(idPokemon)
+    .then((pokemon) => {
 
-    if (idPokemon.length === 24) {
-      pokemon = await Pokemon.findById(idPokemon);
-      if (pokemon) {
-        res.status(200).send(pokemon);
-      } else {
-        res.status(500).send({
-          status: "error",
-          message: "no existe pokemon con esa ID :(",
+        res.status(200).send({
+          response: true,
+          message: "Pokemon founded",
+          pokemon,
         });
-      }
-    } else {
-      res.status(500).send({ message: "no existe pokemon con esa ID :(" });
-    }
-  }
+
+    })
+    .catch((error) =>
+      res.status(404).send({
+        response: false,
+        message: "Error",
+        error,
+      })
+    );
 };
 
-//--------------POST newPOKEMON----------------
+//--------------GET POKEMON by NAME (SearchBar)----------------
+
+const getPokemonByName = async (req, res) => {
+  const nameSearch = req.query.name;
+
+  await Pokemon.find({ Name: new RegExp(nameSearch, "i") })
+    .then((pokemon) => {
+      if (pokemon.length > 0) {
+        res.status(200).send({
+          response: true,
+          message: "Pokemon/es Founded",
+          pokemon,
+        });
+      } else {
+        res.status(404).send({
+          response: false,
+          message: "No se encontraron pokemones con ese nombre",
+        });
+      }
+    })
+    .catch((error) =>
+      res.status(404).send({
+        response: false,
+        message: "Error al buscar.",
+        error,
+      })
+    );
+};
+
+//--------------POST NEW POKEMON----------------
 function postPokemon(req, res) {
   let pokemon = new Pokemon(req.body);
-
 
   pokemon.Name.toLowerCase();
 
@@ -88,33 +114,14 @@ function postPokemon(req, res) {
     .catch((err) => {
       res.status(400).send({
         created: false,
-        message: "Error en el registro de Pokemon. Por favor, verifica los datos ingresados.",
+        message:
+          "Error en el registro de Pokemon. Por favor, verifica los datos ingresados.",
         errores: err.errors,
       });
     });
 }
 
-
-//--------------POST newTYPE----------------
-const postType = async (req, res) => {
-  let type = new Type(req.body);
-
-  type
-    .save()
-    .then(() => {
-      res.status(200).send({ status: "success", type });
-      console.log(type);
-      console.log("$$$$$$$$$$$$$$$$$$ TYPE SAVE :)");
-    })
-    .catch((err) => {
-      res.status(404).send({
-        status: "ERROR",
-        message: "comprobar los parametros a llenar",
-      });
-      console.log(err);
-    });
-};
-
+//--------------MERCADO PAGO----------------
 const mercadopago = require("mercadopago");
 mercadopago.configure({ access_token: process.env.MERCADOPAGO_KEY });
 
@@ -159,7 +166,7 @@ module.exports = {
   getPokemones,
   postPokemon,
   getTypes,
+  getPokemonByName,
   getPokemonByID,
-  postType,
   postPayment,
 };
