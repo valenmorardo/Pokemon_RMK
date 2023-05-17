@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { getTypes, getPokemones } from "../../redux/actions";
-import { postPokemonAction } from "../../redux/actions";
+import { getTypesAction, postPokemonAction} from "../../redux/actions";
+
 
 import { Link, useNavigate } from "react-router-dom";
 
@@ -45,7 +45,7 @@ const CreateForm = () => {
   }, [selectedTypes]);
   
   useEffect(() => {
-    dispatch(getTypes());
+    dispatch(getTypesAction());
   }, [dispatch]);
 
   const postPokemon = useSelector((state) => state.postPokemon);

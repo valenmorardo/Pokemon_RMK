@@ -1,10 +1,9 @@
 const initialState = {
-  mensajeErr: {},
 
   allPokemones: [],
   pokemonesHome: [],
 
-  search: "",
+  search: [],
   
   pokemonDetail:{},
 
@@ -22,8 +21,8 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         allPokemones: action.payload, //pokemones que traigo intactos de la DB y los trabajo aca
-        pokemonesHome: action.payload, // pokemones que muestro en el homePokemones
-        mensajeErr: {},
+        pokemonesHome: action.payload.pokemones, // pokemones que muestro en el homePokemones
+        search: [],
         orden: {},
         filtros: {},
         pokemonDetail: {},
@@ -35,9 +34,10 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         search: action.payload,
+        pokemonesHome: action.payload.pokemon,
         orden: {},
-        filtros: {},
-        mensajeErr: {},
+        filtros: {},  
+
         postPokemon:{}
       }
       

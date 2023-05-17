@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const axios = require("axios");
 
-const validacionName = /^[a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/i;
+const validacionName = /^[a-zA-ZñÑáéíóúÁÉÍÓÚ-]+$/i;
 const validacionNumeros = /^\d+$/;
 const validacionImg =
   /^https?:\/\/(?:[a-z\-]+\.)+[a-z]{2,}(?:\/[^\/\s]+)*\/(?:[^\/\s]+\.([^\s\.\/]{3,}|jpg|jpeg|png))$/i;
@@ -104,10 +104,10 @@ const PokemonSchema = new mongoose.Schema({
 
       {
         validator: (peso) => {
-          /* validacion de q la peso sea 10 minimo" */
-          return !(peso < 10);
+          /* validacion de q la peso sea 1 minimo" */
+          return !(peso < 1);
         },
-        message: "El peso minima es 10",
+        message: "El peso minima es 1",
       },
       {
         validator: (peso) => {

@@ -2,8 +2,9 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
-import { getPokemones, getTypes, cleanStatePost } from "../../redux/actions";
+import { cleanStatePostAction, getPokemonesAction,getTypesAction } from "../../redux/actions";
 
 import s from "./Home.module.css"
 
@@ -13,10 +14,12 @@ const Home = () => {
 
 
 
+
+
   useEffect(() => {
-    dispatch(cleanStatePost());
-    dispatch(getPokemones());
-    dispatch(getTypes());
+    dispatch(cleanStatePostAction()); 
+    dispatch(getPokemonesAction());
+    dispatch(getTypesAction());
   },[])
 
   return (

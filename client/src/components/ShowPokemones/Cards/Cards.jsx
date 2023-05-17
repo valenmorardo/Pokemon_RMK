@@ -2,9 +2,12 @@ import React from "react";
 import Card from "./Card";
 
 const Cards = ({ pokemones }) => {
+
+  console.log(pokemones)
+  
   return (
     <>
-      {pokemones.map((el) => (
+      {pokemones?.map((el) => (
         <Card {...el} />
       ))}
     </>

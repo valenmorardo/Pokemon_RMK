@@ -1,5 +1,6 @@
 export default function orden(orden, pokemones) {
 
+  
   // ORDEN ATAQUE
   if (orden.Attack === "Ascending") {
     pokemones.sort((a, b) => {

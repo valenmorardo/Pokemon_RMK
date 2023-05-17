@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { postPaymentDonation } from "../../redux/actions";
+import { postPaymentDonationAction } from "../../redux/actions";
 import DonationCards from "./DonationCards";
 import DataCards from "./DataCards";
 
@@ -24,12 +24,12 @@ const Donation = () => {
     } else if (donationInput < 1) {
       alert("El minimo para donar es 1$ARS");
     } else {
-      dispatch(postPaymentDonation(parseInt(donationInput)));
+      dispatch(postPaymentDonationAction(parseInt(donationInput)));
     }
   };
 
   const SubmitButtonDonation = (e) => {
-    dispatch(postPaymentDonation(parseInt(e.target.value)));
+    dispatch(postPaymentDonationAction(parseInt(e.target.value)));
   };
 
   return (

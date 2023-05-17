@@ -2,14 +2,10 @@ import axios from "axios";
 import filter from "../../Utils/filter";
 import orden from "../../Utils/orden";
 
-const getPokemones = (payload) => {
+const getPokemonesAction = (payload) => {
   return async (dispatch) => {
     try {
-      const allPokemones = await axios("http://localhost:3001/getPokemones", {
-        params: {
-          name: payload,
-        },
-      });
+      const allPokemones = await axios("http://localhost:3001/getPokemones");
 
       return dispatch({
         type: "GET_POKEMONES",
@@ -17,60 +13,76 @@ const getPokemones = (payload) => {
       });
     } catch (error) {
       return dispatch({
-        type: "ERROR_MENSAJE",
+        type: "GET_POKEMONES",
         payload: error.response,
       });
     }
   };
 };
 
-const searchPokemon = (pokemonName) => {
+const searchPokemonAction = (pokemonName) => {
   return async (dispatch) => {
-    return dispatch({
-      type: "SEARCH",
-      payload: pokemonName,
-    });
+    try {
+      const searchResult = await axios("http://localhost:3001/getPokemonByName", {
+        params: { name: pokemonName }
+      });
+
+      return dispatch({
+        type: "SEARCH",
+        payload: searchResult.data
+      })
+
+    } catch (error) {
+      return dispatch({
+        type: "SEARCH",
+        payload: error.response
+      })
+    }
   };
 };
 
-const getPokemonByID = (payload) => {
+const getPokemonByIDAction = (payload) => {
   return async (dispatch) => {
+    const id = payload;
     try {
-      const pokemonDetail = await axios(
-        `http://localhost:3001/getPokemonByID/${payload}`
+      const pokemonByID = await axios(
+        `http://localhost:3001/getPokemonByID/${id}`
       );
+        
       return dispatch({
         type: "GET_POKEMON_BY_ID",
-        payload: pokemonDetail.data,
+        payload: pokemonByID.data,
       });
+
     } catch (error) {
       return dispatch({
-        type: "ERROR_MENSAJE",
-        payload: error.response,
+        type: "GET_POKEMON_BY_ID",
+        payload: error.response.data,
       });
     }
   };
 };
 
-const getTypes = () => {
+const getTypesAction = () => {
   return async (dispatch) => {
     try {
-      let json = await axios.get("http://localhost:3001/getTypes");
-      let tipos = json.data;
+      const types = await axios.get("http://localhost:3001/getTypes");
+      
       return dispatch({
         type: "GET_TYPES",
-        payload: tipos,
+        payload: types.data,
       });
     } catch (error) {
       return dispatch({
-        type: "ERROR_MENSAJE",
+        type: "GET_TYPES",
         payload: error.response,
       });
     }
   };
 };
 
-const filterPokemones = (payload) => {
+
+const filterPokemonesAction = (payload) => {
   const functionFilter = (pokemones) => {
     const filteredPokemones = filter(payload.filtros, pokemones);
     return orden(payload.orden, filteredPokemones);
@@ -85,6 +97,7 @@ const filterPokemones = (payload) => {
   };
 };
 
+
 const postPokemonAction = (payload) => {
   return async function (dispatch) {
     try {
@@ -97,7 +110,6 @@ const postPokemonAction = (payload) => {
         type: "POST_POKEMON",
         payload: response.data,
       });
-
     } catch (error) {
       return dispatch({
         type: "POST_POKEMON",
@@ -107,7 +119,7 @@ const postPokemonAction = (payload) => {
   };
 };
 
-const postPaymentDonation = (payload) => {
+const postPaymentDonationAction = (payload) => {
   return async function (dispatch) {
     try {
       let donation = {
@@ -129,20 +141,19 @@ const postPaymentDonation = (payload) => {
   };
 };
 
-const cleanStatePost = (payload) => {
+const cleanStatePostAction = () => {
   return {
     type: "CLEAN_POST",
-    payload: payload
-  }
-}
+  };
+};
 
 export {
-  getPokemones,
-  getPokemonByID,
-  getTypes,
-  filterPokemones,
-  searchPokemon,
+  getPokemonesAction,
+  getPokemonByIDAction,
+  getTypesAction,
+  filterPokemonesAction,
+  searchPokemonAction,
   postPokemonAction,
-  postPaymentDonation,
-  cleanStatePost
+  postPaymentDonationAction,
+  cleanStatePostAction,
 };
