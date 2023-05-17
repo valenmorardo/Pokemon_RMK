@@ -36,7 +36,7 @@ const rootReducer = (state = initialState, action) => {
         search: action.payload,
         pokemonesHome: action.payload.pokemon,
         orden: {},
-        filtros: {},  
+        filtros: {}, 
 
         postPokemon:{}
       }

@@ -3,7 +3,7 @@ import Card from "./Card";
 
 const Cards = ({ pokemones }) => {
 
-  console.log(pokemones)
+
   
   return (
     <>

@@ -35,7 +35,7 @@ const searchPokemonAction = (pokemonName) => {
     } catch (error) {
       return dispatch({
         type: "SEARCH",
-        payload: error.response
+        payload: error.response.data
       })
     }
   };

@@ -92,11 +92,13 @@ const getPokemonByName = async (req, res) => {
           response: true,
           message: "Pokemon/es Founded",
           pokemon,
+          name: nameSearch
         });
       } else {
         res.status(404).send({
           response: false,
           message: "No se encontraron pokemones con ese nombre",
+          name: nameSearch
         });
       }
     })
@@ -105,6 +107,8 @@ const getPokemonByName = async (req, res) => {
         response: false,
         message: "Error al buscar.",
         error,
+        name: nameSearch  
+
       })
     );
 };

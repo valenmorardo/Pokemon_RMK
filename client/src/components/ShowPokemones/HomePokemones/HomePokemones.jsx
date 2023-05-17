@@ -21,7 +21,9 @@ const HomePokemones = () => {
   const dispatch = useDispatch();
   const allPokemones = useSelector((state) => state.allPokemones)
   const pokemonesHome = useSelector((state) => state.pokemonesHome); // traigo todos los pokemones del reducer
+  const search = useSelector ((state) => state.search.data)
 
+  console.log(pokemonesHome)
   //eso es para que el use effect este mirando siempre al orden del reducer por si cambia
   //depende los cambios q se hagan en ese estado, el estado local (orden) va ir cambiando entre true y false
   // para q el array de los pokemones (pokemonesHome) se renderize nuevamente con los pokemones ordenados
@@ -34,8 +36,8 @@ const HomePokemones = () => {
   //PAGINADO
   const [pagina, setPagina] = useState(1);
   const [porPagina, setPorPagina] = useState(6);
-  const maximo = pokemonesHome.length / porPagina;
-  const currentsPokemones = pokemonesHome.slice(
+  const maximo = pokemonesHome?.length / porPagina;
+  const currentsPokemones = pokemonesHome?.slice(
         (pagina - 1) * porPagina,
         (pagina - 1) * porPagina + porPagina
       );
@@ -46,11 +48,13 @@ const HomePokemones = () => {
     dispatch(getTypesAction());
   }, [dispatch]);
 
+
+  
  
 
   return (
     <div className={s.background}>
-      {!Object.keys(pokemonesHome).length ? (
+      {search?.response === false ? (
         <div className={s.mainContainer}>
         <div className={s.divBtn}>
           <Link to="/home">

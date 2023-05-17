@@ -47,7 +47,6 @@ const SearchBar = ({ setPagina }) => {
     setErrores({});
     setPagina(1);
     dispatch(getPokemonesAction());
-    
   };
 
   return (
@@ -76,10 +75,11 @@ const SearchBar = ({ setPagina }) => {
         </div>
       ) : null}
 
-      {search.response ? (
+      {(Object.keys(search).length && search.response === true) ||
+      (Object.keys(search).length && search.response === false) ? (
         <div className={s.divShowAll}>
           <h4>
-            Search results for: "<span>{search.pokemon.Name.toUpperCase()}</span>"
+            Search results for: "<span>{search.name.toUpperCase()}</span>"
           </h4>
           <button onClick={handleShowAll}>Show ALL</button>
         </div>
