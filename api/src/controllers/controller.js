@@ -7,21 +7,30 @@ require("dotenv").config();
 
 //--------------GET POKEMONES----------------
 async function getPokemones(req, res, next) {
-  await Pokemon.find({})
-    .then((pokemones) => {
 
-      if(pokemones) {
+  const {name, orden, filtro} = req.query;
+  
+  
+  await Pokemon.find({ Name: new RegExp(name, "i"), ...filtro})
+  .sort(orden)
+    .then((pokemones) => {
+      if (pokemones.length) {
         res.status(200).send({
           response: true,
+          nameSearched: name,
+          status: 200,
           pokemones: pokemones,
+          
+          
         });
       } else {
         res.status(404).send({
-          response: false,
-          message: "No content"
-        })
+          response: true,
+          message: "No content",
+          nameSearched: name,
+          pokemones: pokemones,
+        });
       }
-      
     })
     .catch((error) =>
       res.status(500).send({
@@ -36,8 +45,7 @@ async function getPokemones(req, res, next) {
 async function getTypes(req, res) {
   await Type.find({})
     .then((types) => {
-
-      if(types) {
+      if (types) {
         res.status(200).send({
           response: true,
           types,
@@ -46,9 +54,8 @@ async function getTypes(req, res) {
         res.status(404).send({
           response: false,
           message: "No content",
-        })
+        });
       }
-
     })
     .catch((error) =>
       res.status(500).send({
@@ -75,6 +82,7 @@ const getPokemonByID = async (req, res) => {
         res.status(404).send({
           response: false,
           message: "Pokemon no encontrado",
+          pokemon,
         });
       }
     })
@@ -82,34 +90,6 @@ const getPokemonByID = async (req, res) => {
       res.status(500).send({
         response: false,
         message: "Error, ID no valida",
-        error,
-      })
-    );
-};
-
-//--------------GET POKEMON by NAME (SearchBar)----------------
-
-const getPokemonByName = async (req, res) => {
-  const nameSearch = req.query.name;
-
-  await Pokemon.find({ Name: new RegExp(nameSearch, "i") })
-    .then((pokemon) => {
-      if (pokemon.length > 0) {
-        res.status(200).send({
-          response: true,
-          pokemon,
-        });
-      } else {
-        res.status(404).send({
-          response: false,
-          message: "No se encontraron pokemones con ese nombre",
-        });
-      }
-    })
-    .catch((error) =>
-      res.status(404).send({
-        response: false,
-        message: "Error al buscar.",
         error,
       })
     );
@@ -186,7 +166,6 @@ module.exports = {
   getPokemones,
   postPokemon,
   getTypes,
-  getPokemonByName,
   getPokemonByID,
   postPayment,
 };

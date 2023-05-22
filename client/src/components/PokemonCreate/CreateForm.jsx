@@ -14,6 +14,7 @@ const CreateForm = () => {
   const navigate = useNavigate();
 
   const allTypes = useSelector((state) => state.types);
+
   const propiedades = [
     "Name",
     "Life",
@@ -23,7 +24,7 @@ const CreateForm = () => {
     "Weight",
     "Height",
     "Types",
-    "Images",
+    "Image",
   ];
 
   const [selectedTypes, setSelectedTypes] = useState([]);
@@ -68,7 +69,7 @@ const CreateForm = () => {
   }, [postPokemon]);
 
   
-
+console.log(allTypes)
   return (
     <div>
       <div>
@@ -81,7 +82,7 @@ const CreateForm = () => {
             {propiedades.map((e) => (
               <CardForm
                 propiedad={e}
-                allTypes={allTypes}
+                allTypes={allTypes.types}
                 handleChangeNewPokemon={handleChangeNewPokemon}
                 handleSelectTypes={handleSelectTypes}
                 selectedTypes={selectedTypes}

@@ -1,0 +1,13 @@
+.select {
+  position: relative;
+  position: relative;
+  padding: 5px;
+  border: 2px solid black;
+  font-weight: bold;
+  background-color: #eca5c2;
+  border-radius: 10px;
+}
+
+.select option {
+  font-weight: bold;
+}
