@@ -89,3 +89,4 @@ const SearchBar = ({ setPagina }) => {
 };
 
 export default SearchBar;
+

@@ -27,7 +27,7 @@ module.exports = async function getAllPokemonesAPI() {
           Types: pokemonDetail.data.types.map((el) => {
             return el.type.name;
           }),
-          Images: pokemonDetail.data.sprites.other.home.front_default
+          Image: pokemonDetail.data.sprites.other.home.front_default
         });
         pokemon.save().catch((err) => {
           console.log(err);

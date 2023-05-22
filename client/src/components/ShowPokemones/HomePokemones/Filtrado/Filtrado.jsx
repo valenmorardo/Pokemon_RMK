@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import CardFiltrado from "./CardFiltrado";
 
-import { filterPokemonesAction, getPokemonesAction, getTypesAction  } from "../../../redux/actions";
+import { getFilteredPokemonesAction, getPokemonesAction, getTypesAction  } from "../../../../redux/actions/index";
 
 import FiltersActive from "./FiltersActive";
 
@@ -16,13 +16,9 @@ const Filtrado = () => {
   //me traigo para tener siempre todos los pokemones que se muestran en el home
   const pokemonesHome = useSelector((state) => state.pokemonesHome);
 
-  //aca hago me traigo los estados del reducer de los filtros y orden
-  const filtrosReducer = useSelector((state) => state.filtros);
-  const ordenReducer = useSelector((state) => state.orden);
-
   //aca creo estados locales para guardarme los filtros y ordenes q se apliquen para luego despacharlos a reducer
-  const [filtros, setFiltros] = useState(filtrosReducer);
-  const [orden, setOrden] = useState(ordenReducer);
+  const [filtros, setFiltros] = useState({});
+  const [orden, setOrden] = useState({});
 
   //aca tengo todas las opciones para filtrar y ordenar
 
@@ -30,13 +26,13 @@ const Filtrado = () => {
   const [orderBy, setOrderBy] = useState("");
   const orderByOptions = ["Defense", "Attack", "Speed", "Life"];
 
-  const options = ["Ascending", "Descending"];
+  const options = ["asc", "desc"];
 
   useEffect(() => {
     dispatch(getTypesAction());
   }, [dispatch]);
 
-  const types = useSelector((state) => state.types.types);
+  const types = useSelector((state) => state.types?.types);
 
   function handlerSelect(e) {
     setOrderBy_Active(true);
@@ -58,7 +54,7 @@ const Filtrado = () => {
   }
   function setFilters() {
     dispatch(
-      filterPokemonesAction({
+      getFilteredPokemonesAction({
         filtros,
         orden,
       })
@@ -78,16 +74,6 @@ const Filtrado = () => {
     setOrden({});
   }
 
-  useEffect(() => {
-    if (
-      !(Object.keys(filtrosReducer).length || Object.keys(ordenReducer).length)
-    ) {
-      setFiltros({});
-      setOrden({});
-    }
-  }, [filtrosReducer, ordenReducer]);
-
-
   return (
     <div className={s.mainContainer}>
 
@@ -96,8 +82,8 @@ const Filtrado = () => {
           <CardFiltrado
             options={types}
             titulo="Filter by TYPES"
-            handler={handlerFilter("types")}
-            propiedad={"types"}
+            handler={handlerFilter("Types")}
+            propiedad={"Types"}
           />
         </div>
 
@@ -121,6 +107,7 @@ const Filtrado = () => {
           </div>
         ) : null}
       </div>
+
 
       {Object.values(filtros).length || Object.values(orden).length ? (
         <div className={s.divFiltersActive}>

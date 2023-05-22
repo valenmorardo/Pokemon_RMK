@@ -7,27 +7,35 @@ require("dotenv").config();
 
 //--------------GET POKEMONES----------------
 async function getPokemones(req, res, next) {
-  await Pokemon.find({})
-    .then((pokemones) => {
 
-      if(pokemones) {
+  const {name, orden, filtro} = req.query;
+  
+  
+  await Pokemon.find({ Name: new RegExp(name, "i"), ...filtro})
+  .sort(orden)
+    .then((pokemones) => {
+      if (pokemones.length) {
         res.status(200).send({
           response: true,
-          message: "ALL POKEMONES",
+          nameSearched: name,
+          status: 200,
           pokemones: pokemones,
+          
+          
         });
       } else {
         res.status(404).send({
-          response: false,
-          message: "No se encontaron pokemones"
-        })
+          response: true,
+          message: "No content",
+          nameSearched: name,
+          pokemones: pokemones,
+        });
       }
-      
     })
     .catch((error) =>
-      res.status(404).send({
+      res.status(500).send({
         response: false,
-        message: "Ocurrio un error!",
+        message: "ERROR",
         error,
       })
     );
@@ -37,16 +45,22 @@ async function getPokemones(req, res, next) {
 async function getTypes(req, res) {
   await Type.find({})
     .then((types) => {
-      res.status(200).send({
-        response: true,
-        message: "ALL TYPES",
-        types,
-      });
+      if (types) {
+        res.status(200).send({
+          response: true,
+          types,
+        });
+      } else {
+        res.status(404).send({
+          response: false,
+          message: "No content",
+        });
+      }
     })
     .catch((error) =>
-      res.status(404).send({
+      res.status(500).send({
         response: false,
-        message: "No content",
+        message: "ERROR",
         error,
       })
     );
@@ -67,48 +81,16 @@ const getPokemonByID = async (req, res) => {
       } else {
         res.status(404).send({
           response: false,
-          message: "Pokemon no encontrado",
+          message: "Pokemon no encontradoo",
+          pokemon,
         });
       }
     })
     .catch((error) =>
-      res.status(404).send({
+      res.status(500).send({
         response: false,
         message: "Error, ID no valida",
         error,
-      })
-    );
-};
-
-//--------------GET POKEMON by NAME (SearchBar)----------------
-
-const getPokemonByName = async (req, res) => {
-  const nameSearch = req.query.name;
-
-  await Pokemon.find({ Name: new RegExp(nameSearch, "i") })
-    .then((pokemon) => {
-      if (pokemon.length > 0) {
-        res.status(200).send({
-          response: true,
-          message: "Pokemon/es Founded",
-          pokemon,
-          name: nameSearch
-        });
-      } else {
-        res.status(404).send({
-          response: false,
-          message: "No se encontraron pokemones con ese nombre",
-          name: nameSearch
-        });
-      }
-    })
-    .catch((error) =>
-      res.status(404).send({
-        response: false,
-        message: "Error al buscar.",
-        error,
-        name: nameSearch  
-
       })
     );
 };
@@ -184,7 +166,6 @@ module.exports = {
   getPokemones,
   postPokemon,
   getTypes,
-  getPokemonByName,
   getPokemonByID,
   postPayment,
 };

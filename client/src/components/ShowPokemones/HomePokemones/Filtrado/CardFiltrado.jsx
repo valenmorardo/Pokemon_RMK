@@ -1,13 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import s from "./CardFiltrado.module.css";
 
 const CardFiltrado = ({ options, titulo, handler, propiedad }) => {
-  const filtros = useSelector((state) => state.filtros);
-  const orden = useSelector((state) => state.orden);
-  const busqueda = useSelector((state) => state.search);
+  const [filtro, setFiltro] = useState("");
 
   function cleanSelect(propiedad) {
     document
@@ -15,27 +13,28 @@ const CardFiltrado = ({ options, titulo, handler, propiedad }) => {
       .options.item("defaultValue").selected = true;
   }
 
+  function handleOnChange(value) {
+    setFiltro(value);
+    handler(value);
+
+    setFiltro("default");
+  }
+
   useEffect(() => {
-    if (Object.values(filtros).length) {
-      cleanSelect(propiedad);
-    }
-    if (Object.values(orden).length) {
-      cleanSelect(propiedad);
-    }
-  }, [filtros, orden]);
+    setFiltro("default"); // Restablecer el valor seleccionado
+  }, []);
 
-  
 
-  
   return (
     <select
       id={propiedad}
+      value={filtro}
       onChange={(e) => {
-        handler(e.target.value);
+        handleOnChange(e.target.value);
       }}
       className={s.select}
     >
-      <option disabled selected value="defaultValue">
+      <option disabled selected value="default">
         {titulo}
       </option>
       {options?.map((e) => (

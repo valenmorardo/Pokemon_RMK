@@ -3,11 +3,14 @@ import React from "react";
 import s from './FiltersActive.module.css'
 const FiltersActive = ({ filtros, orden }) => {
 
+  console.log(filtros)
+  console.log(orden)
+
   return (
     <div className={s.container}>
-      {filtros.types ? (
+      {filtros.Types ? (
         <div>
-          <h4> TYPE: "<span>{filtros.types.toUpperCase()}</span>"</h4>
+          <h4> TYPE: "<span>{filtros.Types?.toUpperCase()}</span>"</h4>
         </div>
       ) : null}
 

@@ -10,7 +10,7 @@ const CardForm = ({
 }) => {
   
   
-  
+  console.log(allTypes)
  
   return (
     <div>
@@ -19,7 +19,7 @@ const CardForm = ({
           <label>{propiedad}: </label>
           <input
             type={
-              propiedad === "Name" || propiedad === "Images" ? "text" : "number"
+              propiedad === "Name" || propiedad === "Image" ? "text" : "number"
             }
             required
             placeholder={`${propiedad} ...`}
@@ -35,7 +35,7 @@ const CardForm = ({
               {" "}
               Seleccionar los {propiedad}
             </option>
-            {allTypes.map((type) => (
+            {allTypes?.map((type) => (
               <option id={type.name} value={type.name} name={type.name}>
                 {type.name}
               </option>

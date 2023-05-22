@@ -2,27 +2,19 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import s from "./Paginado.module.css";
 
-const Paginado = ({ pagina, setPagina, maximo }) => {
-  //me traigo estos estados para que cuando se setee uno, el input del paginado lo pongo en 1
-  const search = useSelector((state) => state.search);
-  const filtrosReducer = useSelector((state) => state.filtros);
-  const ordenReducer = useSelector((state) => state.orden);
+const Paginado = ({pagina, setPagina, maximo}) => {
 
-  const [input, setInput] = useState(1);
+    const [input, setInput] = useState(1);
 
-  const nextPage = () => {
-    setInput((parseInt(input) + 1));
-    setPagina((parseInt(pagina) + 1));
-  };
-
-  const previousPage = () => {
-    setInput((parseInt(input) - 1));
-    setPagina((parseInt(pagina) - 1));
-  };
-
-  useEffect(() => {
-    setInput(1);
-  }, [search, filtrosReducer, ordenReducer]);
+    const nextPage = () => {
+      setInput((parseInt(input) + 1));
+      setPagina((parseInt(pagina) + 1));
+    };
+  
+    const previousPage = () => {
+      setInput((parseInt(input) - 1));
+      setPagina((parseInt(pagina) - 1));
+    };
 
   return (
     <div className={s.container}>
@@ -71,7 +63,7 @@ const Paginado = ({ pagina, setPagina, maximo }) => {
         </svg>
       </button>
     </div>
-  );
-};
+  )
+}
 
-export default Paginado;
+export default Paginado

@@ -276,7 +276,7 @@ const PokemonSchema = new mongoose.Schema({
     ],
   },
 
-  Images: {
+  Image: {
     type: String,
     required: [true, "La imagen es obligatoria"],
 

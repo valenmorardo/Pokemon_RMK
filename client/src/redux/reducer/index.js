@@ -1,18 +1,8 @@
 const initialState = {
-
-  allPokemones: [],
-  pokemonesHome: [],
-
-  search: [],
-  
+  pokemones: {},
   pokemonDetail:{},
-
-  types: [],
-
-  filtros: {},
-  orden:{},
-
-  postPokemon: {}
+  postPokemon: {},
+  types:{}
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -20,46 +10,29 @@ const rootReducer = (state = initialState, action) => {
     case "GET_POKEMONES":
       return {
         ...state,
-        allPokemones: action.payload, //pokemones que traigo intactos de la DB y los trabajo aca
-        pokemonesHome: action.payload.pokemones, // pokemones que muestro en el homePokemones
-        search: [],
-        orden: {},
-        filtros: {},
-        pokemonDetail: {},
-        postPokemon:{}
-        
+        pokemones: action.payload,
+
+        search: action.payload.nameSearched || state.search
       };
 
-    case "SEARCH":
+    case "GET_TYPES":
       return {
         ...state,
-        search: action.payload,
-        pokemonesHome: action.payload.pokemon,
-        orden: {},
-        filtros: {}, 
+        types: action.payload,
 
-        postPokemon:{}
-      }
-      
+      };
+
+
     case "GET_POKEMON_BY_ID":
       return {
         ...state,
         pokemonDetail: action.payload,
-        postPokemon:{},
-      }
-    
-    case 'GET_TYPES':
+      };
+
+    case "FILTER":
       return {
         ...state,
-        types: action.payload,
-        search: "",
-        postPokemon:{}
-      }
-
-    case 'FILTER':
-      return {
-          ...state,
-          pokemonesHome: action.payload.filter(state.allPokemones),
+        pokemonesHome: action.payload.filter(state.allPokemones),
           filtros: action.payload.filtros,
           orden: action.payload.orden,
       };
@@ -68,16 +41,13 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         postPokemon: action.payload,
-      }
+      };
 
-    case "CLEAN_POST": 
-    return {
-      ...state,
-      postPokemon: {}
-    }
-
-
-
+    case "CLEAN_POST":
+      return {
+        ...state,
+        postPokemon: {},
+      };
 
     default:
       return state;

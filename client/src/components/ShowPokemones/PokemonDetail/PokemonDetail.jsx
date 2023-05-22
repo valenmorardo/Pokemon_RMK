@@ -9,61 +9,56 @@ import { Link } from "react-router-dom";
 
 import LoadingForPages from "../../Loading/LoadingForPages";
 
-import s from "./PokemonDetail.module.css";
-
 const PokemonDetail = (props) => {
   const dispatch = useDispatch();
   const params = useParams();
 
-  const pokemon = useSelector((state) => state.pokemonDetail);
+  const pokemonDetailDATA = useSelector((state) => state.pokemonDetail);
+  const pokemon = pokemonDetailDATA.pokemon;
 
   useEffect(() => {
     dispatch(getPokemonByIDAction(params.id));
   }, [dispatch]);
 
-  console.log(pokemon);
-
   return (
     <div>
-      {!Object.keys(pokemon).length ? (
+      {pokemonDetailDATA && !Object.keys(pokemonDetailDATA).length ? (
         <LoadingForPages />
-      ) : pokemon.response === false ? (
+      ) : pokemonDetailDATA &&
+        !pokemonDetailDATA.pokemon?.length &&
+        !pokemonDetailDATA.response ? (
         <h1> no se encontro el pokemon con ese ID</h1>
       ) : (
-        <div className={s.background}>
-          <div className={s.divBtn}>
+        <div>
+          <div>
             <Link to="/home/pokemones">
               <button>GO BACK</button>
             </Link>
           </div>
 
-          <div className={s.container}>
-            <h1 className={s.title}>{pokemon.pokemon.Name.toUpperCase()}</h1>
+          <div>
+            <h1>{pokemon.Name.toUpperCase()}</h1>
 
-            <img
-              src={pokemon.pokemon.Images}
-              alt="img not found"
-              className={s.image}
-            />
+            <img src={pokemon.Image} alt="img not found" />
 
-            <div className={s.stats}>
+            <div>
               <h4>
-                ATTACK: <span>{pokemon.pokemon.Attack}</span>
+                ATTACK: <span>{pokemon.Attack}</span>
               </h4>
               <h4>
-                DEFENSE: <span>{pokemon.pokemon.Defense}</span>
+                DEFENSE: <span>{pokemon.Defense}</span>
               </h4>
               <h4>
-                SPEED: <span>{pokemon.pokemon.Speed}</span>
+                SPEED: <span>{pokemon.Speed}</span>
               </h4>
               <h4>
-                LIFE: <span>{pokemon.pokemon.Life}</span>
+                LIFE: <span>{pokemon.Life}</span>
               </h4>
               <h4>
-                HEIGHT: <span>{pokemon.pokemon.Height}</span>
+                HEIGHT: <span>{pokemon.Height}</span>
               </h4>
               <h4>
-                WEIGHT: <span>{pokemon.pokemon.Weight}</span>
+                WEIGHT: <span>{pokemon.Weight}</span>
               </h4>
             </div>
           </div>
@@ -74,5 +69,3 @@ const PokemonDetail = (props) => {
 };
 
 export default PokemonDetail;
-
-
