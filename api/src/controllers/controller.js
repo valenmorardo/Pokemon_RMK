@@ -81,7 +81,7 @@ const getPokemonByID = async (req, res) => {
       } else {
         res.status(404).send({
           response: false,
-          message: "Pokemon no encontrado",
+          message: "Pokemon no encontradoo",
           pokemon,
         });
       }
