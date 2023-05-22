@@ -29,13 +29,6 @@ const rootReducer = (state = initialState, action) => {
         pokemonDetail: action.payload,
       };
 
-    case "FILTER":
-      return {
-        ...state,
-        pokemonesHome: action.payload.filter(state.allPokemones),
-          filtros: action.payload.filtros,
-          orden: action.payload.orden,
-      };
 
     case "POST_POKEMON":
       return {

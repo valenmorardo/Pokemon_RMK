@@ -1,0 +1,65 @@
+.background {
+  min-height: 100vh;
+  width: 100%;
+  
+  position: absolute;
+  background-image: url("../../../assets/global/fondoDefault.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+
+/* botton volver */
+.divBtn {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  margin: 25px 0px 0px 25px;
+  
+}
+.divBtn button {
+  padding: 7px;
+  font-weight: bold;
+  background-color: #eca5c2;
+  cursor: pointer;
+}
+/* ///////////////// */
+.divTitle {
+  position: relative;
+ 
+  display: grid;
+  grid-template-columns: 1fr;
+  text-align: center;
+  justify-items: center;
+  justify-content: center;
+  margin: 15px 0px 45px 0px;
+  
+}
+.divTitle h1 {
+  font-family: "Pokemon";
+  font-size: 5rem;
+  line-height: 5rem;
+  color: yellow;
+  text-stroke: 2px black;
+  -webkit-text-stroke: 2px black;
+}
+
+
+
+
+
+.mainContainer {
+
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  margin: 25px;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+  align-items: center;
+}
+

@@ -13,6 +13,8 @@ import Paginado from "./Paginado/Paginado";
 import Searchbar from "./Searchbar/Searchbar";
 import Filtrado from "./Filtrado/Filtrado";
 
+import s from "./HomePokemones.module.css";
+
 const HomePokemones = () => {
   const dispatch = useDispatch();
 
@@ -35,28 +37,31 @@ const HomePokemones = () => {
     dispatch(getTypesAction());
   }, [dispatch]);
 
-
   return (
-    <div>
+    <div className={s.background}>
+      
+      {!(PokemonesDATA && !Object.keys(PokemonesDATA).length) ? (
+        <div>
+          <div className={s.divBtn}>
+            <button>GO BACK</button>
+          </div>
+          <div className={s.divTitle}>
+            <h1>Pokedex</h1>
+          </div>
+        </div>
+      ) : null}
+
       {PokemonesDATA && !Object.keys(PokemonesDATA).length ? (
         <LoadingForPages />
       ) : pokemones && pokemones.length ? (
-        <div>
-          <div>
-            <h1>pokedex</h1>
-          </div>
-          <div>
-            <Searchbar setPagina={setPagina} />
-            <Filtrado />
-            <Cards pokemones={currentsPokemones} />
-            <Paginado pagina={pagina} setPagina={setPagina} maximo={maximo} />
-          </div>
+        <div className={s.mainContainer}>
+          <Searchbar setPagina={setPagina} />
+          <Filtrado />
+          <Cards pokemones={currentsPokemones} />
+          <Paginado pagina={pagina} setPagina={setPagina} maximo={maximo} />
         </div>
       ) : pokemones && !pokemones.length && PokemonesDATA.response ? (
         <div>
-          <div>
-            <h1>pokedex</h1>
-          </div>
           <Searchbar setPagina={setPagina} />
           <div>
             <h1>No se encontraron pokemones</h1>
@@ -64,9 +69,6 @@ const HomePokemones = () => {
         </div>
       ) : pokemones && !pokemones.length && !PokemonesDATA.response ? (
         <div>
-          <div>
-            <h1>pokedex</h1>
-          </div>
           <div>
             <h1>Ocurrio un error!</h1>
             <h3>Actualizar la pagina o probar mas tarde</h3>
