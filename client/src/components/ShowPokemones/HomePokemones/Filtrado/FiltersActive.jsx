@@ -3,8 +3,7 @@ import React from "react";
 import s from './FiltersActive.module.css'
 const FiltersActive = ({ filtros, orden }) => {
 
-  console.log(filtros)
-  console.log(orden)
+
 
   return (
     <div className={s.container}>

@@ -9,12 +9,13 @@ const getPokemonesAction = (namePokemon) => {
           name: namePokemon,
         },
       });
-
+      
       return dispatch({
         type: "GET_POKEMONES",
         payload: pokemones.data,
       });
     } catch (error) {
+
       return dispatch({
         type: "GET_POKEMONES",
         payload: error.response.data,

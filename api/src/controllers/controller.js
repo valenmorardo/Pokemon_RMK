@@ -20,6 +20,8 @@ async function getPokemones(req, res, next) {
           nameSearched: name,
           status: 200,
           pokemones: pokemones,
+          filtro,
+          orden,
           
           
         });
@@ -29,6 +31,7 @@ async function getPokemones(req, res, next) {
           message: "No content",
           nameSearched: name,
           pokemones: pokemones,
+          status: 404
         });
       }
     })
@@ -37,6 +40,7 @@ async function getPokemones(req, res, next) {
         response: false,
         message: "ERROR",
         error,
+        status: 500,
       })
     );
 }
@@ -77,20 +81,23 @@ const getPokemonByID = async (req, res) => {
           response: true,
           message: "Pokemon founded",
           pokemon,
+          status: 200,
         });
       } else {
         res.status(404).send({
           response: false,
           message: "Pokemon no encontradoo",
           pokemon,
+          status: 404
         });
       }
     })
     .catch((error) =>
       res.status(500).send({
         response: false,
-        message: "Error, ID no valida",
+        message: "Error",
         error,
+        status: 500,
       })
     );
 };

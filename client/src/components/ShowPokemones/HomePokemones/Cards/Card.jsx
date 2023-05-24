@@ -1,13 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import s from "./Card.module.css"
+
 
 const Card = ({ _id, Name, Image,}) => {
   return (
-    <div >
+    <div className={s.card}>
       <Link to={`/home/pokemon/${_id}`}>
-        <h3 >{Name.toUpperCase()}</h3>
-        <img src={Image} alt="img not found"/>
+        <h3 className={s.name}>{Name.toUpperCase()}</h3>
+        <img className={s.image} src={Image} alt="img not found" width="75%"/>
       </Link>
     </div>
   );

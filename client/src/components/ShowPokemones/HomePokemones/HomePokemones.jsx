@@ -39,7 +39,6 @@ const HomePokemones = () => {
 
   return (
     <div className={s.background}>
-      
       {!(PokemonesDATA && !Object.keys(PokemonesDATA).length) ? (
         <div>
           <div className={s.divBtn}>
@@ -53,30 +52,37 @@ const HomePokemones = () => {
 
       {PokemonesDATA && !Object.keys(PokemonesDATA).length ? (
         <LoadingForPages />
-      ) : pokemones && pokemones.length ? (
+      ) : PokemonesDATA.status === 200 ? (
         <div className={s.mainContainer}>
           <Searchbar setPagina={setPagina} />
           <Filtrado />
           <Cards pokemones={currentsPokemones} />
           <Paginado pagina={pagina} setPagina={setPagina} maximo={maximo} />
         </div>
-      ) : pokemones && !pokemones.length && PokemonesDATA.response ? (
-        <div>
+      ) : /* pokemones && !pokemones.length && PokemonesDATA.response */ PokemonesDATA.status ===
+        404 ? (
+        <div className={s.mainContainer}>
           <Searchbar setPagina={setPagina} />
+          <Filtrado />
           <div>
             <h1>No se encontraron pokemones</h1>
           </div>
         </div>
-      ) : pokemones && !pokemones.length && !PokemonesDATA.response ? (
+      ) : PokemonesDATA.status === 500 ? (
         <div>
           <div>
             <h1>Ocurrio un error!</h1>
-            <h3>Actualizar la pagina o probar mas tarde</h3>
+            <h3>Actualizar la pagina o intentar nuevamente mas tarde</h3>
           </div>
         </div>
-      ) : null}
+      ) : (
+        <div>
+          <h1>ERROR</h1>
+        </div>
+      )}
     </div>
   );
 };
 
 export default HomePokemones;
+

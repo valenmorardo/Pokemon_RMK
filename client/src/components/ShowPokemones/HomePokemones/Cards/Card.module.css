@@ -1,0 +1,22 @@
+.card {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    background-color: pink;
+    border: 5px #ec7dab solid;
+    border-radius: 20px;
+    width: 100%;
+    background-color: #f8c8dc76;
+
+    box-shadow: 0px 10px 20px #f8c8dc;
+    padding: 10px;
+}
+
+.name {
+    text-decoration: underline 3.5px;
+    margin-bottom: 5px;
+}
+
+.image {
+    width: 60%;
+}

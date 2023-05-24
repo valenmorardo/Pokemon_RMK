@@ -9,6 +9,10 @@ import { Link } from "react-router-dom";
 
 import LoadingForPages from "../../Loading/LoadingForPages";
 
+import s from "./PokemonDetail.module.css";
+
+import pikachuSad from '../../../assets/home/pikachuSad.gif'
+
 const PokemonDetail = (props) => {
   const dispatch = useDispatch();
   const params = useParams();
@@ -20,28 +24,29 @@ const PokemonDetail = (props) => {
     dispatch(getPokemonByIDAction(params.id));
   }, [dispatch]);
 
+  console.log(pokemon);
   return (
-    <div>
-      {pokemonDetailDATA && !Object.keys(pokemonDetailDATA).length ? (
-        <LoadingForPages />
-      ) : pokemonDetailDATA &&
-        !pokemonDetailDATA.pokemon?.length &&
-        !pokemonDetailDATA.response ? (
-        <h1> no se encontro el pokemon con ese ID</h1>
-      ) : (
-        <div>
-          <div>
-            <Link to="/home/pokemones">
-              <button>GO BACK</button>
-            </Link>
-          </div>
+    <div className={s.background}>
+      <div className={s.divBtn}>
+        <Link to="/home/pokemones">
+          <button>GO BACK</button>
+        </Link>
+      </div>
 
-          <div>
+      <div className={s.mainContainer}>
+        {pokemonDetailDATA && !Object.keys(pokemonDetailDATA).length ? (
+          <LoadingForPages />
+        ) : pokemonDetailDATA && pokemonDetailDATA.status === 404 ||pokemonDetailDATA && pokemonDetailDATA.status === 500 ? (
+          <div className={s.errorContainer}>
+            <h1> No se encontro al pokemon con ese ID</h1>
+          </div>
+        ) : pokemonDetailDATA && pokemonDetailDATA.status === 200? (
+          <div className={s.dataContainer}>
             <h1>{pokemon.Name.toUpperCase()}</h1>
 
             <img src={pokemon.Image} alt="img not found" />
 
-            <div>
+            <div className={s.stats}>
               <h4>
                 ATTACK: <span>{pokemon.Attack}</span>
               </h4>
@@ -60,10 +65,16 @@ const PokemonDetail = (props) => {
               <h4>
                 WEIGHT: <span>{pokemon.Weight}</span>
               </h4>
+              <h4>
+                TYPES:
+                {pokemon?.Types.map((e) => (
+                  <span>{e.toUpperCase()}</span>
+                ))}
+              </h4>
             </div>
           </div>
-        </div>
-      )}
+        ) : null}
+      </div>
     </div>
   );
 };

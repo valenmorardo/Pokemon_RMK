@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { getPokemonesAction } from "../../../../redux/actions";
 
+import s from './SearchBar.module.css';
+
 const Searchbar = ({ setPagina }) => {
   const dispatch = useDispatch();
   const searched = useSelector((state) => state.pokemones);
@@ -42,32 +44,34 @@ const Searchbar = ({ setPagina }) => {
 
   
   return (
-    <div>
-      <div>
-        <form>
+    <div className={s.container}>
+      
+        <form className={s.form}>
           <input
             type="text"
             
             placeholder="Name of pokemon..."
             onChange={(e) => handleInput(e)}
             id="inputSearch"
+            className={s.textBox}
           />
 
           <input
             type="submit"
             value="SEARCH"
             onClick={(e) => handleSubmit(e)}
+            className={s.button}
           />
         </form>
 
         {error && isVisible ? (
-          <div>
+          <div className={s.error}>
             <span>{error}</span>
           </div>
         ) : null}
 
           {searched && searched.nameSearched ? (
-            <div>
+            <div className={s.divShowAll}>
               <h4>
                 search results for: "
                 <span>{searched.nameSearched.toUpperCase()}</span>"
@@ -76,7 +80,7 @@ const Searchbar = ({ setPagina }) => {
             </div>
           ) : null}
 
-      </div>
+      
     </div>
   );
 };

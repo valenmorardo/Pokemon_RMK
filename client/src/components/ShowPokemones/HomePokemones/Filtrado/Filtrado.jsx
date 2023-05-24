@@ -4,7 +4,11 @@ import { useSelector, useDispatch } from "react-redux";
 
 import CardFiltrado from "./CardFiltrado";
 
-import { getFilteredPokemonesAction, getPokemonesAction, getTypesAction  } from "../../../../redux/actions/index";
+import {
+  getFilteredPokemonesAction,
+  getPokemonesAction,
+  getTypesAction,
+} from "../../../../redux/actions/index";
 
 import FiltersActive from "./FiltersActive";
 
@@ -13,8 +17,8 @@ import s from "./Filtrado.module.css";
 const Filtrado = () => {
   const dispatch = useDispatch();
 
-  //me traigo para tener siempre todos los pokemones que se muestran en el home
-  const pokemonesHome = useSelector((state) => state.pokemonesHome);
+  //me traigo los pokemones para acceder al name searched para no renderizar el reset parameters de abajo cuando se busque algo
+  const search = useSelector((state) => state.search);
 
   //aca creo estados locales para guardarme los filtros y ordenes q se apliquen para luego despacharlos a reducer
   const [filtros, setFiltros] = useState({});
@@ -36,7 +40,7 @@ const Filtrado = () => {
 
   function handlerSelect(e) {
     setOrderBy_Active(true);
-    setOrderBy(e);  
+    setOrderBy(e);
   }
 
   ///////////////////////////////////////////////////////////////////////////////////////
@@ -73,30 +77,36 @@ const Filtrado = () => {
     setFiltros({});
     setOrden({});
   }
+  
+  useEffect(() => {
+    setOrderBy_Active(false);
+    setFiltros({});
+    setOrden({});
+  }, [search] )
 
   return (
     <div className={s.mainContainer}>
-
       <div className={s.cardsContainer}>
-        <div>
-          <CardFiltrado
-            options={types}
-            titulo="Filter by TYPES"
-            handler={handlerFilter("Types")}
-            propiedad={"Types"}
-          />
-        </div>
+        {!search ? (
+          <>
+            <div>
+              <CardFiltrado
+                options={types}
+                titulo="Filter by TYPES"
+                handler={handlerFilter("Types")}
+                propiedad={"Types"}
+              />
+            </div>
 
-        <div>
-          <CardFiltrado
-            options={orderByOptions}
-            titulo="Sort by"
-            handler={handlerSelect}
-            propiedad={"orderBy"}
-          />
-        </div>
-
-        {orderBy && orderBy_Active ? (
+            <div>
+              <CardFiltrado
+                options={orderByOptions}
+                titulo="Sort by"
+                handler={handlerSelect}
+                propiedad={"orderBy"}
+              />
+            </div>
+            {orderBy && orderBy_Active ? (
           <div>
             <CardFiltrado
               options={options}
@@ -106,10 +116,23 @@ const Filtrado = () => {
             />
           </div>
         ) : null}
+          </>
+        ) : null}
+
+        {/* {orderBy && orderBy_Active ? (
+          <div>
+            <CardFiltrado
+              options={options}
+              titulo={`Sort by ${orderBy}`}
+              handler={handlerOrden(orderBy)}
+              propiedad={orderBy}
+            />
+          </div>
+        ) : null} */}
       </div>
 
-
-      {Object.values(filtros).length || Object.values(orden).length ? (
+      {(Object.values(filtros).length && !search) ||
+      (Object.values(orden).length && !search) ? (
         <div className={s.divFiltersActive}>
           <FiltersActive filtros={filtros} orden={orden} />
           <button onClick={resetFilters}>RESET PARAMETERS</button>
