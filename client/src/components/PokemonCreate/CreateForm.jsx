@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { getTypesAction, postPokemonAction} from "../../redux/actions";
-
+import { getTypesAction, postPokemonAction } from "../../redux/actions";
 
 import { Link, useNavigate } from "react-router-dom";
 
 import CardForm from "./CardForm";
 import CardSelectedTypes from "./CardSelectedTypes";
+
+import s from "./CreateForm.module.css";
 
 const CreateForm = () => {
   const dispatch = useDispatch();
@@ -23,8 +24,9 @@ const CreateForm = () => {
     "Speed",
     "Weight",
     "Height",
-    "Types",
+
     "Image",
+    "Types",
   ];
 
   const [selectedTypes, setSelectedTypes] = useState([]);
@@ -44,7 +46,7 @@ const CreateForm = () => {
   useEffect(() => {
     setNewPokemon({ ...newPokemon, Types: selectedTypes });
   }, [selectedTypes]);
-  
+
   useEffect(() => {
     dispatch(getTypesAction());
   }, [dispatch]);
@@ -61,24 +63,28 @@ const CreateForm = () => {
     if (postPokemon.created) {
       alert("pokemon creado");
       setNewPokemon({});
-      setSelectedTypes({})
+      setSelectedTypes({});
       navigate("/home");
     } else {
       setErrores(postPokemon.errores || {});
     }
   }, [postPokemon]);
 
-  
-console.log(allTypes)
   return (
-    <div>
-      <div>
-        <div>
+    <div className={s.background}>
+      <div className={s.divBtn}>
+        <Link to="/home">
+          <button>GO BACK</button>
+        </Link>
+      </div>
+
+      <div className={s.mainContainer}>
+        <div className={s.divTitle}>
           <h1>Crea tu pokemon!</h1>
         </div>
 
         <div>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className={s.formContainer}>
             {propiedades.map((e) => (
               <CardForm
                 propiedad={e}
@@ -107,6 +113,7 @@ console.log(allTypes)
                   : false
               }
               onClick={(e) => handleSubmit(e)}
+              className={s.buttonSubmit}
             >
               CREAR
             </button>
@@ -114,9 +121,13 @@ console.log(allTypes)
         </div>
 
         {Object.values(errores).length ? (
-          <div>
+          <div className={s.divErrores}>
             {Object.entries(errores).map(([key, value]) => {
-              return <h3 key={key}>{value.message}</h3>;
+              return (
+                <h3 key={key} className={s.msjErr}>
+                  {value.message}
+                </h3>
+              );
             })}
           </div>
         ) : null}

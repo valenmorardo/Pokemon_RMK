@@ -19,13 +19,10 @@
   padding: 0px 15px 0px 15px;
 }
 
-
 /* pantall ESCRITORIO */
-@media screen and (min-width: 981px){
-
-
+@media screen and (min-width: 981px) {
   .title {
-    font-family: 'Pokemon';
+    font-family: "Pokemon";
     font-size: 160px;
     color: yellow;
     text-stroke: 2px black;
@@ -43,7 +40,7 @@
     font-size: 25px;
     display: grid;
     grid-template-columns: 1fr;
-    
+
     justify-content: center;
     justify-items: center;
     text-align: center;
@@ -70,60 +67,51 @@
   .footer a:hover {
     color: blue;
   }
-
 }
-
-
 
 /* pantalla CELULAR */
-@media screen and (max-width: 980px){
+@media screen and (max-width: 980px) {
+  .title {
+    position: relative;
+    font-family: "Pokemon";
+    font-size: 70px;
+    color: yellow;
+    text-stroke: 2px black;
+    -webkit-text-stroke: 2px black;
 
- .title {
-  position: relative;
-  font-family: 'Pokemon';
-  font-size: 70px;
-  color: yellow;
-  text-stroke: 2px black;
-  -webkit-text-stroke: 2px black;
+    width: 100%;
+    justify-content: center;
+    justify-items: center;
+    text-align: center;
+    align-items: center;
+  }
 
-  width: 100%;
-  justify-content: center;
-  justify-items: center;
-  text-align: center;
-  align-items: center;
- }
+  .divTocar {
+    font-size: 15px;
+    display: grid;
+    grid-template-columns: 1fr;
 
- .divTocar {
-  font-size: 15px;
-  display: grid;
-  grid-template-columns: 1fr;
-  
-  justify-content: center;
-  justify-items: center;
-  text-align: center;
-  align-items: center;
+    justify-content: center;
+    justify-items: center;
+    text-align: center;
+    align-items: center;
+  }
+  .pokebola {
+    width: 100%;
+  }
+
+  .footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .footer h2 {
+    font-size: 20px;
+    margin: 0px 0px 35px 0px;
+  }
+
+  .footer a {
+    text-decoration: underline;
+  }
 }
-.pokebola {
-  width: 100%;
-}
-
-
-.footer {
-  
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-}
-.footer h2 {
-  font-size: 20px;
-  margin: 0px 0px 35px 0px;
-}
-
-.footer a {
-  text-decoration: underline;
-}
-
-
-}
-

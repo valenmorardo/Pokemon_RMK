@@ -24,7 +24,6 @@ const CardFiltrado = ({ options, titulo, handler, propiedad }) => {
     setFiltro("default"); // Restablecer el valor seleccionado
   }, []);
 
-
   return (
     <select
       id={propiedad}

@@ -2,19 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import s from "./Paginado.module.css";
 
-const Paginado = ({pagina, setPagina, maximo}) => {
+const Paginado = ({ pagina, setPagina, maximo }) => {
+  const nextPage = () => {
+    setPagina(parseInt(pagina) + 1);
+  };
 
-    const [input, setInput] = useState(1);
-
-    const nextPage = () => {
-      setInput((parseInt(input) + 1));
-      setPagina((parseInt(pagina) + 1));
-    };
-  
-    const previousPage = () => {
-      setInput((parseInt(input) - 1));
-      setPagina((parseInt(pagina) - 1));
-    };
+  const previousPage = () => {
+    setPagina(parseInt(pagina) - 1);
+  };
 
   return (
     <div className={s.container}>
@@ -37,9 +32,7 @@ const Paginado = ({pagina, setPagina, maximo}) => {
         </svg>
       </button>
 
-      <span>
-        {input}
-      </span>
+      <span>{pagina}</span>
 
       <p> of {Math.ceil(maximo)}</p>
 
@@ -63,7 +56,7 @@ const Paginado = ({pagina, setPagina, maximo}) => {
         </svg>
       </button>
     </div>
-  )
-}
+  );
+};
 
-export default Paginado
+export default Paginado;

@@ -34,13 +34,13 @@ const Donation = () => {
 
   return (
     <div className={s.background}>
-              <div className={s.divBtn}>
-          <Link to="/home">
-            <button>GO BACK</button>
-          </Link>
-        </div>
-      <div className={s.mainContainer}>
+      <div className={s.divBtn}>
+        <Link to="/home">
+          <button>GO BACK</button>
+        </Link>
+      </div>
 
+      <div className={s.mainContainer}>
         <h1>DONATIONS</h1>
         <div className={s.parrafo}>
           <p>

@@ -7,12 +7,10 @@ require("dotenv").config();
 
 //--------------GET POKEMONES----------------
 async function getPokemones(req, res, next) {
+  const { name, orden, filtro } = req.query;
 
-  const {name, orden, filtro} = req.query;
-  
-  
-  await Pokemon.find({ Name: new RegExp(name, "i"), ...filtro})
-  .sort(orden)
+  await Pokemon.find({ Name: new RegExp(name, "i"), ...filtro })
+    .sort(orden)
     .then((pokemones) => {
       if (pokemones.length) {
         res.status(200).send({
@@ -22,8 +20,6 @@ async function getPokemones(req, res, next) {
           pokemones: pokemones,
           filtro,
           orden,
-          
-          
         });
       } else {
         res.status(404).send({
@@ -31,7 +27,7 @@ async function getPokemones(req, res, next) {
           message: "No content",
           nameSearched: name,
           pokemones: pokemones,
-          status: 404
+          status: 404,
         });
       }
     })
@@ -88,7 +84,7 @@ const getPokemonByID = async (req, res) => {
           response: false,
           message: "Pokemon no encontradoo",
           pokemon,
-          status: 404
+          status: 404,
         });
       }
     })

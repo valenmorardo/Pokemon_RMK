@@ -1,23 +1,22 @@
 .signoPeso {
-    font-family:Arial, Helvetica, sans-serif;
-    font-size: 20px;
-    
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
 }
 
 .card {
-    font-size: 17px;
-    padding: 20px;
-    background-color: #e8d7a140;
-    border: 3px solid #e8d7a1c8;
-    border-radius: 10px;
-    font-weight: bold;
+  font-size: 17px;
+  padding: 20px;
+  background-color: #e8d7a140;
+  border: 3px solid #e8d7a1c8;
+  border-radius: 10px;
+  font-weight: bold;
 }
 
 .card button {
-    padding: 7px;
-    margin-left: 15px;
-    font-weight: bold;
-    background-color: #e8d7a18f;
-    border: 2px solid #3e3b3b;
-    border-radius: 7px;
+  padding: 7px;
+  margin-left: 15px;
+  font-weight: bold;
+  background-color: #e8d7a18f;
+  border: 2px solid #3e3b3b;
+  border-radius: 7px;
 }

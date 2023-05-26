@@ -35,7 +35,7 @@ const PokemonSchema = new mongoose.Schema({
           }
         },
         message: (props) => {
-          return `${props.value} No es un nombre valido. Debe contener unicamente letras.`;
+          return `"${props.value}" no es un nombre valido. Debe contener unicamente letras.`;
         },
       },
       {
@@ -89,7 +89,7 @@ const PokemonSchema = new mongoose.Schema({
 
   Weight: {
     type: Number,
-    required: [true, "El peso es obligatoria"],
+    required: [true, "El peso es obligatorio"],
 
     validate: [
       {
@@ -107,14 +107,14 @@ const PokemonSchema = new mongoose.Schema({
           /* validacion de q la peso sea 1 minimo" */
           return !(peso < 1);
         },
-        message: "El peso minima es 1",
+        message: "El peso minimo es 1",
       },
       {
         validator: (peso) => {
           /* validacion de q la peso sea 9999 minimo" */
           return !(peso > 9999);
         },
-        message: "El peso maxima es 9999",
+        message: "El peso maximo es 9999",
       },
     ],
   },
@@ -151,7 +151,7 @@ const PokemonSchema = new mongoose.Schema({
   },
   Attack: {
     type: Number,
-    required: [true, "La ataque es obligatoria"],
+    required: [true, "El ataque es obligatorio"],
 
     validate: [
       {
@@ -160,7 +160,7 @@ const PokemonSchema = new mongoose.Schema({
           return validacionNumeros.test(ataque);
         },
         message: (props) => {
-          return `${props.value} no es una ataque valida. Debe contener unicamente valores numericos.`;
+          return `${props.value} no es un ataque valida. Debe contener unicamente valores numericos.`;
         },
       },
 
@@ -169,14 +169,14 @@ const PokemonSchema = new mongoose.Schema({
           /* validacion de q la ataque sea 10 minimo" */
           return !(ataque < 1);
         },
-        message: "La ataque minima es 1",
+        message: "El ataque minimo es 1",
       },
       {
         validator: (ataque) => {
           /* validacion de q la ataque sea 9999 minimo" */
           return !(ataque > 9999);
         },
-        message: "La ataque maxima es 9999",
+        message: "El ataque maximo es 9999",
       },
     ],
   },

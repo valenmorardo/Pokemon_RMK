@@ -1,21 +1,19 @@
 import React from "react";
 
+import s from "./CardForm.module.css";
+
 const CardForm = ({
   propiedad,
   allTypes,
   handleChangeNewPokemon,
   handleSelectTypes,
   selectedTypes,
-  errores
+  errores,
 }) => {
-  
-  
-  console.log(allTypes)
- 
   return (
-    <div>
+    <>
       {propiedad !== "Types" ? (
-        <div>
+        <div className={s.inputContainer}>
           <label>{propiedad}: </label>
           <input
             type={
@@ -26,10 +24,10 @@ const CardForm = ({
             name={propiedad}
             onChange={(e) => handleChangeNewPokemon(e)}
           />
-          
         </div>
       ) : selectedTypes.length !== 2 ? (
-        <div>
+        <div className={s.selectContainer}>
+          <label>Types:</label>
           <select name={propiedad} onChange={(e) => handleSelectTypes(e)}>
             <option disabled selected value="defaultValue">
               {" "}
@@ -43,7 +41,7 @@ const CardForm = ({
           </select>
         </div>
       ) : null}
-    </div>
+    </>
   );
 };
 

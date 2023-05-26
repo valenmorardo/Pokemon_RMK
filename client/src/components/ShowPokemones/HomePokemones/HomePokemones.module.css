@@ -1,7 +1,7 @@
 .background {
   min-height: 100vh;
   width: 100%;
-  
+
   position: absolute;
   background-image: url("../../../assets/global/fondoDefault.png");
   background-repeat: no-repeat;
@@ -9,14 +9,12 @@
   background-attachment: fixed;
 }
 
-
 /* botton volver */
 .divBtn {
   position: relative;
   display: flex;
   justify-content: flex-start;
   margin: 25px 0px 0px 25px;
-  
 }
 .divBtn button {
   padding: 7px;
@@ -25,16 +23,16 @@
   cursor: pointer;
 }
 /* ///////////////// */
+
 .divTitle {
   position: relative;
- 
+
   display: grid;
   grid-template-columns: 1fr;
   text-align: center;
   justify-items: center;
   justify-content: center;
   margin: 15px 0px 45px 0px;
-  
 }
 .divTitle h1 {
   font-family: "Pokemon";
@@ -45,10 +43,7 @@
   -webkit-text-stroke: 2px black;
 }
 
-
-
 .mainContainer {
-
   position: relative;
 
   display: grid;
@@ -61,3 +56,61 @@
   align-items: center;
 }
 
+.divNotFound {
+  margin-top: 25px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+  align-items: center;
+  gap: 35px;
+}
+.divNotFound h1 {
+  font-size: 24px;
+}
+.divNotFound img {
+  border-radius: 45px;
+  width: 70%;
+}
+
+.divError {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+  align-items: center;
+  gap: 35px;
+}
+.divError img {
+  border-radius: 45px;
+  width: 70%;
+}
+
+/* celular */
+@media screen and (max-width: 980px) {
+  .divTitle h1 {
+    font-family: "Pokemon";
+    font-size: 65px;
+    line-height: 5rem;
+    color: yellow;
+    text-stroke: 2px black;
+    -webkit-text-stroke: 2px black;
+  }
+
+  .mainContainer {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 25px;
+    justify-content: center;
+    justify-items: center;
+    text-align: center;
+    align-items: center;
+  }
+}

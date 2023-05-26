@@ -1,15 +1,15 @@
-.background {
-  min-height: 100vh;
-  width: 100%;
+@media screen and (min-width: 981px) {
+  .background {
+    min-height: 100vh;
+    width: 100%;
 
-  position: absolute;
-  background-image: url("../../assets/global/fondoDefault.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-}
-
-.divBtn {
+    position: absolute;
+    background-image: url("../../assets/global/fondoDefault.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+  .divBtn {
     position: relative;
     display: flex;
     justify-content: flex-start;
@@ -21,39 +21,38 @@
     background-color: #9cbc9ec2;
     cursor: pointer;
   }
+  .mainContainer {
+    background-color: #9cbc9ec2;
+    margin: 40px;
+    padding: 40px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 50px;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #000000;
 
-.mainContainer {
-  background-color: #9cbc9ec2;
-  margin: 40px;
-  padding: 40px;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 50px;
-  justify-items: center;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: #000000;
+    border-radius: 80px;
+  }
 
-  border-radius: 80px;
-}
-
-.text {
+  .text {
     font-weight: bold;
-}
+  }
 
-.card {
+  .card {
     background-color: #9cbc9eb3;
     border: 5px #539a57c2 solid;
     padding: 40px;
 
     display: grid;
     grid-template-columns: 1fr;
-}
-.card h1 {
+  }
+  .card h1 {
     margin-bottom: 5px;
-}
-.divIcons {
+  }
+  .divIcons {
     margin-top: 50px;
     display: grid;
     grid-template-columns: auto auto auto auto;
@@ -61,11 +60,89 @@
     justify-content: center;
     align-items: center;
     gap: 70px;
-}
+  }
 
-.icon {
+  .icon {
     width: 50px;
     height: 50px;
+  }
 }
 
+/* pantalla CELULAR */
+@media screen and (max-width: 980px) {
+  .background {
+    min-height: 100vh;
+    width: 100%;
 
+    position: absolute;
+    background-image: url("../../assets/global/fondoDefault.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+  .divBtn {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    margin: 20px;
+  }
+  .divBtn button {
+    padding: 7px;
+    font-weight: bold;
+    background-color: #9cbc9ec2;
+    cursor: pointer;
+  }
+  .mainContainer {
+    position: relative;
+    background-color: #9cbc9ec2;
+    margin: 40px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #000000;
+
+    border-radius: 80px;
+  }
+
+  .text {
+    position: relative;
+    font-weight: bold;
+  }
+
+  .card {
+    position: relative;
+    background-color: #9cbc9eb3;
+    border: 5px #539a57c2 solid;
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+    min-width: 100%;
+  }
+  .card h1 {
+    margin-bottom: 5px;
+    font-size: 15px;
+  }
+  .card h3 {
+    font-size: 12px;
+  }
+  .divIcons {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .icon {
+    width: 40px;
+    height: 40px;
+  }
+}

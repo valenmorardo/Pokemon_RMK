@@ -11,7 +11,7 @@ import LoadingForPages from "../../Loading/LoadingForPages";
 
 import s from "./PokemonDetail.module.css";
 
-import pikachuSad from '../../../assets/home/pikachuSad.gif'
+import pikachuSad from "../../../assets/home/pikachuSad.gif";
 
 const PokemonDetail = (props) => {
   const dispatch = useDispatch();
@@ -24,7 +24,6 @@ const PokemonDetail = (props) => {
     dispatch(getPokemonByIDAction(params.id));
   }, [dispatch]);
 
-  console.log(pokemon);
   return (
     <div className={s.background}>
       <div className={s.divBtn}>
@@ -36,11 +35,12 @@ const PokemonDetail = (props) => {
       <div className={s.mainContainer}>
         {pokemonDetailDATA && !Object.keys(pokemonDetailDATA).length ? (
           <LoadingForPages />
-        ) : pokemonDetailDATA && pokemonDetailDATA.status === 404 ||pokemonDetailDATA && pokemonDetailDATA.status === 500 ? (
+        ) : (pokemonDetailDATA && pokemonDetailDATA.status === 404) ||
+          (pokemonDetailDATA && pokemonDetailDATA.status === 500) ? (
           <div className={s.errorContainer}>
             <h1> No se encontro al pokemon con ese ID</h1>
           </div>
-        ) : pokemonDetailDATA && pokemonDetailDATA.status === 200? (
+        ) : pokemonDetailDATA && pokemonDetailDATA.status === 200 ? (
           <div className={s.dataContainer}>
             <h1>{pokemon.Name.toUpperCase()}</h1>
 
@@ -68,7 +68,7 @@ const PokemonDetail = (props) => {
               <h4>
                 TYPES:
                 {pokemon?.Types.map((e) => (
-                  <span>{e.toUpperCase()}</span>
+                  <span className={s.typess}>{e.toUpperCase()}</span>
                 ))}
               </h4>
             </div>

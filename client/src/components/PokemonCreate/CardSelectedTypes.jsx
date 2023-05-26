@@ -1,5 +1,7 @@
 import React from "react";
 
+import s from "./CardSelectedTypes.module.css";
+
 const CardSelectedTypes = ({ selectedTypes, setSelectedTypes }) => {
   const removeType = (e) => {
     e.preventDefault();
@@ -7,13 +9,13 @@ const CardSelectedTypes = ({ selectedTypes, setSelectedTypes }) => {
   };
 
   return (
-    <div>
+    <div className={s.selectedTypesContainer}>
       {selectedTypes.map((type) => (
-        <div>
+        <div className={s.card}>
           <button name={type} onClick={(e) => removeType(e)}>
             X
           </button>
-          <span> {type}</span>
+          <span> {type.toUpperCase()}</span>
         </div>
       ))}
     </div>

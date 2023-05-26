@@ -1,15 +1,15 @@
 import React from "react";
 
-import s from './FiltersActive.module.css'
+import s from "./FiltersActive.module.css";
 const FiltersActive = ({ filtros, orden }) => {
-
-
-
   return (
     <div className={s.container}>
       {filtros.Types ? (
         <div>
-          <h4> TYPE: "<span>{filtros.Types?.toUpperCase()}</span>"</h4>
+          <h4>
+            {" "}
+            TYPE: "<span>{filtros.Types?.toUpperCase()}</span>"
+          </h4>
         </div>
       ) : null}
 
@@ -17,15 +17,15 @@ const FiltersActive = ({ filtros, orden }) => {
         <div>
           <h4>
             Sort:{" "}
-            {orden.Defense
-              ? <span>DEFENSE - {orden.Defense.toUpperCase()}</span>
-              : orden.Attack
-              ?  <span>ATTACK - {orden.Attack.toUpperCase()}</span>
-              : orden.Life
-              ? <span>LIFE - {orden.Life.toUpperCase()}</span>
-              : orden.Speed
-              ? <span>SPEED - {orden.Speed.toUpperCase()}</span>
-              : null}
+            {orden.Defense ? (
+              <span>DEFENSE - {orden.Defense.toUpperCase()}</span>
+            ) : orden.Attack ? (
+              <span>ATTACK - {orden.Attack.toUpperCase()}</span>
+            ) : orden.Life ? (
+              <span>LIFE - {orden.Life.toUpperCase()}</span>
+            ) : orden.Speed ? (
+              <span>SPEED - {orden.Speed.toUpperCase()}</span>
+            ) : null}
           </h4>
         </div>
       ) : null}

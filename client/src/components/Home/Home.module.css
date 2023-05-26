@@ -17,8 +17,6 @@
   border: none;
 }
 
-
-
 @media screen and (min-width: 981px) {
   .container {
     width: 100%;
@@ -143,7 +141,6 @@
   }
 
   .textButton {
-    
     font-size: 0.7rem;
     color: #fff;
     padding: 20px;
@@ -174,7 +171,6 @@
     background-size: 95%;
     background-position: center;
     background-color: #e8d7a1;
-
   }
 
   .about {
@@ -184,5 +180,4 @@
     background-position: center;
     background-color: #9cbc9e;
   }
-
 }

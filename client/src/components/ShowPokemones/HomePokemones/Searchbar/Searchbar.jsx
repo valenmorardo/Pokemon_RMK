@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { getPokemonesAction } from "../../../../redux/actions";
 
-import s from './SearchBar.module.css';
+import s from "./SearchBar.module.css";
 
 const Searchbar = ({ setPagina }) => {
   const dispatch = useDispatch();
@@ -42,45 +42,40 @@ const Searchbar = ({ setPagina }) => {
     setName("");
   };
 
-  
   return (
     <div className={s.container}>
-      
-        <form className={s.form}>
-          <input
-            type="text"
-            
-            placeholder="Name of pokemon..."
-            onChange={(e) => handleInput(e)}
-            id="inputSearch"
-            className={s.textBox}
-          />
+      <form className={s.form}>
+        <input
+          type="text"
+          placeholder="Name of pokemon..."
+          onChange={(e) => handleInput(e)}
+          id="inputSearch"
+          className={s.textBox}
+        />
 
-          <input
-            type="submit"
-            value="SEARCH"
-            onClick={(e) => handleSubmit(e)}
-            className={s.button}
-          />
-        </form>
+        <input
+          type="submit"
+          value="SEARCH"
+          onClick={(e) => handleSubmit(e)}
+          className={s.button}
+        />
+      </form>
 
-        {error && isVisible ? (
-          <div className={s.error}>
-            <span>{error}</span>
-          </div>
-        ) : null}
+      {error && isVisible ? (
+        <div className={s.error}>
+          <span>{error}</span>
+        </div>
+      ) : null}
 
-          {searched && searched.nameSearched ? (
-            <div className={s.divShowAll}>
-              <h4>
-                search results for: "
-                <span>{searched.nameSearched.toUpperCase()}</span>"
-              </h4>
-              <button onClick={ShowAll}>Show ALL</button>
-            </div>
-          ) : null}
-
-      
+      {searched && searched.nameSearched ? (
+        <div className={s.divShowAll}>
+          <h4>
+            search results for: "
+            <span>{searched.nameSearched.toUpperCase()}</span>"
+          </h4>
+          <button onClick={ShowAll}>Show ALL</button>
+        </div>
+      ) : null}
     </div>
   );
 };

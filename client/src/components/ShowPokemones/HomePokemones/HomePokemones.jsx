@@ -15,6 +15,8 @@ import Filtrado from "./Filtrado/Filtrado";
 
 import s from "./HomePokemones.module.css";
 
+import pikachuSad from "../../../assets/home/pikachuSad.gif";
+
 const HomePokemones = () => {
   const dispatch = useDispatch();
 
@@ -42,8 +44,11 @@ const HomePokemones = () => {
       {!(PokemonesDATA && !Object.keys(PokemonesDATA).length) ? (
         <div>
           <div className={s.divBtn}>
-            <button>GO BACK</button>
+            <Link to="/home">
+              <button>GO BACK</button>
+            </Link>
           </div>
+
           <div className={s.divTitle}>
             <h1>Pokedex</h1>
           </div>
@@ -64,15 +69,17 @@ const HomePokemones = () => {
         <div className={s.mainContainer}>
           <Searchbar setPagina={setPagina} />
           <Filtrado />
-          <div>
+          <div className={s.divNotFound}>
             <h1>No se encontraron pokemones</h1>
+            <img src={pikachuSad} />
           </div>
         </div>
       ) : PokemonesDATA.status === 500 ? (
-        <div>
-          <div>
+        <div className={s.mainContainer}>
+          <div className={s.divError}>
             <h1>Ocurrio un error!</h1>
             <h3>Actualizar la pagina o intentar nuevamente mas tarde</h3>
+            <img src={pikachuSad} />
           </div>
         </div>
       ) : (
@@ -85,4 +92,3 @@ const HomePokemones = () => {
 };
 
 export default HomePokemones;
-

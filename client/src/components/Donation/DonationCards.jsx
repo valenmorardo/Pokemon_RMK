@@ -1,10 +1,7 @@
 import React from "react";
 import DonationCard from "./DonationCard";
 
-const DonationCards = ({
-  donations,
-  SubmitButtonDonation,
-}) => {
+const DonationCards = ({ donations, SubmitButtonDonation }) => {
   return (
     <>
       {donations.map((donation) => (

@@ -7,7 +7,6 @@ import s from "./LandingPage.module.css";
 const LandingPage = () => {
   return (
     <div className={s.background}>
-      
       <div className={s.container}>
         <div className={s.divTitle}>
           <h1 className={s.title}>PokeDex</h1>
@@ -24,10 +23,12 @@ const LandingPage = () => {
         <div className={s.footer}>
           <h2>
             By{" "}
-            <Link to="https://www.linkedin.com/in/valentin-morardo/"
-             target="_blank"
-             rel="noreferrer"
-             aria-label="Linkedin">
+            <Link
+              to="https://www.linkedin.com/in/valentin-morardo/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Linkedin"
+            >
               Valentin Morardo{" "}
             </Link>
           </h2>

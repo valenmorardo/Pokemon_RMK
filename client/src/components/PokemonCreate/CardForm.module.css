@@ -1,0 +1,91 @@
+.inputContainer {
+  position: relative;
+  font-weight: bold;
+  display: grid;
+  grid-template-columns: 0.65fr 0.5fr;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #bea05a95;
+  border-radius: 10px;
+  border: 5px solid #bea05a;
+  padding: 10px;
+}
+
+.inputContainer input {
+  margin-left: 15px;
+  border: none;
+  border-bottom: 1px solid black;
+  background: none;
+  font-weight: bold;
+}
+
+.selectContainer {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto auto;
+  font-weight: bold;
+
+  background-color: #bea05a95;
+  border-radius: 10px;
+  border: 5px solid #bea05a;
+  padding: 10px;
+}
+.selectContainer select {
+  margin-left: 15px;
+
+  padding: 5px;
+  background: none;
+
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 980px) {
+  .inputContainer {
+    position: relative;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #bea05a95;
+    border-radius: 10px;
+    border: 5px solid #bea05a;
+    padding: 10px;
+    max-width: 100%;
+  }
+
+  .inputContainer input {
+    margin-left: 15px;
+    border: none;
+    border-bottom: 1px solid black;
+    background: none;
+    font-weight: bold;
+    max-width: 100%;
+  }
+
+  .selectContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+
+    background-color: #bea05a95;
+    border-radius: 10px;
+    border: 5px solid #bea05a;
+    padding: 10px;
+    max-width: 100%;
+  }
+  .selectContainer select {
+    margin-left: 15px;
+
+    padding: 5px;
+    background: none;
+
+    border-radius: 10px;
+    max-width: 100%;
+  }
+}

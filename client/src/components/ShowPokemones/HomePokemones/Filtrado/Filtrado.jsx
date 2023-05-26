@@ -77,12 +77,12 @@ const Filtrado = () => {
     setFiltros({});
     setOrden({});
   }
-  
+
   useEffect(() => {
     setOrderBy_Active(false);
     setFiltros({});
     setOrden({});
-  }, [search] )
+  }, [search]);
 
   return (
     <div className={s.mainContainer}>
@@ -107,28 +107,17 @@ const Filtrado = () => {
               />
             </div>
             {orderBy && orderBy_Active ? (
-          <div>
-            <CardFiltrado
-              options={options}
-              titulo={`Sort by ${orderBy}`}
-              handler={handlerOrden(orderBy)}
-              propiedad={orderBy}
-            />
-          </div>
-        ) : null}
+              <div>
+                <CardFiltrado
+                  options={options}
+                  titulo={`Sort by ${orderBy}`}
+                  handler={handlerOrden(orderBy)}
+                  propiedad={orderBy}
+                />
+              </div>
+            ) : null}
           </>
         ) : null}
-
-        {/* {orderBy && orderBy_Active ? (
-          <div>
-            <CardFiltrado
-              options={options}
-              titulo={`Sort by ${orderBy}`}
-              handler={handlerOrden(orderBy)}
-              propiedad={orderBy}
-            />
-          </div>
-        ) : null} */}
       </div>
 
       {(Object.values(filtros).length && !search) ||

@@ -1,0 +1,59 @@
+.selectedTypesContainer {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 40px;
+}
+
+.card {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-items: center;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  gap: 15px;
+  background-color: #ab7f18c8;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.card button {
+  padding: 5px;
+  border: 2px solid black;
+
+  background-color: #9a700dc8;
+}
+
+@media screen and (max-width: 980px) {
+  .selectedTypesContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .card {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    gap: 15px;
+    background-color: #ab7f18c8;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: bold;
+  }
+
+  .card button {
+    padding: 5px;
+    border: 2px solid black;
+
+    background-color: #9a700dc8;
+  }
+}

@@ -55,10 +55,12 @@ const About = () => {
               <GrMail className={s.icon} />
             </Link>
 
-            <Link to="https://valentin-morardo.vercel.app/"
+            <Link
+              to="https://valentin-morardo.vercel.app/"
               target="_blank"
               rel="noreferrer"
-              aria-label="Portfolio">
+              aria-label="Portfolio"
+            >
               <img src={portfolio} className={s.icon} />
             </Link>
           </div>

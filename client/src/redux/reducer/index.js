@@ -1,12 +1,12 @@
 const initialState = {
   pokemones: {},
-  pokemonDetail:{},
+  pokemonDetail: {},
   postPokemon: {},
-  types:{},
+  types: {},
 
   filtro: [],
   orden: [],
-  search: ''
+  search: "",
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -15,30 +15,23 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         pokemones: action.payload,
-
-        /* search: action.payload.nameSearched || state.search, */
         search: action.payload.nameSearched,
-        pokemonDetail:{},
-
+        pokemonDetail: {},
         filtro: action.payload.filtro,
         orden: action.payload.orden,
-        
       };
 
     case "GET_TYPES":
       return {
         ...state,
         types: action.payload,
-
       };
-
 
     case "GET_POKEMON_BY_ID":
       return {
         ...state,
         pokemonDetail: action.payload,
       };
-
 
     case "POST_POKEMON":
       return {

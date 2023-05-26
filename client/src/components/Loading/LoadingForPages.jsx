@@ -1,16 +1,13 @@
 import React from "react";
 
-
 import cargandoGif from "../../assets/home/cargandoGif.gif";
 
-import s from "./LoadingForPages.module.css"
+import s from "./LoadingForPages.module.css";
 
 const LoadingForPages = () => {
   return (
     <div className={s.background}>
-
       <div className={s.container}>
-
         <img
           src={cargandoGif}
           className={s.gif}
@@ -18,9 +15,7 @@ const LoadingForPages = () => {
         ></img>
 
         <h2 className={s.text}>LOADING...</h2>
-
       </div>
-
     </div>
   );
 };

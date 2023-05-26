@@ -1,100 +1,192 @@
-.background {
-  min-height: 100vh;
-  width: 100%;
-  
+/* pantall ESCRITORIO */
+@media screen and (min-width: 981px) {
+  .background {
+    min-height: 100vh;
+    width: 100%;
 
-  position: absolute;
-  background-image: url("../../assets/global/fondoDefault.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-    
-}
+    position: absolute;
+    background-image: url("../../assets/global/fondoDefault.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+  }
 
-.mainContainer {
+  .mainContainer {
+    background-color: #e8d7a181;
+    margin: 40px;
+    padding: 40px;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #000000;
 
-  background-color: #e8d7a181;
-  margin: 40px;
-  padding: 40px;
-  display: grid;
-  grid-template-columns: 1fr;
-  justify-items: center;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: #000000;
+    border-radius: 80px;
+  }
 
-  border-radius: 80px;
-}
+  .divBtn {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    margin: 20px;
+  }
+  .divBtn button {
+    padding: 7px;
+    font-weight: bold;
+    background-color: #e8d7a1c2;
+    cursor: pointer;
+  }
 
-
-
-.divBtn {
-  position: relative;
-  display: flex;
-  justify-content: flex-start;
-  margin: 20px;
-  
-}
-.divBtn button {
-  padding: 7px;
-  font-weight: bold;
-  background-color: #e8d7a1c2;
-  cursor: pointer;
-}
-
-.mainContainer h1 {
-    
+  .mainContainer h1 {
     text-decoration: underline;
+  }
+
+  .parrafo {
+    margin: 15px 0px 15px 0px;
+    font-weight: bold;
+  }
+
+  .dataCardContainer {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin: 20px;
+  }
+
+  .cardsContainer {
+    position: relative;
+    margin: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .or {
+    margin: 10px;
+  }
+
+  .specificDonate {
+    position: relative;
+    font-weight: bold;
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 10px;
+    gap: 15px;
+    align-items: center;
+    justify-items: center;
+  }
+
+  .specificDonate input {
+    width: 100px;
+    background-color: #e8d7a1;
+    padding: 5px;
+    border-radius: 7px;
+  }
+
+  .specificDonate button {
+    padding: 7px;
+    font-weight: bold;
+    background-color: #e8d7a18f;
+    border: 2px solid #3e3b3b;
+    border-radius: 7px;
+  }
 }
 
-.parrafo {
-  margin: 15px 0px 15px 0px ; 
-  font-weight: bold;
-}
+/* pantall Celular */
+@media screen and (max-width: 980px) {
+  .background {
+    min-height: 100vh;
+    width: 100%;
 
-.dataCardContainer {
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  margin: 20px;
-}
+    position: absolute;
+    background-image: url("../../assets/global/fondoDefault.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+  .divBtn {
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    margin: 20px;
+  }
+  .divBtn button {
+    padding: 7px;
+    font-weight: bold;
+    background-color: #e8d7a1c2;
+    cursor: pointer;
+  }
 
+  .mainContainer {
+    background-color: #e8d7a181;
+    margin: 40px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #000000;
 
-.cardsContainer {
-  position: relative;
-  margin: 20px;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 30px;
-}
-.or {
-  margin: 10px;
-}
+    border-radius: 80px;
+  }
 
-.specificDonate {
-  position: relative;
-  font-weight: bold;
-  display: grid;
-  grid-template-columns: 1fr;
-  margin-top: 10px;
-  gap: 15px;
-  align-items: center;
-  justify-items: center;
-}
+  .mainContainer h1 {
+    text-decoration: underline;
+    font-size: 18px;
+  }
 
-.specificDonate input {
-  width: 100px;
-  background-color: #e8d7a1;
-  padding: 5px;
-  border-radius: 7px;
-}
+  .parrafo {
+    margin: 15px 0px 15px 0px;
+    font-weight: bold;
+  }
 
-.specificDonate button {
-  padding: 7px;
-  font-weight: bold;
-  background-color: #e8d7a18f;
-  border: 2px solid #3e3b3b;
-  border-radius: 7px;
+  .dataCardContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+
+    width: auto;
+  }
+
+  .cardsContainer {
+    position: relative;
+    margin: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .or {
+    margin: 10px;
+  }
+
+  .specificDonate {
+    position: relative;
+    font-weight: bold;
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 10px;
+    gap: 15px;
+    align-items: center;
+    justify-items: center;
+  }
+
+  .specificDonate input {
+    width: 100px;
+    background-color: #e8d7a1;
+    padding: 5px;
+    border-radius: 7px;
+  }
+
+  .specificDonate button {
+    padding: 7px;
+    font-weight: bold;
+    background-color: #e8d7a18f;
+    border: 2px solid #3e3b3b;
+    border-radius: 7px;
+  }
 }

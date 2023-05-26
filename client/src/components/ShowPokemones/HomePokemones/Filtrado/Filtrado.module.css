@@ -1,20 +1,49 @@
 .mainContainer {
-    position: relative;
-    margin-top: 15px;
-    justify-items: center;
-    align-items: center;
-    justify-content: center;
-    
+  position: relative;
+  margin-top: 15px;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
 }
 
 .cardsContainer {
-    position: relative;
-    display: grid;
-    grid-template-columns: auto auto auto;
-    gap: 25px;
+  position: relative;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 25px;
 }
 
 .divFiltersActive {
+  position: relative;
+  margin: 20px 0px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  text-align: center;
+}
+.divFiltersActive button {
+  position: relative;
+  margin-top: 10px;
+  padding: 7px;
+  font-weight: bold;
+  background-color: #eca5c2;
+  border: dashed;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* celular */
+@media screen and (max-width: 980px) {
+  .cardsContainer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .divFiltersActive {
     position: relative;
     margin: 20px 0px 0px 0px;
     display: flex;
@@ -23,8 +52,8 @@
     justify-content: center;
     justify-items: center;
     text-align: center;
-}
-.divFiltersActive button {
+  }
+  .divFiltersActive button {
     position: relative;
     margin-top: 10px;
     padding: 7px;
@@ -33,4 +62,5 @@
     border: dashed;
     border-radius: 10px;
     cursor: pointer;
+  }
 }
