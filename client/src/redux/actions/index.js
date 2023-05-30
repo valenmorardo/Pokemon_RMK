@@ -4,7 +4,7 @@ import axios from "axios";
 const getPokemonesAction = (namePokemon) => {
   return async (dispatch) => {
     try {
-      const pokemones = await axios("https://pokemon-rmk-back.vercel.app/getPokemones", {
+      const pokemones = await axios("http://localhost:3001/getPokemones", {
         params: {
           name: namePokemon,
         },
@@ -27,7 +27,7 @@ const getPokemonesAction = (namePokemon) => {
 const getTypesAction = () => {
   return async (dispatch) => {
     try {
-      const types = await axios.get("https://pokemon-rmk-back.vercel.app/getTypes");
+      const types = await axios.get("http://localhost:3001/getTypes");
 
       return dispatch({
         type: "GET_TYPES",
@@ -47,7 +47,7 @@ const getPokemonByIDAction = (payload) => {
     const id = payload;
     try {
       const pokemonByID = await axios(
-        `https://pokemon-rmk-back.vercel.app/getPokemonByID/${id}`
+        `http://localhost:3001/getPokemonByID/${id}`
       );
         
       return dispatch({
@@ -67,7 +67,7 @@ const getPokemonByIDAction = (payload) => {
 const getFilteredPokemonesAction = (payload) => {
   return async (dispatch) => {
     try {
-      const pokemones = await axios("https://pokemon-rmk-back.vercel.app/getPokemones", {
+      const pokemones = await axios("http://localhost:3001/getPokemones", {
         params: {
           filtro: payload.filtros,
           orden: payload.orden,
@@ -90,7 +90,7 @@ const postPokemonAction = (payload) => {
   return async function (dispatch) {
     try {
       const response = await axios.post(
-        "https://pokemon-rmk-back.vercel.app/postPokemon",
+        "http://localhost:3001/postPokemon",
         payload
       );
 
@@ -116,7 +116,7 @@ const postPaymentDonationAction = (payload) => {
       };
 
       await axios
-        .post("https://pokemon-rmk-back.vercel.app/postPayment", donation)
+        .post("http://localhost:3001/postPayment", donation)
         .then(
           (res) => (window.location.href = res.data.response.body.init_point)
         );
