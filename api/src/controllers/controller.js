@@ -125,7 +125,7 @@ function postPokemon(req, res) {
 }
 
 //--------------MERCADO PAGO----------------
-/* const mercadopago = require("mercadopago");
+const mercadopago = require("mercadopago");
 mercadopago.configure({ access_token: process.env.MERCADOPAGO_KEY });
 
 const postPayment = async (req, res) => {
@@ -163,12 +163,12 @@ const postPayment = async (req, res) => {
       });
       console.log(err);
     });
-}; */
+};
 
 module.exports = {
   getPokemones,
   postPokemon,
   getTypes,
   getPokemonByID,
-  /* postPayment, */
+  postPayment,
 };
