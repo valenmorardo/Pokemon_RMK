@@ -14,7 +14,7 @@ const PokemonSchema = new mongoose.Schema({
     unique: true,
     required: [true, "El nombre es obligatorio."],
     validate: [
-      {
+      /* {
         validator: async function (nombre) {
           const pokemon = await this.constructor.findOne({
             Name: nombre.toLowerCase(),
@@ -22,7 +22,7 @@ const PokemonSchema = new mongoose.Schema({
           return !pokemon;
         },
         message: "Ya existe un Pokemon con este nombre.",
-      },
+      }, */
       {
         validator: async (nombre) => {
           /* validacion personalizada: el nombre solo debe contener letras */

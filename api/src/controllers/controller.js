@@ -9,6 +9,8 @@ require("dotenv").config();
 async function getPokemones(req, res, next) {
   const { name, orden, filtro } = req.query;
 
+  
+  
   await Pokemon.find({ Name: new RegExp(name, "i"), ...filtro })
     .sort(orden)
     .then((pokemones) => {
