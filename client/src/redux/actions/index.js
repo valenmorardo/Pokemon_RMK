@@ -4,7 +4,7 @@ import axios from "axios";
 const getPokemonesAction = (namePokemon) => {
   return async (dispatch) => {
     try {
-      const pokemones = await axios("https://pokemon-rmk-atn5.vercel.app//getPokemones", {
+      const pokemones = await axios("https://pokemon-rmk-atn5.vercel.app/getPokemones", {
         params: {
           name: namePokemon,
         },
@@ -27,7 +27,7 @@ const getPokemonesAction = (namePokemon) => {
 const getTypesAction = () => {
   return async (dispatch) => {
     try {
-      const types = await axios.get("https://pokemon-rmk-atn5.vercel.app//getTypes");
+      const types = await axios.get("https://pokemon-rmk-atn5.vercel.app/getTypes");
 
       return dispatch({
         type: "GET_TYPES",
@@ -47,7 +47,7 @@ const getPokemonByIDAction = (payload) => {
     const id = payload;
     try {
       const pokemonByID = await axios(
-        `https://pokemon-rmk-atn5.vercel.app//getPokemonByID/${id}`
+        `https://pokemon-rmk-atn5.vercel.app/getPokemonByID/${id}`
       );
         
       return dispatch({
@@ -67,7 +67,7 @@ const getPokemonByIDAction = (payload) => {
 const getFilteredPokemonesAction = (payload) => {
   return async (dispatch) => {
     try {
-      const pokemones = await axios("https://pokemon-rmk-atn5.vercel.app//getPokemones", {
+      const pokemones = await axios("https://pokemon-rmk-atn5.vercel.app/getPokemones", {
         params: {
           filtro: payload.filtros,
           orden: payload.orden,
@@ -90,7 +90,7 @@ const postPokemonAction = (payload) => {
   return async function (dispatch) {
     try {
       const response = await axios.post(
-        "https://pokemon-rmk-atn5.vercel.app//postPokemon",
+        "https://pokemon-rmk-atn5.vercel.app/postPokemon",
         payload
       );
 
@@ -116,7 +116,7 @@ const postPaymentDonationAction = (payload) => {
       };
 
       await axios
-        .post("https://pokemon-rmk-atn5.vercel.app//postPayment", donation)
+        .post("https://pokemon-rmk-atn5.vercel.app/postPayment", donation)
         .then(
           (res) => (window.location.href = res.data.response.body.init_point)
         );
