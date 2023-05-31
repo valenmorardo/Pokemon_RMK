@@ -11,7 +11,7 @@ const getAllTypesAPI = require("./services/getAllTypesAPI.js")
 
 Database.connect();
 
-app.listen(CONFIG.PORT, async (err) => {
+app.listen(CONFIG.PORT  || 3001, async (err) => {
   if (err) return console.log(err);
   console.log(`Servidor corriendo en el puerto: ${CONFIG.PORT}`);
 
