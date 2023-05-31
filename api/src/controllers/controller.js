@@ -147,7 +147,7 @@ const postPayment = async (req, res) => {
       },
     ],
     back_urls: {
-      success: "http://localhost:3000/home",
+      success: "https://pokemon-rmk-valenmorardo.vercel.app/home",
       failure: "",
       pending: "",
     },
