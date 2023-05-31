@@ -1,6 +1,6 @@
 const Database = require("./src/config/database.js");
 const CONFIG = require("./src/config/config.js");
-const app = require("./src/app.js");
+
 
 const axios = require("axios");
 const _ = require("underscore");
@@ -8,6 +8,35 @@ const Pokemon = require("./src/models/Pokemones.js");
 const Type = require("./src/models/Pokemones.js");
 const getAllPokemonesAPI = require("./src/services/getAllPokemonsAPI.js");
 const getAllTypesAPI = require("./src/services/getAllTypesAPI.js")
+
+
+const express = require("express");
+const bodyParser = require("body-parser");
+
+const app = express();
+
+
+
+//cualquier peticion la converitmos en json
+app.use(bodyParser.json());
+
+//cargamos body parser que es un middleware para analizar cuerpos atravez de la url
+app.use(bodyParser.urlencoded({ extended: false }));
+
+
+//activamos el CORS para permitir las peticions AJAX y HTTP desde el front
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Authorization, X-API-KEY, Origin, X-Requested-With, Content-type, Accept, Access-Control-Allow-Request-Method"
+  );
+  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
+  res.header("Allow", "GET, POST, OPTIONS, PUT, DELETE");
+  next();
+});
+
+
 
 Database.connect();
 
@@ -18,3 +47,19 @@ app.listen(CONFIG.PORT  || 3001, async (err) => {
    await getAllPokemonesAPI();
    await getAllTypesAPI();
 });
+
+
+
+
+const controller = require('./src/controllers/controller.js');
+
+const router = express.Router();
+
+router.get('/getPokemones', controller.getPokemones)
+
+router.get('/getTypes', controller.getTypes)
+router.get('/getPokemonByID/:id', controller.getPokemonByID)
+router.post('/postPokemon', controller.postPokemon)
+router.post('/postPayment', controller.postPayment)
+
+

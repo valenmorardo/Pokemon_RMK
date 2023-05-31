@@ -1,4 +1,4 @@
-const express = require("express");
+/* const express = require("express");
 const bodyParser = require("body-parser");
 
 const app = express();
@@ -26,8 +26,7 @@ app.use((req, res, next) => {
 
 app.use("/", Routes);
 
-/* app.use(errorHandler) */
 
-module.exports = app;
+module.exports = app; */
 
 
