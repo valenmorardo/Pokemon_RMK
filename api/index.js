@@ -6,8 +6,7 @@ const axios = require("axios");
 const _ = require("underscore");
 const Pokemon = require("./src/models/Pokemones.js");
 const Type = require("./src/models/Pokemones.js");
-const getAllPokemonesAPI = require("./src/services/getAllPokemonsAPI.js");
-const getAllTypesAPI = require("./src/services/getAllTypesAPI.js");
+
 
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -36,7 +35,7 @@ app.use((req, res, next) => {
 
 app.use("/", Routes);
 
-Database.connect();
+
 
 /* app.listen(CONFIG.PORT || 3001, async (err) => {
   if (err) return console.log(err);
@@ -46,12 +45,16 @@ Database.connect();
   await getAllTypesAPI();
 }); */
 
+const getAllPokemonesAPI = require("./src/services/getAllPokemonsAPI.js");
+const getAllTypesAPI = require("./src/services/GetAllTypesAPI.js");
+
 const startServer = () => {
   return new Promise((resolve, reject) => {
     app.listen(CONFIG.PORT || 3001, (err) => {
       if (err) {
         reject(err);
       } else {
+        Database.connect();
         console.log(`Servidor corriendo en el puerto: ${CONFIG.PORT}`);
         resolve();
       }
