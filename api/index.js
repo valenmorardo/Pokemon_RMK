@@ -65,6 +65,7 @@ const startServer = () => {
 
 const runApp = async () => {
   try {
+    chrome.runtime.sendMessage('ping', (response) => {message: "test" })
     await startServer();
     await getAllPokemonesAPI();
     await getAllTypesAPI();
