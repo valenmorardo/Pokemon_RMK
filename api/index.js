@@ -38,10 +38,35 @@ app.use("/", Routes);
 
 Database.connect();
 
-app.listen(CONFIG.PORT || 3001, async (err) => {
+/* app.listen(CONFIG.PORT || 3001, async (err) => {
   if (err) return console.log(err);
   console.log(`Servidor corriendo en el puerto: ${CONFIG.PORT}`);
 
   await getAllPokemonesAPI();
   await getAllTypesAPI();
-});
+}); */
+
+const startServer = () => {
+  return new Promise((resolve, reject) => {
+    app.listen(CONFIG.PORT || 3001, (err) => {
+      if (err) {
+        reject(err);
+      } else {
+        console.log(`Servidor corriendo en el puerto: ${CONFIG.PORT}`);
+        resolve();
+      }
+    });
+  });
+};
+
+const runApp = async () => {
+  try {
+    await startServer();
+    await getAllPokemonesAPI();
+    await getAllTypesAPI();
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+runApp();
