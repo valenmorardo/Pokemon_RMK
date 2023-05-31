@@ -1,4 +1,4 @@
-/* const express = require('express');
+const express = require('express');
 const controller = require('../controllers/controller');
 
 const router = express.Router();
@@ -12,4 +12,4 @@ router.post('/postPayment', controller.postPayment)
 
 
 
-module.exports = router; */
+module.exports = router;
