@@ -1,12 +1,10 @@
 const Database = require("./src/config/database.js");
 const CONFIG = require("./src/config/config.js");
 
-
 const axios = require("axios");
 const _ = require("underscore");
 const Pokemon = require("./src/models/Pokemones.js");
 const Type = require("./src/models/Pokemones.js");
-
 
 const express = require("express");
 const bodyParser = require("body-parser");
@@ -26,16 +24,20 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Headers",
-    "Access-Control-Allow-Origin",
-    "Authorization, X-API-KEY, Origin, X-Requested-With, Content-type, Accept, Access-Control-Allow-Request-Method, Access-Control-Allow-Origin"
+    "Access-Control-Allow-Headers, Authorization, X-API-KEY, Origin, X-Requested-With, Content-type, Accept, Access-Control-Request-Method, Access-Control-Allow-Request-Method, Access-Control-Request-Headers,  Access-Control-Allow-Origin"
   );
-  res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
+  res.header("Access-Control-Request-Headers");
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Credentials", "true");
+  res.header(
+    "Access-Control-Allow-Methods",
+    "GET, HEAD, POST, OPTIONS, PUT, DELETE"
+  );
   res.header("Allow", "GET, POST, OPTIONS, PUT, DELETE");
   next();
 });
 
 app.use("/", Routes);
-
 
 /* app.listen(CONFIG.PORT || 3001, async (err) => {
   if (err) return console.log(err);
@@ -59,20 +61,19 @@ const startServer = () => {
         resolve();
       }
     });
-    return true
+    return true;
   });
 };
 
 const runApp = async () => {
   try {
-    
     await startServer();
     await getAllPokemonesAPI();
     await getAllTypesAPI();
   } catch (err) {
     console.log(err);
   }
-  return true
+  return true;
 };
 
 runApp();
