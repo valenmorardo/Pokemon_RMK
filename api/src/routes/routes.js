@@ -10,9 +10,6 @@ router.get('/getPokemonByID/:id', controller.getPokemonByID)
 router.post('/postPokemon', controller.postPokemon)
 router.post('/postPayment', controller.postPayment)
 
-router.get('/getTest', {
-    test: "success",
-})
 
 
 module.exports = router;
