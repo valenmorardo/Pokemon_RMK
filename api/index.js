@@ -26,7 +26,6 @@ app.use((req, res, next) => {
     "Access-Control-Allow-Headers",
     "Access-Control-Allow-Headers, Authorization, X-API-KEY, Origin, X-Requested-With, Content-type, Accept, Access-Control-Request-Method, Access-Control-Allow-Request-Method, Access-Control-Request-Headers,  Access-Control-Allow-Origin"
   );
-  res.header("Access-Control-Request-Headers");
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Credentials", "true");
   res.header(
