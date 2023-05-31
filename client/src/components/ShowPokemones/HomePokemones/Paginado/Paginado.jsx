@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import s from "./Paginado.module.css";
 
 const Paginado = ({ pagina, setPagina, maximo }) => {
+  const pokemones = useSelector((state) => state.pokemones.pokemones);
+
   const nextPage = () => {
     setPagina(parseInt(pagina) + 1);
   };
@@ -10,6 +12,11 @@ const Paginado = ({ pagina, setPagina, maximo }) => {
   const previousPage = () => {
     setPagina(parseInt(pagina) - 1);
   };
+
+  useEffect(() => {
+    setPagina(1)
+  },[pokemones]);
+
 
   return (
     <div className={s.container}>

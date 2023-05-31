@@ -13,7 +13,7 @@ Database.connect();
 
 app.listen(CONFIG.PORT, async (err) => {
   if (err) return console.log(err);
-  console.log(`Servidor corriendo en el puerto:`);
+  console.log(`Servidor corriendo en el puerto: ${CONFIG.PORT}`);
 
    await getAllPokemonesAPI();
    await getAllTypesAPI();

@@ -40,9 +40,17 @@
   display: grid;
   grid-template-columns: 1fr;
   gap: 10px;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 
   padding: 40px;
   border-radius: 80px;
+}
+.dataContainer img {
+  width: 500px;
+  height: 500px;
 }
 
 .stats {
@@ -104,8 +112,10 @@
     border-radius: 80px;
     max-width: 100%;
   }
+
   .dataContainer img {
-    width: 65%;
+    width: 280px;
+    height: 280px;
   }
 
   .stats {
