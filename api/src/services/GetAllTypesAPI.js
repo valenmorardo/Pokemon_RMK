@@ -18,6 +18,7 @@ module.exports = async function getAllTypesAPI() {
         console.log(err);
       });
     });
+    return true
   } catch (error) {
     console.log(error);
   }

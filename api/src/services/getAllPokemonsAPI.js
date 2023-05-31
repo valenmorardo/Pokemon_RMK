@@ -35,6 +35,7 @@ module.exports = async function getAllPokemonesAPI() {
       })
     );
     console.log("POKEMONES GUARDADOSS");
+    return true
   } catch (error) {
     console.log(error);
   }
