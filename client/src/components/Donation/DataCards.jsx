@@ -14,7 +14,7 @@ const DataCards = () => {
             Number: <span>{e.number}</span>
           </h4>
           <h4>
-            Fecha de caducidad: <span>{e.caducity}</span>
+          Expiration date: <span>{e.caducity}</span>
           </h4>
           <h4>
             security code: <span>{e.secCode}</span>

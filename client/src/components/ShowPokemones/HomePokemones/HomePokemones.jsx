@@ -70,21 +70,21 @@ const HomePokemones = () => {
           <Searchbar setPagina={setPagina} />
           <Filtrado />
           <div className={s.divNotFound}>
-            <h1>No se encontraron pokemones</h1>
+            <h1>No Pokemon were found.</h1>
             <img src={pikachuSad} />
           </div>
         </div>
       ) : PokemonesDATA.status === 500 ? (
         <div className={s.mainContainer}>
           <div className={s.divError}>
-            <h1>Ocurrio un error!</h1>
-            <h3>Actualizar la pagina o intentar nuevamente mas tarde</h3>
+            <h1>An error occurred!</h1>
+            <h3>Please refresh the page or try again later</h3>
             <img src={pikachuSad} />
           </div>
         </div>
       ) : (
         <div>
-          <h1>ERROR</h1>
+          <h1>SERVER ERROR</h1>
         </div>
       )}
     </div>

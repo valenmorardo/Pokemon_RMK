@@ -26,7 +26,7 @@ const Home = () => {
       <div className={s.container}>
         <Link to="/home/pokemones">
           <button className={s.verPokemones}>
-            <span className={s.textButton}>VER POKEMONES </span>
+            <span className={s.textButton}>SEE POKEMONS</span>
           </button>
         </Link>
 
@@ -38,7 +38,7 @@ const Home = () => {
 
         <Link to="/home/donation">
           <button className={s.donate}>
-            <span className={s.textButton}>DONAR</span>
+            <span className={s.textButton}>Donate</span>
           </button>
         </Link>
 

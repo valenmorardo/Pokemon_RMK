@@ -80,7 +80,7 @@ const CreateForm = () => {
 
       <div className={s.mainContainer}>
         <div className={s.divTitle}>
-          <h1>Crea tu pokemon!</h1>
+          <h1>Create your Pokémon!</h1>
         </div>
 
         <div>
@@ -115,7 +115,7 @@ const CreateForm = () => {
               onClick={(e) => handleSubmit(e)}
               className={s.buttonSubmit}
             >
-              CREAR
+              CREATE
             </button>
           </form>
         </div>

@@ -13,7 +13,7 @@ const LandingPage = () => {
         </div>
 
         <div className={s.divTocar}>
-          <h2 className={s.tocar}>Toca la pokebola para acceder</h2>
+          <h2 className={s.tocar}>Touch the Pokéball to access</h2>
 
           <Link to="/home">
             <img src={pokebola} className={s.pokebola} alt="PokeBola" />

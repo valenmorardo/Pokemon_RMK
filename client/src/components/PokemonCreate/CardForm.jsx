@@ -31,7 +31,7 @@ const CardForm = ({
           <select name={propiedad} onChange={(e) => handleSelectTypes(e)}>
             <option disabled selected value="defaultValue">
               {" "}
-              Seleccionar los {propiedad}
+              Select the {propiedad}
             </option>
             {allTypes?.map((type) => (
               <option id={type.name} value={type.name} name={type.name}>

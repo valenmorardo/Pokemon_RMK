@@ -70,7 +70,7 @@ const Searchbar = ({ setPagina }) => {
       {searched && searched.nameSearched ? (
         <div className={s.divShowAll}>
           <h4>
-            search results for: "
+            Search results for: "
             <span>{searched.nameSearched.toUpperCase()}</span>"
           </h4>
           <button onClick={ShowAll}>Show ALL</button>

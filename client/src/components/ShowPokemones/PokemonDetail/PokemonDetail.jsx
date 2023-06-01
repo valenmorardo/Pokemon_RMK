@@ -38,7 +38,7 @@ const PokemonDetail = (props) => {
         ) : (pokemonDetailDATA && pokemonDetailDATA.status === 404) ||
           (pokemonDetailDATA && pokemonDetailDATA.status === 500) ? (
           <div className={s.errorContainer}>
-            <h1> No se encontro al pokemon con ese ID</h1>
+            <h1>No Pokémon was found with that ID.</h1>
           </div>
         ) : pokemonDetailDATA && pokemonDetailDATA.status === 200 ? (
           <div className={s.dataContainer}>

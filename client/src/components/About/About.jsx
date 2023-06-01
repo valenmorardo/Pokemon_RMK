@@ -23,11 +23,11 @@ const About = () => {
 
         <div className={s.text}>
           <p>
-            Esta aplicacion es un remake de mi proyecto individual realizado y
-            evaluado en SoyHenry Bootcamp. Decidi rehacerlo porque no estaba
-            conforme con mi resultado en aquel momento. Ahora que tengo mejores
-            conocimientos lo hago de vuelta con mas funcionalidades y mejor
-            estructura y diseño.
+            This application is a remake of my individual project completed and
+            evaluated during the SoyHenry Bootcamp. I decided to redo it because
+            I wasn't satisfied with my previous result at that time. Now that I
+            have better knowledge, I am recreating it with more functionalities,
+            improved structure, and design.
           </p>
         </div>
 

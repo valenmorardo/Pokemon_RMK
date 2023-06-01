@@ -5,7 +5,7 @@ import s from "./Cards.module.css";
 
 const Cards = ({ pokemones }) => {
   return (
-    <div className={s.container}>
+    <div className={s.container} id="cards">
       {pokemones?.map((el) => (
         <Card {...el} />
       ))}
