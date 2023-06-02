@@ -18,5 +18,11 @@
 }
 
 .image {
-  width: 60%;
+  width: 350px;
+}
+
+@media screen and (max-width: 1025px) {
+  .image {
+    width: 60%;
+  }
 }
