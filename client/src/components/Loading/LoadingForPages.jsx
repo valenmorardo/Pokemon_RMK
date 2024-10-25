@@ -11,7 +11,7 @@ const LoadingForPages = () => {
         <img
           src={cargandoGif}
           className={s.gif}
-          alt="no encontre la imagen"
+          alt="loading"
         ></img>
 
         <h2 className={s.text}>LOADING...</h2>
