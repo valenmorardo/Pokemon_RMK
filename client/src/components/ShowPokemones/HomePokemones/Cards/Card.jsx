@@ -8,7 +8,7 @@ const Card = ({ _id, Name, Image }) => {
     <div className={s.card}>
       <Link to={`/home/pokemon/${_id}`}>
         <h3 className={s.name}>{Name.toUpperCase()}</h3>
-        <img className={s.image} src={Image} alt="img not found" width="75%" />
+        <img className={s.image} src={Image} alt={Name + "Img"} width="75%" />
       </Link>
     </div>
   );
