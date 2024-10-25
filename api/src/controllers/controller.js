@@ -88,7 +88,7 @@ const getPokemonByID = async (req, res) => {
           pokemon,
           status: 404,
         });
-      }
+      } 
     })
     .catch((error) =>
       res.status(500).send({

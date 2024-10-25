@@ -1,17 +1,16 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { getPokemonByIDAction } from "../../../redux/actions";
 import { useParams } from "react-router-dom";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import LoadingForPages from "../../Loading/LoadingForPages";
 
 import s from "./PokemonDetail.module.css";
 
-import pikachuSad from "../../../assets/home/pikachuSad.gif";
 
 const PokemonDetail = (props) => {
   const dispatch = useDispatch();

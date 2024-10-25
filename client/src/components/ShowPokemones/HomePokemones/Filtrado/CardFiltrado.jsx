@@ -1,17 +1,11 @@
 import React from "react";
-import { useSelector } from "react-redux";
+
 import { useEffect, useState } from "react";
 
 import s from "./CardFiltrado.module.css";
 
 const CardFiltrado = ({ options, titulo, handler, propiedad }) => {
   const [filtro, setFiltro] = useState("");
-
-  function cleanSelect(propiedad) {
-    document
-      .getElementById(propiedad)
-      .options.item("defaultValue").selected = true;
-  }
 
   function handleOnChange(value) {
     setFiltro(value);

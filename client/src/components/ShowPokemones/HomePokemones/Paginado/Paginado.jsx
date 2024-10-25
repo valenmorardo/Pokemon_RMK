@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+
 import s from "./Paginado.module.css";
 
 const Paginado = ({ pagina, setPagina, maximo }) => {

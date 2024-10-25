@@ -78,3 +78,5 @@ const runApp = async () => {
 };
 
 runApp();
+
+module.exports = app

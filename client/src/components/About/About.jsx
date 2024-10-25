@@ -61,7 +61,7 @@ const About = () => {
               rel="noreferrer"
               aria-label="Portfolio"
             >
-              <img src={portfolio} className={s.icon} />
+              <img src={portfolio} className={s.icon} alt="portfolio"/>
             </Link>
           </div>
         </div>
